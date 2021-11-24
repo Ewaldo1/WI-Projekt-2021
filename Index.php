@@ -1,32 +1,32 @@
-
-<?php
-echo "ganz normale seite";
-
-?>
-
-
 <head>
     <meta charset="uft-8">
-    <title>Nutzerverwaltung</title>
+    <title>Logging</title>
 
 </head>
 
 <body>
 
-    <h2>Willkommen!</h2>
-    <h4> Anmeldung </h4>
+<h2>Willkommen bei HEKAY!</h2>
+<h4> Anmeldung </h4>
 
-    <form method = "post" action = "speichern.php">
+<form method = "post" action = "speichern.php">
+    Geben Sie bitte ihre Daten <br><br>
 
-        e-Mail: <input name="email" size=15> <br>
-        password: <input name="password"size15> <br>
-        Vollständige Name: <input name="userName"size15> <br>
-        Alter: <input name="userOld"size15> <br>
-
-
-        <input type = "submit" name = "submit" value = "Speichern">
+    Account Name: <input name="user" size=15> <br>
+    Password: <input name="password"size15> <br><br><br>
 
 
-    </form>
+    <input type = "submit" name = "submit" value = "Speichern">
+
+
+</form>
+
+    <a href="regist.php"><p align = center><button>Resistrieren</button></p></a>
+
+    <a href="help.php"><p align = center><button>Help</button></p></a>
 
 </body>
+
+<?php
+
+?>
