@@ -1,12 +1,15 @@
 <?php
 
 
-    $_host = "locahost";
-    $_user = "root";
-    $_passwordDB = "";
-    $_datenBank = "ewaldo"; //wir müssen noch uns Eignen für eine Databank
+    //Hier wir Verbinden wir uns am die Datenbank
 
-    $_myServer = mysqli_connect($_host, $_user, $_passwordDB, $_datenBank);
+    $_conex = new mysqli("localhost", "root", "root", "dbproject");
 
+ /*   if($_conex) {
+
+        echo "conectado ";
+    } else {
+        echo "dont conect <br\n>";
+    } */
 
 ?>
