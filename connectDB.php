@@ -1,12 +1,13 @@
 <?php
-
-
-    $_host = "locahost";
-    $_user = "root";
-    $_passwordDB = "";
-    $_datenBank = "ewaldo"; //wir müssen noch uns Eignen für eine Databank
-
-    $_myServer = mysqli_connect($_host, $_user, $_passwordDB, $_datenBank);
-
-
+$host = "localhost";
+$user = "root";
+$passwort = "root";
+$db = "benutzersteuerung";
+$con = null;
+try {
+    $con = new mysqli($host, $user, $passwort, $db);
+} catch (mysqli_sql_exception $e){
+    echo "Verbindung fehlgeschlagen ".$e->getMessage();
+}
 ?>
+
