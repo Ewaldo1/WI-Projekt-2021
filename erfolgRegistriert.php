@@ -1,3 +1,4 @@
+
 <?php
 echo "Sie haben sich erfolgreich registriert und können sich nun anmelden!";
 ?>

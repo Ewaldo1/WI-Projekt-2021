@@ -1,20 +1,18 @@
 <html>
 <head>
-
+    <script scr="" type=""></script>
+    <meta charset="utf-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/styles.css"/>
 </head>
-
 <body>
-<header>
-
-    <h1> Willkommen zum HEKAY </h1>
-    <p>
-
+<header class="jumbotron">
+    <div class="container">
+        <h1>Willkommen bei HEKAY!</h1>
         <img src="Logo.jpg">
-        <span> 2021 </span>
-    </p>
-</header
-
-
+    </div>
+</header>
 </body>
 </html>
 
