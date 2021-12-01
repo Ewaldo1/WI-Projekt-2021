@@ -1,3 +1,4 @@
+<?php include ("header.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +7,7 @@
     <title>Login</title>
 </head>
 <body>
-<?php include ("header.php"); ?>
+
 <h4> Anmeldung </h4>
 
 <form action = "index.php" method = "post">
@@ -19,8 +20,7 @@
 <?php
 session_start();
 if(isset($_POST["submit"])){
-    //Wir haben zwei connectDB Datatein? Wollen wir ändert oder so lassen?
-    require("connectDB.php");
+    require 'connectDB.php';
     $username = $_POST['username'];
     $passwort = $_POST['passwort'];
     $sql = "SELECT * FROM nutzer WHERE '" . $username . "' = Username AND '" .$passwort ."' = Passwort"; //Nutzer wird in Tabelle gesucht

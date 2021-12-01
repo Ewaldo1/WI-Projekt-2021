@@ -1,18 +1,18 @@
 
 <body>
 <?php include ("header.php"); ?>
-<h4>Geben Sie ihre Daten</h4>
+<h4>Geben Sie ihre Daten an</h4>
 <form method="post" action="regist.php">
     <br>
 
     <br>
-    gib deine Email-Adresse:<br>
+    Deine Email-Adresse:<br>
     <input name="email" size=16><br>
-    gib deine Pasword:<br>
-    <input name="password" size=10><br>
-    gib Alter<br>
-    <input name="old" size=5><br>
-    gib deine User-Name<br>
+    Dein Passwort:<br>
+    <input name="passwort" size=10><br>
+    Dein Alter<br>
+    <input name="geburtsdatum" size=5><br>
+    Dein Username<br>
     <input name="userName" size=10><br>
     <br>
     <input type="submit" name = "submit" value="Anmeldung" >
@@ -20,40 +20,46 @@
 </form>
 
 
-</body>
+
 
 
 <?php
 
-    require "conectDB.php";
+    require 'connectDB.php';
 
     $_userEmail = $_POST["email"];
-    $_userPassword = $_POST["password"];
-    $_userOld = $_POST["old"];
+    $_userPassword = $_POST["passwort"];
+    $_userOld = $_POST["geburtsdatum"];
     $_userName = $_POST["userName"];
 
-    //HIER WIRD ÜBERPRÜFT ob gab RICHTIGE ABGABE bei EMAIL UND ALTER
-
-    $prüfung1 = verificationData($_userEmail, $_userOld);
-
-
-
     //Die Tabelle BENUTZER Enthählt info von unsere Users!
-
-    $insert = "INSERT INTO benutzer(email, password, geburtsDatum, UserName)VALUES ('$_userEmail', '$_userPassword', '$_userOld', '$_userName')";
-    $result = mysqli_query($_conex, $insert);
-
-
-    //TODO $_CONEX UND $_INSERT sollen in der Funktion verifikationDB() integriert werden
-
-    if($result) {
-        echo "Sind Sie jetzt registiert";
-    } else{
-        var_dump($result);
-        echo "Fehler bei Regestrierung";
+    if(isset($_POST['submit'])) {
+        $prüfung1 = verificationData($_userEmail, $_userOld); //HIER WIRD ÜBERPRÜFT ob gab RICHTIGE ABGABE bei EMAIL UND ALTER
+        if($prüfung1 === false) {
+            echo "Fehler bei der Registrierung";
+        } else {
+            $sql = "SELECT Email FROM nutzer WHERE '" . $_userEmail . "' = Email";
+            $searchResult = mysqli_query($con,$sql);
+            if(mysqli_num_rows($searchResult) > 0) {
+                echo "Der Benutzer existiert bereits. Bitte logge dich ein!";
+            } else {
+                $insert = "INSERT INTO nutzer(Email, Passwort, Geburtsdatum, Username)VALUES ('$_userEmail', '$_userPassword', '$_userOld', '$_userName')";
+                $result = mysqli_query($con, $insert);
+                if ($result) {
+                      header("Location: erfolgRegistriert.php");
+                } else {
+                    echo "Fehler bei der Registrierung";
+                }
+            }
+        }
     }
+    ?>
 
-
+<br>
+<a href="index.php">Hier gehts zur Anmeldung!<br></a>
+</body>
+<?php
+    //TODO $_CON UND $_INSERT sollen in der Funktion verifikationDB() integriert werden
 
     function verificationData($_mailP, $_oldP) {
 
