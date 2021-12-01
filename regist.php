@@ -1,6 +1,6 @@
 
 <body>
-
+<?php include ("header.php"); ?>
 <h4>Geben Sie ihre Daten</h4>
 <form method="post" action="regist.php">
     <br>

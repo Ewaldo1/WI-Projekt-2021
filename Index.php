@@ -6,7 +6,7 @@
     <title>Login</title>
 </head>
 <body>
-<h2>Willkommen bei HEKAY!</h2>
+<?php include ("header.php"); ?>
 <h4> Anmeldung </h4>
 
 <form action = "index.php" method = "post">
@@ -19,6 +19,7 @@
 <?php
 session_start();
 if(isset($_POST["submit"])){
+    //Wir haben zwei connectDB Datatein? Wollen wir ändert oder so lassen?
     require("connectDB.php");
     $username = $_POST['username'];
     $passwort = $_POST['passwort'];
