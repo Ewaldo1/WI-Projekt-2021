@@ -7,12 +7,12 @@
     <link type="text/css" rel="stylesheet" href="assets/css/styles.css"/>
 </head>
 <body>
-<header class="jumbotron">
-    <div class="container">
-        <h1>Willkommen bei HEKAY!</h1>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Willkommen auf HEKAY!</h1>
         <img src="Logo.jpg">
     </div>
-</header>
+</div>
 </body>
 </html>
 
