@@ -3,6 +3,8 @@ session_start();
 include 'Header.php';
 include 'connectDB.php';
 
+//Kevin das muss du uns erklären! :D
+
 $sql = "SELECT * FROM produkte";
 $result = mysqli_query($con, $sql); //Inhalte der Tabelle Produkte
 ?>
