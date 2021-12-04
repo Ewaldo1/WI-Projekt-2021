@@ -12,8 +12,10 @@
 
 <form action = "index.php" method = "post">
     Geben Sie bitte ihre Daten ein: <br><br>
-    Username: <input name = "username" <br><br>
-    Passwort: <input name = "passwort" <br><br>
+    <label>Username:</label>
+    <input type="text" name= "username" placeholder="Username"><br>
+    <label>Passwort:</label>
+    <input type="password" name = "passwort" placeholder="Passwort"><br><br>
     <input type = "submit" name = "submit" value = "Einloggen">
 </form>
 

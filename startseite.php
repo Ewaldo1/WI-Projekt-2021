@@ -16,11 +16,13 @@ $result = mysqli_query($con, $sql); //Inhalte der Tabelle Produkte
     <link type="text/css" rel="stylesheet" href="assets/css/styles.css"/>
 </head>
 <body>
-    <h2>Willkommen<?php echo " ".$_SESSION["username"]; ?></h2>
-
-    Zum Ausloggen <a href ="logout.php">hier klicken</a>
-    Um zu deinem Profil zu gelangen <a href ="benutzerseite.php">hier klicken</a>
-
+    <section class="container">
+        <h2>Hallo<?php echo " ".$_SESSION["username"]; ?></h2>
+    </section>
+    <section class="container">
+        Zum Ausloggen <a href ="logout.php">hier klicken</a><br>
+        Um zu deinem Profil zu gelangen <a href ="benutzerseite.php">hier klicken</a>
+    </section>
     <section class="container" id="products">
     <div class="row"> <?php //eine Zeile für die Cards?>
         <?php while($row = $result->fetch_assoc()): //while wird hier mit ":" unterbrochen?>
