@@ -7,16 +7,18 @@
     <title>Login</title>
 </head>
 <body>
-
-<h4> Anmeldung </h4>
-
+<section class="container">
+    <h4> Anmeldung </h4>
+</section>
 <form action = "index.php" method = "post">
-    Geben Sie bitte ihre Daten ein: <br><br>
-    <label>Username:</label>
-    <input type="text" name= "username" placeholder="Username"><br>
-    <label>Passwort:</label>
-    <input type="password" name = "passwort" placeholder="Passwort"><br><br>
-    <input type = "submit" name = "submit" value = "Einloggen">
+    <section class="container">
+        Geben Sie bitte ihre Daten ein: <br><br>
+        <label>Username:</label>
+        <input type="text" name= "username" placeholder="Username"><br>
+        <label>Passwort:</label>
+        <input type="password" name = "passwort" placeholder="Passwort"><br><br>
+        <input type = "submit" name = "submit" value = "Einloggen">
+    </section>
 </form>
 
 <?php
@@ -38,9 +40,11 @@ if(isset($_POST["submit"])){
     }
 }
 ?>
-<br>
-<a href="regist.php">Noch keinen Account? Hier Registrieren!<br></a>
-<a href="help.php">Probleme beim Anmelden?<br></a>
+<section class="container">
+    <br>
+    <a href="regist.php">Noch keinen Account? Hier Registrieren!<br></a>
+    <a href="help.php">Probleme beim Anmelden?<br></a>
+</section>
 </body>
 </html>
 
