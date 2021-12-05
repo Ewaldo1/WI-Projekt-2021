@@ -39,20 +39,25 @@
 $passwordOld = $_POST["passwort"];
 $passwordNew = $_POST["newPasswort"];
 $passwordNew2 = $_POST["nePasswort2"];
-$passwordNew2 = $_POST["email2"];
+$email2 = $_POST["email2"];
 #Kleine Prüfung am die Passwort
 
 if(isset($_POST['submit'])) {
 
     //Hier wird überprüft ob die Neue Password richtig zweimal eingegeben wurdet
 
-    $sql = "SELECT Email, Passwort FROM nutzer WHERE '" . $_userEmail . "' = Email";
+    $sql = "SELECT Email, Passwort FROM nutzer WHERE '" . $email2 . "' = Email";
+
 
     if ($passwordNew == $passwordNew2) {
         echo "Passoworten sind ok";
     } else {
         echo "Passworten sind nicht ok";
     }
+   // UPDATE `nutzer` SET `Email`=[value-1],`Passwort`=[value-2],`Geburtsdatum`=[value-3],`Username`=[value-4] WHERE 1
+
+    sql2 = "UPDATE nutzer SET PASSWORT = '$passwordNew' ";
+
 
 }
 
