@@ -32,8 +32,10 @@
 </body>
 
 
-
 <?php
+
+require 'connectDB.php';
+
 $password = $_POST["passwort"];
 $alteEmail = $_POST["oldEmail"];
 $neueEmail = $_POST["newEmail"];
