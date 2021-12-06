@@ -61,7 +61,7 @@ if(isset($_POST['submit'])) {
 
     } else {
         echo "Rictige Email <br/n>";
-        setNewPassword($passwordOld, $passwordNew, $con);
+        setNewPassword($passwordNew, $passwordOld, $con);
     }
 
 
@@ -75,7 +75,9 @@ if(isset($_POST['submit'])) {
 
 function setNewPassword($givemeNew, $givemeOld, $givemeCon) {
     //    UPDATE `nutzer` SET `Email`=[value-1],`Passwort`=[value-2],`Geburtsdatum`=[value-3],`Username`=[value-4] WHERE 1
-    $upDateThis = "UPDATE nutzer SET Passwort = '$givemeNew' WHERE ' ".$givemeOld."' = Passwort ";
+
+    $upDateThis = "UPDATE nutzer SET Passwort = '$givemeNew' WHERE Passwort =  '".$givemeOld."'  ";
+//    $upDateThis = "UPDATE nutzer SET Passwort = '$givemeNew' WHERE ' ".$givemeOld."' = Passwort ";
 
 
     if($upDateThis) {
@@ -91,3 +93,6 @@ function setNewPassword($givemeNew, $givemeOld, $givemeCon) {
 
 
 }
+
+//Hier muss ich noch schauen wie ich Seile in Datenbanken suchen kann und dann was ändern..
+//Password wird nur auf sichere Grunde gefragt!
