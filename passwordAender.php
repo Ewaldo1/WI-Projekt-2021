@@ -36,6 +36,9 @@
 
 
 <?php
+
+require 'connectDB.php';
+
 $passwordOld = $_POST["oldPasswort"];
 $passwordNew = $_POST["newPasswort"];
 $passwordNew2 = $_POST["nePasswort2"];
@@ -46,21 +49,39 @@ if(isset($_POST['submit'])) {
 
     //Hier wird überprüft ob die Neue Password richtig zweimal eingegeben wurdet
 
-    $sql = "SELECT Email, Passwort FROM nutzer WHERE '" . $email2 . "' = Email";
+
+
+//Suche Option muss noch optimiert werden
+
+    $sql = "SELECT Email FROM nutzer WHERE '" . $email2 . "' = Email";
+    $searchResult = mysqli_query($con,$sql);
+
+    if(mysqli_num_rows($searchResult) <= 0) {
+        echo "Falsche Email eingeben";
+
+    } else {
+        echo "Rictige Email <br/n>";
+        setNewPassword($passwordOld, $passwordNew, $con);
+    }
+
 
     if ($passwordNew == $passwordNew2) {
         echo ". $passwordOld .Passoworten sind ok <br/n>";
     } else {
         echo "Passworten sind nicht ok";
     }
-//    UPDATE `nutzer` SET `Email`=[value-1],`Passwort`=[value-2],`Geburtsdatum`=[value-3],`Username`=[value-4] WHERE 1
-    $upDateThis = "UPDATE nutzer SET Passwort = '$passwordNew' WHERE ' ".$passwordOld."' = Passwort ";
+
+}
+
+function setNewPassword($givemeNew, $givemeOld, $givemeCon) {
+    //    UPDATE `nutzer` SET `Email`=[value-1],`Passwort`=[value-2],`Geburtsdatum`=[value-3],`Username`=[value-4] WHERE 1
+    $upDateThis = "UPDATE nutzer SET Passwort = '$givemeNew' WHERE ' ".$givemeOld."' = Passwort ";
 
 
     if($upDateThis) {
         echo "you are online! <br/n>";
     }
-    $result2 = mysqli_query($con, $upDateThis);
+    $result2 = mysqli_query($givemeCon, $upDateThis);
 
     if($result2) {
         echo "You update this";
@@ -68,7 +89,5 @@ if(isset($_POST['submit'])) {
         echo "Problem!!";
     }
 
-}
 
-//Hier muss ich noch schauen wie ich Seile in Datenbanken suchen kann und dann was ändern..
-//Password wird nur auf sichere Grunde gefragt!
+}
