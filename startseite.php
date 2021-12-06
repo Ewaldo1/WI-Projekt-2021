@@ -22,6 +22,8 @@ $result = mysqli_query($con, $sql); //Inhalte der Tabelle Produkte
     <h2>Hallo<?php echo " ".$_SESSION["username"]; ?></h2>
     Zum Ausloggen <a href ="logout.php">hier klicken</a><br>
     Um zu deinem Profil zu gelangen <a href ="benutzerseite.php">hier klicken</a>
+    <br><br><br>
+    Zum Einstellung <a href ="datenAendern.php">hier klicken ;)</a>
 </section>
 
 <section class="container" id="products">
