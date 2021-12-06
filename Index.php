@@ -37,7 +37,7 @@ if(isset($_POST["submit"])){
             header("Location: startseite.php");
     } else {
         echo "Username oder Passwort falsch!";
-    }
+    } //bla bla
 }
 ?>
 <section class="container">
