@@ -76,8 +76,9 @@
 								<form>
 									<select class="input-select">
 										<option value="0">AlleKategorien</option>
-										<option value="1">Category 01</option>
-										<option value="1">Category 02</option>
+										<option value="1">Laptop</option>
+										<option value="1">Handy</option>
+										<option value="1">Ewaldos</option>
 									</select>
 									<input class="input" placeholder="">
 									<button class="search-btn">Suchen</button>
