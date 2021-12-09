@@ -87,12 +87,12 @@
 						</div>
 						<!-- /SEARCH BAR -->
 						
-
+						
 						<!-- ACCOUNT -->
-						<div class="col-md-3 clearfix">
+						<!--div class="col-md-3 clearfix">
 							<div class="header-ctn">
 								<!-- Wishlist -->
-								<div>
+								<!--div>
 									<a href="#">
 										<i class="fa fa-heart-o"></i>
 										<span>Wunschliste</span>
@@ -102,7 +102,7 @@
 								<!-- /Wishlist -->
 
 								<!-- Cart -->
-								<div class="dropdown">
+								<!--div class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
 										<span>Warenkorb</span>
@@ -145,7 +145,7 @@
 								<!-- /Cart -->
 
 								<!-- Menu Toogle -->
-								<div class="menu-toggle">
+								<!--div class="menu-toggle">
 									<a href="#">
 										<i class="fa fa-bars"></i>
 										<span>Menu</span>
@@ -173,10 +173,15 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#">Kategorien</a></li>
-						<li><a href="#">Laptop</a></li>
-						<li><a href="#">Smartphone</a></li>
-						<li><a href="#">Fernseher</a></li>
+						
+						<li><a href="#"><i class="fa fa-heart-o"></i>
+							<span>Wunschliste</span><li>
+						
+										<i class="fa fa-shopping-cart"></i>
+										<span>Warenkorb</span>
+										
+						<!--li><a href="#">Wunschliste</a></li>
+						<li><a href="#">Warenkorb</a></li-->
 					</ul>
 					<!-- /NAV -->
 				</div>
@@ -192,6 +197,17 @@
 			<div class="container">
 				<!-- row -->
 				<div class="row">
+
+					<!-- section title -->
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title">Kategorien</h3>
+							
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
 					<!-- shop -->
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
@@ -199,7 +215,7 @@
 								<img src="./img/shop06.png" alt="">
 							</div>
 							<div class="shop-body">
-								<h3>Laptop<br>Sammlung</h3>
+								<h3>Laptop</h3>
 								<a href="#" class="cta-btn">Jetzt einkaufen <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
@@ -213,7 +229,7 @@
 								<img src="./img/shop04.png" alt="">
 							</div>
 							<div class="shop-body">
-								<h3>Smartphone<br>Sammlung</h3>
+								<h3>Smartphone</h3>
 								<a href="#" class="cta-btn">Jetzt einkaufen <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
@@ -227,7 +243,7 @@
 								<img src="./img/shop05.png" alt="">
 							</div>
 							<div class="shop-body">
-								<h3>Fernseher<br>Sammlung</h3>
+								<h3>Fernseher</h3>
 								<a href="#" class="cta-btn">Jetzt einkaufen <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
