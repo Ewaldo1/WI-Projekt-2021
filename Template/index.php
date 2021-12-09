@@ -444,8 +444,8 @@
 		</div>
 		<!-- /SECTION -->
 
-		<!-- HOT DEAL SECTION -->
-		<div id="hot-deal" class="section">
+<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
@@ -477,12 +477,18 @@
 							<a class="primary-btn cta-btn" href="#">Mehr erfahren</a>
 						</div>
 					</div>
+			</div>
+			<!-- /container -->
+		</div>
+						</ul>
+					</div>
 				</div>
 				<!-- /row -->
 			</div>
 			<!-- /container -->
 		</div>
-		<!-- /HOT DEAL SECTION -->
+		<!-- /BREADCRUMB -->
+		
 
 		<!-- SECTION -->
 		<div class="section">
@@ -977,7 +983,7 @@
 						<div class="newsletter">
 							<p>Jetzt<strong> NEWSLETTER</strong> abonnieren und 10€ Coupon abstauben!</p>
 							<form>
-								<input class="input" type="email" placeholder="Deine Email">
+								<input class="input" type="email" placeholder="Email eingeben">
 								<button class="newsletter-btn"><i class="fa fa-envelope"></i> abonnieren</button>
 							</form>
 							<ul class="newsletter-follow">

@@ -48,7 +48,7 @@
 					</ul>
 					<ul class="header-links pull-right">
 						<li><a href="#"><i class="fa fa-euro"></i> Euro</a></li>
-						<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+						<li><a href="#"><i class="fa fa-user-o"></i> Mein Konto</a></li>
 					</ul>
 				</div>
 			</div>
@@ -64,14 +64,14 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="#" class="logo">
-									<img src="./img/logo.png" alt="">
+									<img src="./img/logo120.png" alt="">
 								</a>
 							</div>
 						</div>
 						<!-- /LOGO -->
 
 						<!-- SEARCH BAR -->
-						<div class="col-md-6">
+						<!--div class="col-md-6">
 							<div class="header-search">
 								<form>
 									<select class="input-select">
@@ -87,10 +87,10 @@
 						<!-- /SEARCH BAR -->
 
 						<!-- ACCOUNT -->
-						<div class="col-md-3 clearfix">
+						<!--div class="col-md-3 clearfix">
 							<div class="header-ctn">
 								<!-- Wishlist -->
-								<div>
+								<!--div>
 									<a href="#">
 										<i class="fa fa-heart-o"></i>
 										<span>Your Wishlist</span>
@@ -100,7 +100,7 @@
 								<!-- /Wishlist -->
 
 								<!-- Cart -->
-								<div class="dropdown">
+								<!--div class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
 										<span>Your Cart</span>
@@ -143,7 +143,7 @@
 								<!-- /Cart -->
 
 								<!-- Menu Toogle -->
-								<div class="menu-toggle">
+								<!--div class="menu-toggle">
 									<a href="#">
 										<i class="fa fa-bars"></i>
 										<span>Menu</span>
@@ -171,12 +171,10 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#">Hot Deals</a></li>
-						<li><a href="#">Categories</a></li>
-						<li><a href="#">Laptops</a></li>
-						<li><a href="#">Smartphones</a></li>
-						<li><a href="#">Cameras</a></li>
-						<li><a href="#">Accessories</a></li>
+						<li><a href="#"><i class="fa fa-heart-o"></i>
+							<span>Wunschliste</span><li>
+										<i class="fa fa-shopping-cart"></i>
+										<span>Warenkorb</span>
 					</ul>
 					<!-- /NAV -->
 				</div>
@@ -193,10 +191,10 @@
 				<!-- row -->
 				<div class="row">
 					<div class="col-md-12">
-						<h3 class="breadcrumb-header">Checkout</h3>
-						<ul class="breadcrumb-tree">
+						<h3 class="breadcrumb-header">Überprüfen & Bestellen</h3>
+						<!--ul class="breadcrumb-tree">
 							<li><a href="#">Home</a></li>
-							<li class="active">Checkout</li>
+							<li class="active">Checkout</li-->
 						</ul>
 					</div>
 				</div>
@@ -217,42 +215,39 @@
 						<!-- Billing Details -->
 						<div class="billing-details">
 							<div class="section-title">
-								<h3 class="title">Billing address</h3>
+								<h3 class="title">Rechnungsanschrift</h3>
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="first-name" placeholder="First Name">
+								<input class="input" type="text" name="first-name" placeholder="Vorname">
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="last-name" placeholder="Last Name">
+								<input class="input" type="text" name="last-name" placeholder="Nachname">
 							</div>
 							<div class="form-group">
 								<input class="input" type="email" name="email" placeholder="Email">
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="address" placeholder="Address">
+								<input class="input" type="text" name="address" placeholder="Straße">
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="city" placeholder="City">
+								<input class="input" type="text" name="city" placeholder="PLZ">
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="country" placeholder="Country">
+								<input class="input" type="text" name="country" placeholder="Land">
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="zip-code" placeholder="ZIP Code">
-							</div>
-							<div class="form-group">
-								<input class="input" type="tel" name="tel" placeholder="Telephone">
+								<input class="input" type="tel" name="tel" placeholder="Telefonnummer">
 							</div>
 							<div class="form-group">
 								<div class="input-checkbox">
 									<input type="checkbox" id="create-account">
 									<label for="create-account">
 										<span></span>
-										Create Account?
+										Konto erstellen?
 									</label>
 									<div class="caption">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-										<input class="input" type="password" name="password" placeholder="Enter Your Password">
+										<p>Erstellen Sie ein sicheres Passwort für Ihr neues Konto.</p>
+										<input class="input" type="password" name="password" placeholder="Passwort eingeben">
 									</div>
 								</div>
 							</div>
@@ -262,38 +257,35 @@
 						<!-- Shiping Details -->
 						<div class="shiping-details">
 							<div class="section-title">
-								<h3 class="title">Shiping address</h3>
+								<h3 class="title">Lieferadresse</h3>
 							</div>
 							<div class="input-checkbox">
 								<input type="checkbox" id="shiping-address">
 								<label for="shiping-address">
 									<span></span>
-									Ship to a diffrent address?
+									zu einer anderen Adresse liefern?
 								</label>
 								<div class="caption">
 									<div class="form-group">
-										<input class="input" type="text" name="first-name" placeholder="First Name">
+										<input class="input" type="text" name="first-name" placeholder="Vorname">
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="last-name" placeholder="Last Name">
+										<input class="input" type="text" name="last-name" placeholder="Nachname">
 									</div>
 									<div class="form-group">
 										<input class="input" type="email" name="email" placeholder="Email">
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="address" placeholder="Address">
+										<input class="input" type="text" name="address" placeholder="Straße">
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="city" placeholder="City">
+										<input class="input" type="text" name="city" placeholder="PLZ">
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="country" placeholder="Country">
+										<input class="input" type="text" name="country" placeholder="Land">
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="zip-code" placeholder="ZIP Code">
-									</div>
-									<div class="form-group">
-										<input class="input" type="tel" name="tel" placeholder="Telephone">
+										<input class="input" type="tel" name="tel" placeholder="Telefonnummer">
 									</div>
 								</div>
 							</div>
@@ -302,7 +294,7 @@
 
 						<!-- Order notes -->
 						<div class="order-notes">
-							<textarea class="input" placeholder="Order Notes"></textarea>
+							<textarea class="input" placeholder="Notizen"></textarea>
 						</div>
 						<!-- /Order notes -->
 					</div>
@@ -310,30 +302,30 @@
 					<!-- Order Details -->
 					<div class="col-md-5 order-details">
 						<div class="section-title text-center">
-							<h3 class="title">Your Order</h3>
+							<h3 class="title">Ihre Bestellung</h3>
 						</div>
 						<div class="order-summary">
 							<div class="order-col">
-								<div><strong>PRODUCT</strong></div>
-								<div><strong>TOTAL</strong></div>
+								<div><strong>PRODUKT</strong></div>
+								<div><strong></strong></div>
 							</div>
 							<div class="order-products">
 								<div class="order-col">
 									<div>1x Product Name Goes Here</div>
-									<div>$980.00</div>
+									<div>€</div>
 								</div>
 								<div class="order-col">
 									<div>2x Product Name Goes Here</div>
-									<div>$980.00</div>
+									<div>€</div>
 								</div>
 							</div>
 							<div class="order-col">
-								<div>Shiping</div>
-								<div><strong>FREE</strong></div>
+								<div>Versandkosten</div>
+								<div><strong>kostenlos</strong></div>
 							</div>
 							<div class="order-col">
-								<div><strong>TOTAL</strong></div>
-								<div><strong class="order-total">$2940.00</strong></div>
+								<div><strong>Gesamtsumme</strong></div>
+								<div><strong class="order-total">€</strong></div>
 							</div>
 						</div>
 						<div class="payment-method">
@@ -341,30 +333,40 @@
 								<input type="radio" name="payment" id="payment-1">
 								<label for="payment-1">
 									<span></span>
-									Direct Bank Transfer
+									Vorkasse
 								</label>
 								<div class="caption">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									<p>Sie erhalten zu Ihrer jeweiligen Bestellung rechtzeitig die Überweisungsdaten.</p>
 								</div>
 							</div>
 							<div class="input-radio">
 								<input type="radio" name="payment" id="payment-2">
 								<label for="payment-2">
 									<span></span>
-									Cheque Payment
+									PayPal
 								</label>
 								<div class="caption">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									<p>Sie können Ihre PayPal-Daten im Anschluss an eine Bestellung eingeben oder ändern.</p>
 								</div>
 							</div>
 							<div class="input-radio">
 								<input type="radio" name="payment" id="payment-3">
 								<label for="payment-3">
 									<span></span>
-									Paypal System
+									VISA Kreditkarte
 								</label>
 								<div class="caption">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									<p>Sie können Ihre Kreditkarten-Daten im Anschluss an eine Bestellung eingeben und ändern.</p>
+								</div>
+							</div>
+							<div class="input-radio">
+								<input type="radio" name="payment" id="payment-4">
+								<label for="payment-4">
+									<span></span>
+									Rechnung
+								</label>
+								<div class="caption">
+									<p>Die Rechnung geht Ihnen nach Auslieferung der Ware per E-Mail als PDF-Datei zu. Darin finden Sie alle Informationen, die Sie benötigen, um die Rechnung zu begleichen.</p>
 								</div>
 							</div>
 						</div>
@@ -372,10 +374,10 @@
 							<input type="checkbox" id="terms">
 							<label for="terms">
 								<span></span>
-								I've read and accept the <a href="#">terms & conditions</a>
+								Hiermit erkläre ich mich mit den AGB und der Datenschutzerklärung sowie mit der Widerrufsbelehrung einverstanden.</a>
 							</label>
 						</div>
-						<a href="#" class="primary-btn order-submit">Place order</a>
+						<a href="#" class="primary-btn order-submit">Kaufen</a>
 					</div>
 					<!-- /Order Details -->
 				</div>
@@ -393,10 +395,10 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="newsletter">
-							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+							<p>Jetzt<strong> NEWSLETTER</strong> abonnieren und 10€ Coupon abstauben!</p>
 							<form>
-								<input class="input" type="email" placeholder="Enter Your Email">
-								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+								<input class="input" type="email" placeholder="Email eingeben">
+								<button class="newsletter-btn"><i class="fa fa-envelope"></i> abonnieren</button>
 							</form>
 							<ul class="newsletter-follow">
 								<li>
@@ -431,25 +433,30 @@
 					<div class="row">
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">About Us</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+								<h3 class="footer-title">HEKAY</h3>
+								<p>Willkommen bei HEKAY!
+
+Wir haben als kleines Unternehmen in Fulda begonnen. Unser Ziel hat sich seitdem nicht geändert: Wir möchten Kunden Produkte anbieten, die sie glücklich machen – und das zu den attraktivsten Preisen.
+
+</p>
 								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+									<li><a href="#"><i class="fa fa-map-marker"></i>36037 Fulda</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+491267890124</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>hekay@gmail.de</a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">Categories</h3>
+								<h3 class="footer-title">Über uns</h3>
 								<ul class="footer-links">
-									<li><a href="#">Hot deals</a></li>
-									<li><a href="#">Laptops</a></li>
-									<li><a href="#">Smartphones</a></li>
-									<li><a href="#">Cameras</a></li>
-									<li><a href="#">Accessories</a></li>
+									<li><a href="#">Das Unternehmen</a></li>
+									<li><a href="#">Karierre</a></li>
+									<li><a href="#">Presse</a></li>
+									<li><a href="#">Verantwortung</a></li>
+									<li><a href="#">Impressum</a></li>
+									<li><a href="#">AGB</a></li>
 								</ul>
 							</div>
 						</div>
@@ -458,26 +465,27 @@
 
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">Information</h3>
+								<h3 class="footer-title">Kundenservice</h3>
 								<ul class="footer-links">
-									<li><a href="#">About Us</a></li>
-									<li><a href="#">Contact Us</a></li>
-									<li><a href="#">Privacy Policy</a></li>
-									<li><a href="#">Orders and Returns</a></li>
-									<li><a href="#">Terms & Conditions</a></li>
+									<li><a href="#">Hilfe</a></li>
+									<li><a href="#">Kontakt</a></li>
+									<li><a href="#">Service</a></li>
+									<li><a href="#">Rücksendungen</a></li>
+									<li><a href="#">FAQ</a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
-								<h3 class="footer-title">Service</h3>
+								<h3 class="footer-title">Rund um den Einkauf</h3>
 								<ul class="footer-links">
-									<li><a href="#">My Account</a></li>
-									<li><a href="#">View Cart</a></li>
-									<li><a href="#">Wishlist</a></li>
-									<li><a href="#">Track My Order</a></li>
-									<li><a href="#">Help</a></li>
+									<li><a href="#">Benutzerdaten</a></li>
+									<li><a href="#">Fragen zur Bestellung</a></li>
+									<li><a href="#">Kaufen</a></li>
+									<li><a href="#">Bezahlen</a></li>
+									<li><a href="#">Versand und Lieferung</a></li>
+									<li><a href="#">Datenschutzerklärung</a></li>
 								</ul>
 							</div>
 						</div>
