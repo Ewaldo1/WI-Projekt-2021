@@ -1,4 +1,5 @@
-<?php include 'header.php'; ?>
+<?php include 'header.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,17 +9,25 @@
 </head>
 <body>
 <section class="container">
-    <h4> Anmeldung </h4>
-</section>
 <form action = "index.php" method = "post">
-    <section class="container">
-        Geben Sie bitte ihre Daten ein: <br><br>
-        <label>Username:</label>
-        <input type="text" name= "username" placeholder="Username"><br>
-        <label>Passwort:</label>
-        <input type="password" name = "passwort" placeholder="Passwort"><br><br>
-        <input type = "submit" name = "submit" value = "Einloggen">
-    </section>
+    <div class="card">
+        <div class="card-header">
+            <h4> Anmeldung </h4>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                Geben Sie bitte ihre Daten ein:<br><br>
+                <label>Username</label>
+                <input type="text" name= "username" placeholder="Username" class="form-control">
+                <label>Passwort</label>
+                <input type="password" name = "passwort" placeholder="Passwort" class="form-control">
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" type ="submit" name ="submit">Login</button>
+        </div>
+    </div>
+</section>
 </form>
 
 <?php
@@ -28,7 +37,12 @@ if(isset($_POST["submit"])){
     $passwort = $_POST['passwort'];
     $sql = "SELECT * FROM nutzer WHERE '" . $username . "' = Username AND '" .$passwort ."' = Passwort"; //Nutzer wird in Tabelle gesucht
     $result = mysqli_query($con, $sql);
-    if(mysqli_num_rows($result) > 0) { //prüfen ob Nutzer gefunden
+
+    if(false === (bool)$username){
+        echo "Feld des Benutzers leer";
+    } else if(false === (bool)$passwort){
+        echo "Passwortfeld ist leer";
+    } else if(mysqli_num_rows($result) > 0) { //prüfen ob Nutzer gefunden
         session_start();
         while ($row = mysqli_fetch_array($result)) {
             $_SESSION["username"] = $username;
@@ -36,8 +50,8 @@ if(isset($_POST["submit"])){
         }
             header("Location: startseite.php");
     } else {
-        echo "Username oder Passwort falsch!";
-    } //bla bla
+        echo "Benutzername oder Passwort falsch";
+    }
 }
 ?>
 <section class="container">
