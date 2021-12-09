@@ -477,19 +477,11 @@
 							<a class="primary-btn cta-btn" href="#">Mehr erfahren</a>
 						</div>
 					</div>
-			</div>
-			<!-- /container -->
-		</div>
-						</ul>
-					</div>
 				</div>
-				<!-- /row -->
 			</div>
-			<!-- /container -->
 		</div>
 		<!-- /BREADCRUMB -->
 		
-
 		<!-- SECTION -->
 		<div class="section">
 			<!-- container -->
@@ -849,7 +841,7 @@
 									</div>
 									<div class="product-body">
 										<p class="product-category">Smartphone</p>
-										<h3 class="product-name"><a href="#">APPLE iPhone 12</a></h3>
+										<h3 class="product-name"><a href="#">APPLE iPhone 13</a></h3>
 										<h4 class="product-price">€850 <del class="product-old-price">€1100</del></h4>
 									</div>
 								</div>
@@ -862,7 +854,7 @@
 									</div>
 									<div class="product-body">
 										<p class="product-category">Smartphone</p>
-										<h3 class="product-name"><a href="#">APPLE iPhone 12</a></h3>
+										<h3 class="product-name"><a href="#">APPLE iPhone 13</a></h3>
 										<h4 class="product-price">€850 <del class="product-old-price">€1100</del></h4>
 									</div>
 								</div>
