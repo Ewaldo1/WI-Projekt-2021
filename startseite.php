@@ -16,6 +16,7 @@ $result = mysqli_query($con, $sql); //Inhalte der Tabelle Produkte
     <title></title>
     <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css"/>
     <link type="text/css" rel="stylesheet" href="assets/css/styles.css"/>
+
 </head>
 <body>
 <section class="container">
@@ -36,6 +37,10 @@ $result = mysqli_query($con, $sql); //Inhalte der Tabelle Produkte
     </div>
 
 </section>
+
+<?php
+include 'Probe.php';
+?>
 
 <script src="assets/js/bootstrap.bundle.js"></script>
 </body>
