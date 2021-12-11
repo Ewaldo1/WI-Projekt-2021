@@ -1,7 +1,7 @@
 <?php
     include "connectDB.php";
     session_start();
-    $Nutzer_ID = 1;
+    $Nutzer_ID = 1; //SELECT ID FROM nutzer WHERE Username = $username;
     $inhalte = 0;
     if(isset($_SESSION["Nutzer_ID"])){
         $Nutzer_ID = $_SESSION["Nutzer_ID"];
