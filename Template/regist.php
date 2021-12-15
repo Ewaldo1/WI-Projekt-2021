@@ -25,7 +25,7 @@
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="#">Registrierung</a></li>
-                <li class="inactive" ><a href="index.php">Anmeldung</a></li> //Hier die Anmeldung von Kevin hinfügen
+                <li class="inactive" ><a href="login.php">Anmeldung</a></li>
             </ul>
             <!-- /NAV -->
         </div>

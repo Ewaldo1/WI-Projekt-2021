@@ -1,6 +1,6 @@
 <body>
 <header>
-    <?php include ("headerHekay.php"); //Kevin Hearder benutzen, meins dont work! ?>
+    <?php include ("headerHekay.php"); ?>
 <title> Änderungen </title>
 
 
