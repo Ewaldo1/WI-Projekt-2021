@@ -6,25 +6,34 @@
 
 </header>
 
-
+<div class="container">
 
 <h3>Was möchten Sie hier ändern? </h3>
 
 <br>
 <br>
-<a href ="emailAendern.php">meine Email ändern</a>
-<br>
-<a href ="passwordAender.php">meine Passwort änedrn</a>
-<br>
-<br>
-Überuns
-<br>
-<a href = "datenAendern.php"> Information über uns</a>
 
-<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <div class="alert alert-info">
+        <strong>deine Email ändern</strong> clicken Sie  <a href="emailAendern.php" class="alert-link" color = "red">hier!</a>.
+    </div>
+    <div class="alert alert-info">
+        <strong>deine Passwort ändern</strong> clicken Sie <a href="passwordAender.php" class="alert-link" color = "red">hier!</a>.
+    </div>
+
+    <div class="alert alert-info">
+        <strong>Porfil Bild ändern</strong> clicken Sie <a href="passwordAender.php" class="alert-link" color = "red">hier!</a>.
+    </div>
+
+    <div class="alert alert-info">
+        <strong>Information über uns</strong> clicken Sie <a href="#" class="alert-link" color = "red">hier!</a>.
+    </div>
 
 
 
+<br> <br> <br> <br> <br> <br>
+
+
+</div>
 
 </body>
 

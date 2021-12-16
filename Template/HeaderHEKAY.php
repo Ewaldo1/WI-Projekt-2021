@@ -44,8 +44,9 @@
             <li><a href="#"><i class="fa fa-map-marker"></i> 36037 Fulda</a></li>
         </ul>
         <ul class="header-links pull-right">
-            <li><a href="#"><i class="fa fa-euro"></i> Euro</a></li>
-            <li><a href="#"><i class="fa fa-user-o"></i> Mein Konto</a></li>
+
+            <li><a href="datenAendern.php"><i class="fa fa-user-o"></i> Konto Einstellungen </a></li>
+            <button type="button" class="btn btn-danger">Abmelden</button>
         </ul>
     </div>
 </div>
