@@ -1,4 +1,4 @@
-<?php include "header.php"; ?>
+<?php include "HeaderHEKAY.php"; ?>
 <!-- NAVIGATION -->
 <nav id="navigation">
     <!-- container -->
@@ -72,14 +72,14 @@ if(isset($_POST["submit"])){
             $_SESSION["username"] = $username;
             $_SESSION["passwort"] = $passwort;
         }
-        header("Location: index.php");
+        header("Location: index2.php");
     } else {
         echo "Benutzername oder Passwort falsch";
     }
 }
 ?>
 
-<?php include "footer.php"; ?>
+<?php include "FooterHEKAY.php"; ?>
 </body>
 </html>
 

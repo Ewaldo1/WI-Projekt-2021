@@ -1,7 +1,6 @@
 <?php
 include 'Header.php';
 include 'connectDB.php';
-
 $sql = "SELECT * FROM produkte";
 $result = mysqli_query($con, $sql); //Inhalte der Tabelle Produkte
 ?>
@@ -23,6 +22,24 @@ $result = mysqli_query($con, $sql); //Inhalte der Tabelle Produkte
     <br><br><br>
     Zum Einstellung <a href ="datenAendern.php">hier klicken ;)</a>
 </section>
+
+<?php  //Definiere eindeutige Route für Cards.
+$url = $_SERVER['REQUEST_URI'];
+$indexPHPPosition = strpos($url, 'startseite.php');
+$route = substr($url, $indexPHPPosition);
+$route = str_replace('startseite.php', '', $route);
+
+if(strpos($route,'/warenkorb/add/') !== false) {
+    $routeParts = explode("/", $route); //ProduktID befindet sich an der dritten Stelle, somit:
+    $produktID = (int) $routeParts[3]; //Stelle aus der URL auslesen und der Variablen produktID übergeben
+    $Nutzer_ID = 1;
+    $insertSql = "INSERT INTO warenkorb (Produkt_ID, Nutzer_ID, Menge, Angelegt) VALUES ('$produktID', '$Nutzer_ID', '1', '2021-12-16')";
+    $insertResult = mysqli_query($con, $insertSql);
+    header("Location: /startseite.php");
+    exit();
+}
+?>
+
 
 <section class="container" id="products">
     <div class="row"> <?php //eine Zeile für die Cards?>

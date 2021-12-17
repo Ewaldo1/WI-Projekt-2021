@@ -1,4 +1,4 @@
-<?php include "header.php";
+<?php include "HeaderStartseite.php";
       session_start();
 ?>
 		<!-- NAVIGATION -->
@@ -802,6 +802,6 @@
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
-        <?php include "footer.php"; ?>
+        <?php include "FooterHEKAY.php"; ?>
 	</body>
 </html>

@@ -1,6 +1,23 @@
-<?php include "header.php";
-      include "connectDB.php";
+<?php
+include "HeaderStartseite.php";
+include "Datenbank/dbOperationen.php";
+
+$dbVerbindung = new dbOperationen();
+$con = $dbVerbindung->connection();
+include "connectDB.php";
 session_start();
+
+$nutzername = $_SESSION["username"];
+
+$Nutzer_ID = 1;  //"SELECT ID FROM nutzer WHERE Username = $nutzername";
+$nutzerResult = mysqli_query($con, $Nutzer_ID);
+$inhalte = 0;
+$sqlWK ="SELECT * FROM warenkorb WHERE Nutzer_ID =".$Nutzer_ID;
+//var_dump($sqlWK);
+$warenkorbResult = mysqli_query($con, $sqlWK);
+//var_dump($warenkorbResult);
+$inhalte = $warenkorbResult->num_rows;
+
 $sql = "SELECT * FROM produkte";
 $result = mysqli_query($con, $sql);
 ?>
@@ -14,11 +31,8 @@ $result = mysqli_query($con, $sql);
             <ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
 
-                <li><a href="#"><i class="fa fa-heart-o"></i>
-                        <span>Wunschliste</span><li>
-
-                    <i class="fa fa-shopping-cart"></i>
-                    <span>Warenkorb</span>
+                <li><a href="warenkorb.php"><i class="fa fa-shopping-cart"></i>
+                        <span>Warenkorb(<?= $inhalte ?>)</span><li>
 
                     <!--li><a href="#">Wunschliste</a></li>
                     <li><a href="#">Warenkorb</a></li-->
@@ -30,6 +44,23 @@ $result = mysqli_query($con, $sql);
     <!-- /container -->
 </nav>
 <!-- /NAVIGATION -->
+
+<?php  //Definiere eindeutige Route für Cards.
+$url = $_SERVER['REQUEST_URI'];
+$indexPHPPosition = strpos($url, 'index2.php');
+$route = substr($url, $indexPHPPosition);
+$route = str_replace('index2.php', '', $route);
+
+if(strpos($route,'/warenkorb/add/') !== false) {
+    $routeParts = explode("/", $route); //ProduktID befindet sich an der dritten Stelle, somit:
+    $produktID = (int) $routeParts[3]; //Stelle aus der URL auslesen und der Variablen produktID übergeben
+    $insertSql = "INSERT INTO warenkorb (Produkt_ID, Nutzer_ID, Menge, Angelegt) VALUES ('$produktID', '$Nutzer_ID', '1', '2021-12-16')";
+    $insertResult = mysqli_query($con, $insertSql);
+    //produktZuWarenkorb($Nutzer_ID, $produktID, $dbVerbindung);
+    header("Location: /template/index2.php");
+    exit();
+}
+?>
 
 <!-- SECTION -->
 <div class="section">
@@ -649,7 +680,7 @@ $result = mysqli_query($con, $sql);
                         <!-- /container -->
                     </div>
                     <!-- /SECTION -->
-                    <?php include "footer.php"; ?>
+                    <?php include "FooterHEKAY.php.php"; ?>
                     </body>
                     </html>
 
