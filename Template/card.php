@@ -8,6 +8,6 @@
     </div>
     <div class="card-footer">
         <a href="" class="btn btn-primary btn-sm">Details</a>
-        <a href="" class="btn btn-success btn-sm">Zum Warenkorb</a>
+        <a href="index2.php/warenkorb/add/<?= $row['ID']?>" class="btn btn-success btn-sm">Zum Warenkorb</a>
     </div>
 </div>

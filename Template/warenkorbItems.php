@@ -7,11 +7,13 @@ if(isset($preis)){
 }
 ?>
 
-<div class="col-4"></div>
-<img src="./img/product01.png" class="card-img-top" height="300px" width="300px" alt="produkt">
+<div class="col-3"></div>
+<img class="produktbild" src="./img/product01.png">
 </div>
-<div class="col-8">
+<div class="col-7">
     <div><?= $warenkorbItems['Titel']?></div>
     <div><?= $warenkorbItems['Beschreibung']?></div>
-    <div><?= $warenkorbItems['Preis']?></div>
+</div>
+<div class="col-2  text-right">
+    <?= $warenkorbItems['Preis']?> €
 </div>

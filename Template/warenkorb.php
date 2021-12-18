@@ -1,6 +1,12 @@
 <?php include "HeaderHEKAY.php";
       include "connectDB.php";
       include "Datenbank/dbOperationen.php";
+
+    $userId = 1;
+    $dbOperation = new dbOperationen();
+    $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($userId, $con);
+    $warenkorbInhalte = $dbOperation->getCartItemsForUserId($userId, $con);
+    $summeWarenkorbinhalte = $dbOperation->getCartSumForUserId($userId, $con);
 ?>
 
 
@@ -58,18 +64,30 @@
 <!-- SECTION -->
 <div class="section">
     <!-- container -->
-    <div class="container">
+    <div class="container" id="warenkorbItems">
+        <div class="row cartItemHeader">
+            <div class="col-12 text-right">
+                Preis
+            </div>
+        </div>
         <?php
-        $userId = 1;
-        $dbOperation = new dbOperationen();
-        $warenkorbInhalte = $dbOperation->getCartItemsForUserId($userId, $con);
-        foreach ($warenkorbInhalte as $warenkorbItems):?>
+        foreach ($warenkorbInhalte as $warenkorbInhalt):?>
         <!-- row -->
-        <div class="row">
+        <div class="row warenkorbItem">
             <?php include 'warenkorbItems.php'; ?>
         </div>
         <?php endforeach;?>
         <!-- /row -->
+        <!--row Summe des Warenkorbs -->
+        <div class="row">
+            <div class="col-12 text-right">
+                <span>Summe (<?= $anzahlWarenkorbinhalte ?> Artikel): <?= $summeWarenkorbinhalte ?>€</span><li>
+            </div>
+        </div>
+        <!--row Bezahlbutton -->
+        <div class="row">
+            <a href="#" class="btn btn-primary col-12 text-center"> Zur Kasse gehen</a>
+        </div>
     </div>
     <!-- /container -->
 </div>
