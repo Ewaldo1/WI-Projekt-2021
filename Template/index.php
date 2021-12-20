@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -35,12 +34,12 @@
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 
-    </head>
+    <!--/head>
 	<body>
 		<!-- HEADER -->
-		<header>
+		<!--header>
 			<!-- TOP HEADER -->
-			<div id="top-header">
+			<!--div id="top-header">
 				<div class="container">
 					<ul class="header-links pull-left">
 						<li><a href="#"><i class="fa fa-phone"></i> +491267890124</a></li>
@@ -56,13 +55,13 @@
 			<!-- /TOP HEADER -->
 
 			<!-- MAIN HEADER -->
-			<div id="header">
+			<!--div id="header">
 				<!-- container -->
-				<div class="container">
+				<!--div class="container">
 					<!-- row -->
-					<div class="row">
+					<!--div class="row">
 						<!-- LOGO -->
-						<div class="col-md-3">
+						<!--div class="col-md-3">
 							<div class="header-logo">
 								<a href="#" class="logo">
 									<img src="./img/logo120.png" alt="">
@@ -164,12 +163,23 @@
 			<!-- /MAIN HEADER -->
 		</header>
 		<!-- /HEADER -->
+<?php
+include "HeaderStartseite.php";
+include "Datenbank/dbOperationen.php";
+include "connectDB.php";
+session_start();
 
-=======
-<?php include "HeaderStartseite.php";
-      session_start();
+if(isset($_SESSION["username"])){
+    $nutzername = $_SESSION["username"];
+}
+
+$nutzerId = 1;
+$dbOperation = new dbOperationen();
+$anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
+
+$sql = "SELECT * FROM produkte";
+$result = mysqli_query($con, $sql);
 ?>
->>>>>>> 7859ffa90877b43bbbe659e8bee6dc96470c8e62
 		<!-- NAVIGATION -->
 		<nav id="navigation">
 			<!-- container -->
@@ -196,6 +206,21 @@
 			<!-- /container -->
 		</nav>
 		<!-- /NAVIGATION -->
+		
+		<?php  //Definiere eindeutige Route für Cards.
+		$url = $_SERVER['REQUEST_URI'];
+		$indexPHPPosition = strpos($url, 'index2.php');
+		$route = substr($url, $indexPHPPosition);
+		$route = str_replace('index2.php', '', $route);
+
+		if(strpos($route,'/warenkorb/add/') !== false) {
+		$routeParts = explode("/", $route); //ProduktID befindet sich an der dritten Stelle, somit:
+		$produktId = (int) $routeParts[3]; //Stelle aus der URL auslesen und der Variablen produktID übergeben
+		$zuWarenkorbHinzu = $dbOperation->produktZuWarenkorb($nutzerId, $produktId, $con);
+		header("Location: /template/index2.php");
+		exit();
+}
+?>
 
 		<!-- SECTION -->
 		<div class="section">
@@ -203,21 +228,15 @@
 			<div class="container">
 				<!-- row -->
 				<div class="row">
-<<<<<<< HEAD
 
-=======
                     <?php if(isset($_SESSION["username"])):?>
                     <h2>Willkommen<?php echo " ".$_SESSION["username"]; ?></h2>
                     <?php endif ?>
->>>>>>> 7859ffa90877b43bbbe659e8bee6dc96470c8e62
 					<!-- section title -->
 					<div class="col-md-12">
 						<div class="section-title">
 							<h3 class="title">Kategorien</h3>
-<<<<<<< HEAD
-							
-=======
->>>>>>> 7859ffa90877b43bbbe659e8bee6dc96470c8e62
+
 		<div class="section">
 			<!-- container -->
 			<div class="container">
@@ -292,7 +311,7 @@
 						</div>
 					</div>
 					<!-- /section title -->
-
+					
 					<!-- Products tab & slick -->
 					<div class="col-md-12">
 						<div class="row">
@@ -979,7 +998,6 @@
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
-<<<<<<< HEAD
 
 		<!-- NEWSLETTER -->
 		<div id="newsletter" class="section">
@@ -1018,13 +1036,13 @@
 		<!-- /NEWSLETTER -->
 
 		<!-- FOOTER -->
-		<footer id="footer">
+		<!--footer id="footer">
 			<!-- top footer -->
-			<div class="section">
+			<!--div class="section">
 				<!-- container -->
-				<div class="container">
+				<!--div class="container">
 					<!-- row -->
-					<div class="row">
+					<!--div class="row">
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
 								<h3 class="footer-title">HEKAY</h3>
@@ -1091,10 +1109,10 @@ Wir haben als kleines Unternehmen in Fulda begonnen. Unser Ziel hat sich seitdem
 			<!-- /top footer -->
 
 			<!-- bottom footer -->
-			<div id="bottom-footer" class="section">
+			<!--div id="bottom-footer" class="section">
 				<div class="container">
 					<!-- row -->
-					<div class="row">
+					<!--div class="row">
 						<div class="col-md-12 text-center">
 							<ul class="footer-payments">
 								<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
@@ -1106,17 +1124,17 @@ Wir haben als kleines Unternehmen in Fulda begonnen. Unser Ziel hat sich seitdem
 							</ul>
 							<span class="copyright">
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+								Copyright &copy;<!--script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							</span>
+							<!--/span>
 						</div>
 					</div>
 						<!-- /row -->
-				</div>
+				<!--/div>
 				<!-- /container -->
-			</div>
+			<!--/div>
 			<!-- /bottom footer -->
-		</footer>
+		<!--/footer>
 		<!-- /FOOTER -->
 
 		<!-- jQuery Plugins -->
@@ -1127,8 +1145,6 @@ Wir haben als kleines Unternehmen in Fulda begonnen. Unser Ziel hat sich seitdem
 		<script src="js/jquery.zoom.min.js"></script>
 		<script src="js/main.js"></script>
 
-=======
         <?php include "FooterHEKAY.php"; ?>
->>>>>>> 7859ffa90877b43bbbe659e8bee6dc96470c8e62
 	</body>
 </html>
