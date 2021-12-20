@@ -1,20 +1,166 @@
-<?php
-include "HeaderHEKAY.php";
-include "Datenbank/dbOperationen.php";
-include "connectDB.php";
-session_start();
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-if(isset($_SESSION["username"])){
-    $nutzername = $_SESSION["username"];
-}
+		<title>webshop2021</title>
 
-$nutzerId = 1;
-$dbOperation = new dbOperationen();
-$anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
+ 		<!-- Google font -->
+ 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
-$sql = "SELECT * FROM produkte";
-$result = mysqli_query($con, $sql);
-?>
+ 		<!-- Bootstrap -->
+ 		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+
+ 		<!-- Slick -->
+ 		<link type="text/css" rel="stylesheet" href="css/slick.css"/>
+ 		<link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
+
+ 		<!-- nouislider -->
+ 		<link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
+
+ 		<!-- Font Awesome Icon -->
+ 		<link rel="stylesheet" href="css/font-awesome.min.css">
+
+ 		<!-- Custom stlylesheet -->
+ 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    </head>
+	<body>
+		<!-- HEADER -->
+		<header>
+			<!-- TOP HEADER -->
+			<div id="top-header">
+				<div class="container">
+					<ul class="header-links pull-left">
+						<li><a href="#"><i class="fa fa-phone"></i> +491267890124</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> hekay@gmail.de</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> 36037 Fulda</a></li>
+					</ul>
+					<ul class="header-links pull-right">
+						<li><a href="#"><i class="fa fa-euro"></i> Euro</a></li>
+						<li><a href="#"><i class="fa fa-user-o"></i> Mein Konto</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- /TOP HEADER -->
+
+			<!-- MAIN HEADER -->
+			<div id="header">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<!-- LOGO -->
+						<div class="col-md-3">
+							<div class="header-logo">
+								<a href="#" class="logo">
+									<img src="./img/logo120.png" alt="">
+								</a>
+							</div>
+						</div>
+						<!-- /LOGO -->
+
+						<!-- SEARCH BAR -->
+						<!--div class="col-md-6">
+							<div class="header-search">
+								<form>
+									<select class="input-select">
+										<option value="0">All Categories</option>
+										<option value="1">Category 01</option>
+										<option value="1">Category 02</option>
+									</select>
+									<input class="input" placeholder="Search here">
+									<button class="search-btn">Search</button>
+								</form>
+							</div>
+						</div>
+						<!-- /SEARCH BAR -->
+
+						<!-- ACCOUNT -->
+						<!--div class="col-md-3 clearfix">
+							<div class="header-ctn">
+								<!-- Wishlist -->
+								<!--div>
+									<a href="#">
+										<i class="fa fa-heart-o"></i>
+										<span>Your Wishlist</span>
+										<div class="qty">2</div>
+									</a>
+								</div>
+								<!-- /Wishlist -->
+
+								<!-- Cart -->
+								<!--div class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+										<i class="fa fa-shopping-cart"></i>
+										<span>Your Cart</span>
+										<div class="qty">3</div>
+									</a>
+									<div class="cart-dropdown">
+										<div class="cart-list">
+											<div class="product-widget">
+												<div class="product-img">
+													<img src="./img/product01.png" alt="">
+												</div>
+												<div class="product-body">
+													<h3 class="product-name"><a href="#">product name goes here</a></h3>
+													<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
+												</div>
+												<button class="delete"><i class="fa fa-close"></i></button>
+											</div>
+
+											<div class="product-widget">
+												<div class="product-img">
+													<img src="./img/product02.png" alt="">
+												</div>
+												<div class="product-body">
+													<h3 class="product-name"><a href="#">product name goes here</a></h3>
+													<h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
+												</div>
+												<button class="delete"><i class="fa fa-close"></i></button>
+											</div>
+										</div>
+										<div class="cart-summary">
+											<small>3 Item(s) selected</small>
+											<h5>SUBTOTAL: $2940.00</h5>
+										</div>
+										<div class="cart-btns">
+											<a href="#">View Cart</a>
+											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+										</div>
+									</div>
+								</div>
+								<!-- /Cart -->
+
+								<!-- Menu Toogle -->
+								<!--div class="menu-toggle">
+									<a href="#">
+										<i class="fa fa-bars"></i>
+										<span>Menu</span>
+									</a>
+								</div>
+								<!-- /Menu Toogle -->
+							</div>
+						</div>
+						<!-- /ACCOUNT -->
+					</div>
+					<!-- row -->
+				</div>
+				<!-- container -->
+			</div>
+			<!-- /MAIN HEADER -->
+		</header>
+		<!-- /HEADER -->
 
 		<!-- NAVIGATION -->
 		<nav id="navigation">
@@ -48,8 +194,8 @@ $result = mysqli_query($con, $sql);
 						<ul class="breadcrumb-tree">
 							<li><a href="#">Home</a></li>
 							<li><a href="#">Kategorien</a></li>
-							<li><a href="#">Laptop</a></li>
-							<li class="active">APPLE MacBook Air</li>
+							<li><a href="#">Fernseher</a></li>
+							<li class="active">SAMSUNG GQ85QN900A Neo QLED TV</li>
 						</ul>
 					</div>
 				</div>
@@ -69,27 +215,27 @@ $result = mysqli_query($con, $sql);
 					<div class="col-md-5 col-md-push-2">
 						<div id="product-main-img">
 							<div class="product-preview">
-								<img src="./img/apple01.png" alt="">
+								<img src="./img/samsung01.png" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="./img/apple02.png" alt="">
+								<img src="./img/samsung02.png" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="./img/apple03.png" alt="">
+								<img src="./img/samsung03.png" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="./img/apple04.png" alt="">
+								<img src="./img/samsung04.png" alt="">
 							</div>
 							
 							<div class="product-preview">
-								<img src="./img/apple05.png" alt="">
+								<img src="./img/samsung05.png" alt="">
 							</div>
 							
 							<div class="product-preview">
-								<img src="./img/apple06.png" alt="">
+								<img src="./img/samsung06.png" alt="">
 							</div>
 						</div>
 					</div>
@@ -99,27 +245,27 @@ $result = mysqli_query($con, $sql);
 					<div class="col-md-2  col-md-pull-5">
 						<div id="product-imgs">
 							<div class="product-preview">
-								<img src="./img/apple01.png" alt="">
+								<img src="./img/samsung01.png" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="./img/apple02.png" alt="">
+								<img src="./img/samsung02.png" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="./img/apple03.png" alt="">
+								<img src="./img/samsung03.png" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="./img/apple04.png" alt="">
+								<img src="./img/samsung04.png" alt="">
 							</div>
 							
 							<div class="product-preview">
-								<img src="./img/apple05.png" alt="">
+								<img src="./img/samsung05.png" alt="">
 							</div>
 							
 							<div class="product-preview">
-								<img src="./img/apple06.png" alt="">
+								<img src="./img/samsung06.png" alt="">
 							</div>
 						</div>
 					</div>
@@ -128,7 +274,7 @@ $result = mysqli_query($con, $sql);
 					<!-- Product details -->
 					<div class="col-md-5">
 						<div class="product-details">
-							<h2 class="product-name">APPLE MacBook Air</h2>
+							<h2 class="product-name">SAMSUNG GQ85QN900A NEO QLED TV</h2>
 							<!--div>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -140,10 +286,10 @@ $result = mysqli_query($con, $sql);
 								<a class="review-link" href="#">10 Review(s) | Add your review</a>
 							</div-->
 							<div>
-								<h3 class="product-price">€990.00 <del class="product-old-price">€1100.00</del></h3>
+								<h3 class="product-price">€7999.00 <del class="product-old-price">€9499.00</del></h3>
 								<span class="product-available">auf Lager</span>
 							</div>
-							<p>Das dünnste, leichteste Notebook von Apple - komplett verwandelt durch den Apple M1 Chip. Bis zu 3,5x schnellere CPU Geschwindigkeiten. Bis zu 5x schnellere GPU Geschwindigkeiten. Die fortschrittlichste Neural Engine von Apple für bis zu 9x schnelleres maschinelles Lernen.</p>
+							<p>Der neue Neo QLED 8K verfügt über eine Hintergrundbeleuchtungs-Technologie, mit der die neuen Samsung Quantum Mini-LEDs und der Micro Layer das Licht präziser und gleichmäßiger als jemals zuvor steuern können. Das sorgt für großartige Details in hellen und dunklen Bildbereichen. Die neuen Quantum Mini-LEDs sind wahre Zwerge – sie sind nur 1/40 so groß wie konventionelle LEDs.</p>
 
 							<!--div class="product-options">
 								<label>
@@ -212,7 +358,7 @@ $result = mysqli_query($con, $sql);
 								<div id="tab1" class="tab-pane fade in active">
 									<div class="row">
 										<div class="col-md-12">
-											<p>Das dünnste, leichteste Notebook von Apple - komplett verwandelt durch den Apple M1 Chip. Bis zu 3,5x schnellere CPU Geschwindigkeiten. Bis zu 5x schnellere GPU Geschwindigkeiten. Die fortschrittlichste Neural Engine von Apple für bis zu 9x schnelleres maschinelles Lernen. Die längste Batterielaufzeit, die es je bei einem MacBook Air gab. Und ein leises, lüfterloses Design. Es war noch nie so leicht, so viel Power überallhin mitzunehmen. </p>
+											<p>Durchdachte Neo QLED-8K-Rechenpower: Der multi-intelligente Samsung Prozessor sorgt für ein bestmögliches Seherlebnis. Wegweisende 8K-AI-Upscaling-Technologie, verstärkt durch 16 weitere neuronale Netze, lässt Sie bei jeder Art von Inhalt die volle 8K-Power spüren. Indem der Prozessor Bild für Bild automatisch dazulernt, kann er sich an jede Sehbedingung anpassen, um auf diese Weise Ihren Lieblingsinhalt zu optimieren </p>
 										</div>
 									</div>
 								</div>
@@ -433,14 +579,14 @@ $result = mysqli_query($con, $sql);
 					<div class="col-md-3 col-xs-6">
 						<div class="product">
 							<div class="product-img">
-								<img src="./img/smartphone07.png" alt="">
+								<img src="./img/fernseher07.png" alt="">
 								<div class="product-label">
 								</div>
 							</div>
 							<div class="product-body">
-								<p class="product-category">Smartphone</p>
-								<h3 class="product-name"><a href="#">APPLE iPhone 13</a></h3>
-								<h4 class="product-price">€850 <del class="product-old-price">€1100</del></h4>
+								<p class="product-category">Fernseher</p>
+								<h3 class="product-name"><a href="#">SAMSUNG GQ85QN95A QLED TV</a></h3>
+								<h4 class="product-price">€990.00<del class="product-old-price">€1100.00</del></h4>
 								<div class="product-rating">
 								</div>
 								<div class="product-btns">
@@ -460,13 +606,13 @@ $result = mysqli_query($con, $sql);
 					<div class="col-md-3 col-xs-6">
 						<div class="product">
 							<div class="product-img">
-								<img src="./img/smartphone08.png" alt="">
+								<img src="./img/fernseher08.png" alt="">
 								<div class="product-label">
 								</div>
 							</div>
 							<div class="product-body">
-								<p class="product-category">Smartphone</p>
-								<h3 class="product-name"><a href="#">APPLE iPhone 13</a></h3>
+								<p class="product-category">Fernseher</p>
+								<h3 class="product-name"><a href="#">SAMSUNG GQ75QN900A Neo QLED TV</a></h3>
 								<h4 class="product-price">€850 <del class="product-old-price">€1100</del></h4>
 								<div class="product-rating">
 									<!--i class="fa fa-star"></i>
@@ -494,11 +640,11 @@ $result = mysqli_query($con, $sql);
 					<div class="col-md-3 col-xs-6">
 						<div class="product">
 							<div class="product-img">
-								<img src="./img/smartphone06.png" alt="">
+								<img src="./img/fernseher09.png" alt="">
 							</div>
 							<div class="product-body">
-								<p class="product-category">Smartphone</p>
-								<h3 class="product-name"><a href="#">APPLE iPhone 13</a></h3>
+								<p class="product-category">Fernseher</p>
+								<h3 class="product-name"><a href="#">SAMSUNG GQ75Q950T QLED TV </a></h3>
 								<h4 class="product-price">€850 <del class="product-old-price">€1100</del></h4>
 								<div class="product-rating">
 									<!--i class="fa fa-star"></i>
@@ -524,11 +670,11 @@ $result = mysqli_query($con, $sql);
 					<div class="col-md-3 col-xs-6">
 						<div class="product">
 							<div class="product-img">
-								<img src="./img/smartphone05.png" alt="">
+								<img src="./img/fernseher10.png" alt="">
 							</div>
 							<div class="product-body">
-								<p class="product-category">Smartphone</p>
-								<h3 class="product-name"><a href="#">APPLE iPhone 13</a></h3>
+								<p class="product-category">Fernseher</p>
+								<h3 class="product-name"><a href="#">SAMSUNG GQ75QN800A Neo QLED TV</a></h3>
 								<h4 class="product-price">€850 <del class="product-old-price">€1100</del></h4>
 								<div class="product-rating">
 								</div>
@@ -587,7 +733,116 @@ $result = mysqli_query($con, $sql);
 			<!-- /container -->
 		</div>
 		<!-- /NEWSLETTER -->
-	
-		<?php include "FooterHEKAY.php"; ?>
-                    </body>
-                    </html>
+
+		<!-- FOOTER -->
+		<footer id="footer">
+			<!-- top footer -->
+			<div class="section">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">HEKAY</h3>
+								<p>Willkommen bei HEKAY!
+
+Wir haben als kleines Unternehmen in Fulda begonnen. Unser Ziel hat sich seitdem nicht geändert: Wir möchten Kunden Produkte anbieten, die sie glücklich machen – und das zu den attraktivsten Preisen.
+
+</p>
+								<ul class="footer-links">
+									<li><a href="#"><i class="fa fa-map-marker"></i>36037 Fulda</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+491267890124</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>hekay@gmail.de</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Über uns</h3>
+								<ul class="footer-links">
+									<li><a href="#">Das Unternehmen</a></li>
+									<li><a href="#">Karierre</a></li>
+									<li><a href="#">Presse</a></li>
+									<li><a href="#">Verantwortung</a></li>
+									<li><a href="#">Impressum</a></li>
+									<li><a href="#">AGB</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="clearfix visible-xs"></div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Kundenservice</h3>
+								<ul class="footer-links">
+									<li><a href="#">Hilfe</a></li>
+									<li><a href="#">Kontakt</a></li>
+									<li><a href="#">Service</a></li>
+									<li><a href="#">Rücksendungen</a></li>
+									<li><a href="#">FAQ</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Rund um den Einkauf</h3>
+								<ul class="footer-links">
+									<li><a href="#">Benutzerdaten</a></li>
+									<li><a href="#">Fragen zur Bestellung</a></li>
+									<li><a href="#">Kaufen</a></li>
+									<li><a href="#">Bezahlen</a></li>
+									<li><a href="#">Versand und Lieferung</a></li>
+									<li><a href="#">Datenschutzerklärung</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /top footer -->
+
+			<!-- bottom footer -->
+			<div id="bottom-footer" class="section">
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<ul class="footer-payments">
+								<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+								<li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+							</ul>
+							<span class="copyright">
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							</span>
+						</div>
+					</div>
+						<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /bottom footer -->
+		</footer>
+		<!-- /FOOTER -->
+
+		<!-- jQuery Plugins -->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/slick.min.js"></script>
+		<script src="js/nouislider.min.js"></script>
+		<script src="js/jquery.zoom.min.js"></script>
+		<script src="js/main.js"></script>
+
+	</body>
+</html>
