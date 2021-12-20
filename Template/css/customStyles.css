@@ -1,0 +1,19 @@
+#warenkorbItems .warenkorbItem{
+    border-bottom: 1px solid #DDD;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#warenkorbItems .cartItemHeader{
+    border-bottom: 1px solid #DDD;
+}
+
+#warenkorbItems .warenkorbItem .produktbild{
+    width: 300px;
+    height: 300px;
+}
+
+#warenkorbItems .warenkorbItem .preis{
+    font-weight: bold;
+    color: red;
+}

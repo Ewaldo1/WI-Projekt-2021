@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -164,6 +165,11 @@
 		</header>
 		<!-- /HEADER -->
 
+=======
+<?php include "HeaderStartseite.php";
+      session_start();
+?>
+>>>>>>> 7859ffa90877b43bbbe659e8bee6dc96470c8e62
 		<!-- NAVIGATION -->
 		<nav id="navigation">
 			<!-- container -->
@@ -197,12 +203,21 @@
 			<div class="container">
 				<!-- row -->
 				<div class="row">
+<<<<<<< HEAD
 
+=======
+                    <?php if(isset($_SESSION["username"])):?>
+                    <h2>Willkommen<?php echo " ".$_SESSION["username"]; ?></h2>
+                    <?php endif ?>
+>>>>>>> 7859ffa90877b43bbbe659e8bee6dc96470c8e62
 					<!-- section title -->
 					<div class="col-md-12">
 						<div class="section-title">
 							<h3 class="title">Kategorien</h3>
+<<<<<<< HEAD
 							
+=======
+>>>>>>> 7859ffa90877b43bbbe659e8bee6dc96470c8e62
 		<div class="section">
 			<!-- container -->
 			<div class="container">
@@ -964,6 +979,7 @@
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
+<<<<<<< HEAD
 
 		<!-- NEWSLETTER -->
 		<div id="newsletter" class="section">
@@ -1111,5 +1127,8 @@ Wir haben als kleines Unternehmen in Fulda begonnen. Unser Ziel hat sich seitdem
 		<script src="js/jquery.zoom.min.js"></script>
 		<script src="js/main.js"></script>
 
+=======
+        <?php include "FooterHEKAY.php"; ?>
+>>>>>>> 7859ffa90877b43bbbe659e8bee6dc96470c8e62
 	</body>
 </html>

@@ -1,21 +1,43 @@
 <body>
-<?php include ("header.php"); ?>
-<h3>Ändern sie ihre Email </h3>
+<?php include ("headerHekay.php"); ?>
+
+<div class="container">
+<br>
+<h3>Passwort Ändern </h3>
 
 <form method="post" action="passwordAender.php">
     <br>
 
-    <br>
-    Geben Sie iher Email <br>
-    <input name="email2" size=20><br>
-    Geben Sie ihre aktuelle Password:<br>
-    <input name="oldPasswort" size=20><br>
-    Geben Sie ihre neue Password:<br>
-    <input name="newPasswort" size=20><br>
-    Geben Sie ihre neuen noch ein mail<br>
-    <input name="nePasswort2" size=20><br>
+    <div class="card">
+        <div class="card-header">
+            <h4> Anmeldung </h4>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                Geben Sie bitte ihre Daten ein:<br><br>
 
-    <input type="submit" name = "submit" value="Bestätigen" >
+                <label>Gib hier ihr Email-Adresse</label>
+                <input type="text" name= "email2" placeholder="E-Mail-Adresse" class="form-control">
+
+                <label>Geben Sie hier Ihre alte Passwort</label>
+                <input type="password" name = "oldPasswort" placeholder="aktuelle Passwort" class="form-control">
+
+                <br> <br>
+
+                <label>Geben Sie hier Ihre neue Passwort</label>
+                <input type="password" name = "newPasswort" placeholder="neue Passwort" class="form-control">
+
+                <label>wiederhollen Sie iher neue Passwort</label>
+                <input type="password" name= "nePasswort2" placeholder="Passwort wiederhollen" class="form-control">
+
+
+
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" type ="submit" name ="submit">neue Passwort bestätigen</button>
+        </div>
+    </div>
 
 </form>
 <br>
@@ -29,9 +51,13 @@
 <br>
 <a href = "datenAendern.php"> Information über uns</a>
 
-
+</div>
 
 </body>
+<br> <br> <br>
+<footer>
+    <?php include  "FooterHEKAY.php"; ?>
+</footer>
 
 
 

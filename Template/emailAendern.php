@@ -1,20 +1,40 @@
 <body>
 <?php include ("header.php"); ?>
+
+<div class="container">
+
+
 <h3>Ändern sie ihre Email </h3>
 
 <form method="post" action="emailAendern.php">
     <br>
 
+    <div class="card">
+        <div class="card-header">
+            <h4> Anmeldung </h4>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                Geben Sie bitte ihre Daten ein:<br><br>
 
-    <br>
-    Geben Sie ihre Password:<br>
-    <input name="passwort" size=20><br>
-    Geben Sie ihre Email:<br>
-    <input name="oldEmail" size=20><br>
-    Geben Sie ihre neuen Email<br>
-    <input name="newEmail" size=20><br>
+                <label>Gib hier deine Passwort</label>
+                <input type="password" name= "passwort" placeholder="Passwort" class="form-control">
 
-    <input type="submit" name = "submit" value="Bestätigen" >
+                <label>Gib hier deine aktuelle E-Mail</label>
+                <input type="text" name = "oldEmail" placeholder="aktuelle E-Mail Adresse" class="form-control">
+
+                <label>gibt hier dein neue E-Mail</label>
+                <input type="text" name= "newEmail" placeholder="neue E-Mail Adresse" class="form-control">
+
+
+
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success" type ="submit" name ="submit">neue Email bestätigen</button>
+        </div>
+    </div>
+
 
 </form>
 <br>
@@ -28,6 +48,7 @@
 <br>
 <a href = "datenAendern.php"> Information über uns</a>
 
+    <div class="container">
 
 </body>
 
@@ -61,7 +82,7 @@ if(isset($_POST['submit'])) {
     }
 
 
-  
+
 
 }
 
