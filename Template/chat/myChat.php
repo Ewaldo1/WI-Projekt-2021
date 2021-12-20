@@ -1,3 +1,7 @@
+<?php
+    include "DBchat.php";
+?>
+
 <html>
 
 <head>
@@ -7,30 +11,62 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mukta+Vaani:wght@200&display=swap" rel="stylesheet">
+
+    <script type ="text/javascript">
+        function ajax() {
+            var req = new XMLHttpRequest();
+            req.onreadystatechange = function () {
+                if(req.readyState == 4 && req.status == 200) {
+                    document.getElementById('chat').innerHTML = req.responseText;
+                }
+            }
+            req.open('GET', 'chat.php', true);
+            req.send();
+        }
+
+        //die macht immer eine Refesch jede sekunde!
+        setInterval(function (){ajax();}, 1000)
+
+
+    </script>
+
+
+
 </head>
 
-<body>
+<body onload="ajax();">
 
 <div id = "conteiner">
     <div id = "chat-box">
-        <div id = "chatMolde">
+        <div id = "chat">
 
-            <div id = daten-chat>
-                <span> Ewaldo </span>
-                <span> Hello World! </span>
-                <span> 11:24 </span>
-            </div>
 
 
         </div>
-        <form method="POST" action = "index.php">
+        <form method="POST" action = "myChat.php">
 
-            <input type ="text" name = "nombre" placeholder= "Hier kommt deien Name">
-            <textarea name = "Nachricht" placeholder="Gibt hier dein name"> </textarea>
+
+            <textarea name = "Nachricht" placeholder="Gibt hier dein name"></textarea>
+            <input type="text" name= "name3" placeholder="hier dein Name">
             <input type = "submit" name = "sender" value = "senden">
 
-
         </form>
+        <?php
+
+
+        if(isset($_POST['sender']))
+
+            $nachricht = $_POST['Nachricht'];
+            $name_chat = $_POST['name3'];
+
+
+        $frage = "INSERT INTO chat(nameChat, nachricht) VALUES('$name_chat', '$nachricht')";
+                $execute = $con->query($frage);
+
+               
+
+        ?>
+
     </div>
 
 </div>
