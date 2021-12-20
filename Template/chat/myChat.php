@@ -63,7 +63,7 @@
         $frage = "INSERT INTO chat(nameChat, nachricht) VALUES('$name_chat', '$nachricht')";
                 $execute = $con->query($frage);
 
-               
+
 
         ?>
 

@@ -1,5 +1,5 @@
 <body>
-<?php include ("header.php"); ?>
+<?php include ("HeaderHEKAY.php"); ?>
 
 <div class="container">
 
@@ -41,7 +41,7 @@
 <br>
 <a href ="datenAendern.php">zurück zum Einstellung</a>
 <br>
-<a href ="startseie.php">zurück zu starseite</a>
+<a href ="index.php">zurück zu starseite</a>
 <br>
 <br>
 Überuns
@@ -80,13 +80,7 @@ if(isset($_POST['submit'])) {
         echo "Rictige Email <br/n>";
         setNewEmail($alteEmail, $neueEmail, $con);
     }
-
-
-
-
 }
-
-
 
 function setNewEmail($givemeOldE, $givemeNewE, $givemeCon) {
     //    UPDATE `nutzer` SET `Email`=[value-1],`Passwort`=[value-2],`Geburtsdatum`=[value-3],`Username`=[value-4] WHERE 1
@@ -105,6 +99,7 @@ function setNewEmail($givemeOldE, $givemeNewE, $givemeCon) {
         echo "Problem!!";
     }
 
+    include "FooterHEKAY.php";
 
 }
 
