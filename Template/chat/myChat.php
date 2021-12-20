@@ -1,3 +1,7 @@
+<?php
+    include "DBchat.php";
+?>
+
 <html>
 
 <head>
@@ -13,14 +17,22 @@
 
 <div id = "conteiner">
     <div id = "chat-box">
-        <div id = "chatMolde">
+        <div id = "chat">
+            <?php
+            $frage = "SELECT * FROM chat ORDER BY id DESC";
+            $execute = $conexion->query($frage);
+            while($zeile = $execute->fetch_array()):
+
+            ?>
 
             <div id = daten-chat>
-                <span> Ewaldo </span>
-                <span> Hello World! </span>
-                <span> 11:24 </span>
+                <span style="color: #1c62c4"> Ewaldo </span>
+                <span style = "color: #848484"> Hello World! </span>
+                <span style="float: right"> 11:24 </span>
             </div>
 
+            <?php endwhile; ?>
+            
 
         </div>
         <form method="POST" action = "index.php">
