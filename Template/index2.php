@@ -675,4 +675,7 @@ if(strpos($route,'/warenkorb/add/') !== false) {
                     <?php include "FooterHEKAY.php.php"; ?>
                     </body>
                     </html>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 7859ffa90877b43bbbe659e8bee6dc96470c8e62
