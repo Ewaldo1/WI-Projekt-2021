@@ -141,6 +141,12 @@ if(strpos($route,'/warenkorb/add/') !== false) {
                                     </div>
                                 </div>
                                 <!-- /section title -->
+									</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
                                 <section class="container" id="products">
                                     <div class="row"> <?php //eine Zeile für die Cards?>
                                         <?php while($row = $result->fetch_assoc()): //while wird hier mit ":" unterbrochen?>
@@ -672,10 +678,6 @@ if(strpos($route,'/warenkorb/add/') !== false) {
                         <!-- /container -->
                     </div>
                     <!-- /SECTION -->
-                    <?php include "FooterHEKAY.php.php"; ?>
+                    <?php include "FooterHEKAY.php"; ?>
                     </body>
                     </html>
-<<<<<<< HEAD
-=======
-
->>>>>>> 7859ffa90877b43bbbe659e8bee6dc96470c8e62
