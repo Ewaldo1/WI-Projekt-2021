@@ -56,7 +56,7 @@
 					</ul>
 					<ul class="header-links pull-right">
 						<li><a href="datenAendern.php"><i class="fa fa-user-o"></i> Konto Einstellungen </a></li>
-						<button type="button" class="btn btn-danger">Abmelden</button>
+                        <li><a href="logout.php" class="btn btn-success btn-sm">Abmelden</a></li>
 					</ul>
 				</div>
 			</div>

@@ -2,18 +2,23 @@
 include "HeaderStartseite.php";
 include "Datenbank/dbOperationen.php";
 include "connectDB.php";
+
 session_start();
 
 if(isset($_SESSION["username"])){
     $nutzername = $_SESSION["username"];
 }
 
-$nutzerId = 1;
 $dbOperation = new dbOperationen();
+$nutzerId = 1;
+//$nutzerId = "SELECT ID FROM nutzer WHERE Username = '.$nutzername'";
+$result = mysqli_query($con, $nutzerId);
+/*if(isset($_SESSION["nutzerId"])){
+    $nutzerId = $_SESSION["nutzerId"];
+}*/
+$produkte = $dbOperation->getProducts($con);
 $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
 
-$sql = "SELECT * FROM produkte";
-$result = mysqli_query($con, $sql);
 ?>
 <!-- NAVIGATION -->
 <nav id="navigation">
@@ -27,9 +32,8 @@ $result = mysqli_query($con, $sql);
 
                 <li><a href="warenkorb.php"><i class="fa fa-shopping-cart"></i>
                         <span>Warenkorb(<?= $anzahlWarenkorbinhalte ?>)</span><li>
+                    <li><a href="produktHinzu.php">Produkt hinzufügen</a></li>
 
-                    <!--li><a href="#">Wunschliste</a></li>
-                    <li><a href="#">Warenkorb</a></li-->
             </ul>
             <!-- /NAV -->
         </div>
@@ -40,6 +44,7 @@ $result = mysqli_query($con, $sql);
 <!-- /NAVIGATION -->
 
 <?php  //Definiere eindeutige Route für Cards.
+
 $url = $_SERVER['REQUEST_URI'];
 $indexPHPPosition = strpos($url, 'index2.php');
 $route = substr($url, $indexPHPPosition);
@@ -48,10 +53,31 @@ $route = str_replace('index2.php', '', $route);
 if(strpos($route,'/warenkorb/add/') !== false) {
     $routeParts = explode("/", $route); //ProduktID befindet sich an der dritten Stelle, somit:
     $produktId = (int) $routeParts[3]; //Stelle aus der URL auslesen und der Variablen produktID übergeben
-    $zuWarenkorbHinzu = $dbOperation->produktZuWarenkorb($nutzerId, $produktId, $con);
+    $zuWarenkorbHinzu = $dbOperation->productToCart($nutzerId, $produktId, $con);
     header("Location: /template/index2.php");
     exit();
 }
+
+
+if(strpos($route, '/produkt') !== false){
+    $routeParts = explode("/", $route);
+  /*  if(count($routeParts) !== 3){
+        echo "Ungültige URL";
+        exit();
+    }*/
+    $slug = $routeParts[2];
+    if(strlen($slug) === 0){
+        echo "Ungültiges Produkt";
+        exit();
+    }
+    $produkt = $dbOperation->getProductBySlug($slug, $con);
+    if($produkt === null){
+        echo "Ungültiges Produkt2";
+        exit();
+    }
+    include "produktDetails.php";
+}
+
 ?>
 
 <!-- SECTION -->
@@ -149,11 +175,11 @@ if(strpos($route,'/warenkorb/add/') !== false) {
 		<!-- /SECTION -->
                                 <section class="container" id="products">
                                     <div class="row"> <?php //eine Zeile für die Cards?>
-                                        <?php while($row = $result->fetch_assoc()): //while wird hier mit ":" unterbrochen?>
+                                        <?php foreach ($produkte as $produkt): //while wird hier mit ":" unterbrochen?>
                                             <div class="col"> <?php //jeweils eine Spalte pro Card?>
                                                 <?php include 'card.php' //Ausgabe der einzelnen Cards solange es Eintrage in DB-Tabelle gibt?>
                                             </div>
-                                        <?php endwhile; //hier wird die while dann abgeschlossen?>
+                                        <?php endforeach; //hier wird die while dann abgeschlossen?>
                                     </div>
 
                                 </section>
