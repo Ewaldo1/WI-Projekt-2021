@@ -377,7 +377,7 @@
 								Hiermit erkläre ich mich mit den AGB und der Datenschutzerklärung sowie mit der Widerrufsbelehrung einverstanden.</a>
 							</label>
 						</div>
-						<a href="#" class="primary-btn order-submit">Kaufen</a>
+						<a href="index.php" class="primary-btn order-submit">Kaufen</a>
 					</div>
 					<!-- /Order Details -->
 				</div>

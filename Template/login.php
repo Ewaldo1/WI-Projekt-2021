@@ -8,7 +8,7 @@
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="#">Login</a></li>
-                <li><a href="index.php">Startseite</a></li>
+                <li><a href="vorlageIndex.php">Startseite</a></li>
                 <li><a href="regist.php">Noch keinen Account? - Hier Registrieren!</a></li>
                 <li><a href="help.php">Probleme beim Anmelden?</a></li>
             </ul>
@@ -72,7 +72,7 @@ if(isset($_POST["submit"])){
             $_SESSION["username"] = $username;
             $_SESSION["passwort"] = $passwort;
         }
-        header("Location: index2.php");
+        header("Location: index.php");
     } else {
         echo "Benutzername oder Passwort falsch";
     }

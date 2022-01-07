@@ -24,8 +24,8 @@ $countErrors = 0;
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="#">Produkt hinzufügen</a></li>
-                <li><a href="index2.php"> Startseite</a></li>
-                <li><a href="#"><i class="fa fa-shopping-cart"></i>
+                <li><a href="index.php"> Startseite</a></li>
+                <li><a href="warenkorb.php"><i class="fa fa-shopping-cart"></i>
                         <span>Warenkorb(<?= $anzahlWarenkorbinhalte ?>)</span><li>
             </ul>
             <!-- /NAV -->
@@ -69,13 +69,23 @@ $countErrors = 0;
                 <div class="form-group">
                     <label>Produktname</label>
                     <input type="text" name= "titel" placeholder="Vergeben Sie einen Titel für ihr Produkt" class="form-control"><br>
+
                     <label>Slug</label>
                     <input type="text" name= "slug" placeholder="Geben Sie an unter welcher URL ihr Produkt gefunden werden soll" class="form-control"><br>
+
                     <label>Produktbeschreibung</label>
                     <textarea class="form-control" name="beschreibung" rows="3"></textarea>
-                    <label>Preis</label>
-                    <input type="text" name= "preis" placeholder="Geben Sie den Preis des Produktes an" class="form-control"><br>
 
+                    <label>Produktkategorie</label><br>
+                    <input type="radio" id="notebook" name="notebook">
+                    <a for="vehicle1"> Notebook</a><br>
+                    <input type="radio" id="smartphone" name="smartphone">
+                    <a for="vehicle2"> Smartphone</a><br>
+                    <input type="radio" id="fernseher" name="fernseher">
+                    <a for="vehicle3"> Fernseher</a><br>
+                    <label>Preis</label>
+
+                    <input type="text" name= "preis" placeholder="Geben Sie den Preis des Produktes an" class="form-control"><br>
                 </div>
             </div>
             <div class="card-footer">
@@ -88,12 +98,13 @@ $countErrors = 0;
 
 <?php
 if(isset($_POST['abbrechen'])){
-    header("Location: index2.php");
+    header("Location: index.php");
 }
 if(isset($_POST['produktHinzufügen'])){
     $produktName = $_POST["titel"];
     $slug = $_POST["slug"];
     $beschreibung = $_POST["beschreibung"];
+    $kategorie = $_POST["kategorie"];
     $preis = $_POST["preis"];
 
     if((bool)$produktName === false){
@@ -110,6 +121,9 @@ if(isset($_POST['produktHinzufügen'])){
     }
     if((bool)$beschreibung === false){
         $errors[]="Produktbeschreibung muss angegeben werden!";
+    }
+    if((bool)$kategorie === false){
+        $errors[]="Produktkategorie muss angegeben werden!";
     }
     if($preis <= 0) {
         $errors[] = "Bitte einen korrekt Preis angeben!";

@@ -44,7 +44,7 @@
 <br>
 <a href ="datenAendern.php">zurück zum Einstellung</a>
 <br>
-<a href ="index.php">zurück zu starseite</a>
+<a href ="vorlageIndex.php">zurück zu starseite</a>
 <br>
 <br>
 Überuns

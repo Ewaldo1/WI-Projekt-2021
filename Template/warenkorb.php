@@ -20,7 +20,7 @@
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="#">Warenkorb</a></li>
-                <li><a href="index2.php"><span>Startseite</span></li>
+                <li><a href="index.php"><span>Startseite</span></li>
             </ul>
             <!-- /NAV -->
         </div>
@@ -86,21 +86,13 @@
         </div>
         <!--row Bezahlbutton -->
         <div class="row">
-            <a href="#" class="btn btn-primary col-12 text-center"> Zur Kasse gehen</a>
+            <a href="checkout.php" class="btn btn-primary col-12 text-center"> Zur Kasse gehen</a>
         </div>
     </div>
     <!-- /container -->
 </div>
 <!-- /SECTION -->
 
-
-<!-- jQuery Plugins -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/slick.min.js"></script>
-<script src="js/nouislider.min.js"></script>
-<script src="js/jquery.zoom.min.js"></script>
-<script src="js/main.js"></script>
 
 <?php include "FooterHEKAY.php"; ?>
 

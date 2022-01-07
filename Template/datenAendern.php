@@ -1,6 +1,8 @@
 <body>
 <header>
-    <?php include ("headerHekay.php"); ?>
+    <?php include "HeaderHEKAY.php";
+
+    ?>
 <title> Änderungen </title>
 
 

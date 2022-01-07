@@ -82,7 +82,7 @@ class dbOperationen
     }
 
     function getProductBySlug($slug, $con){
-        $sql = "SELECT ID, Titel, Beschreibung, Preis, Slug FROM produkte WHERE Slug = ' .$slug'";
+        $sql = "SELECT ID, Titel, Beschreibung, Preis, Slug FROM produkte WHERE Slug = '$slug'";
         $result = mysqli_query($con, $sql);
        /* $stmt = mysqli_prepare($con, $sql);
         mysqli_stmt_bind_param($stmt, "s", $slug); //spezifizierung des ? mit dem slug
@@ -90,20 +90,25 @@ class dbOperationen
         mysqli_stmt_bind_result($stmt, $id, $titel, $beschreibung, $preis, $slug);
         mysqli_stmt_fetch($stmt);
         mysqli_stmt_close($stmt);*/
-        var_dump($result);
-        var_dump(mysqli_error($con));
-
+        var_dump($sql);
+       //var_dump(mysqli_error($con));
 
     }
 
-    function addProduct($con, $produktname, $slug, $beschreibung, $preis){
-        $insert = "INSERT INTO produkte(Titel, Beschreibung, Preis, Slug) VALUES ('$produktname', '$beschreibung', '$preis', $slug)";
+    function addProduct($con, $produktname, $slug, $beschreibung, $kategorie, $preis){
+        $insert = "INSERT INTO produkte(Titel, Beschreibung, Kategorie, Preis, Slug) VALUES ('$produktname', '$beschreibung', '$kategorie', '$preis', $slug)";
         $result = mysqli_query($con, $insert);
         if(mysqli_query($con,$insert)){
             $lastId = mysqli_insert_id($con);
             echo "Produkt erfolgreich hinzugefügt. Letzte hinzugefügte ID lautet: " .$lastId;
         }
         echo "Error: " .$insert . mysqli_error($con);
+    }
+
+    function getProductByCategory($con, $kategorie) {
+        $sql = "SELECT * FROM produkte WHERE Kategorie = '$kategorie'";
+        $result = mysqli_query($con, $sql);
+        return $result;
     }
 
 

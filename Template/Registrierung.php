@@ -317,7 +317,7 @@ Wir haben als kleines Unternehmen in Fulda begonnen. Unser Ziel hat sich seitdem
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="#">Registrierung</a></li>
-                        <li><a href="index.php">Startseite</a></li>
+                        <li><a href="vorlageIndex.php">Startseite</a></li>
                         <li><a href="login.php">Haben Sie schon ein Konto?</a></li>
 					</ul>
 					<!-- /NAV -->
