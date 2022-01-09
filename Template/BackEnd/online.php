@@ -1,0 +1,6 @@
+<?php
+
+$onlineR = false;
+
+
+?>

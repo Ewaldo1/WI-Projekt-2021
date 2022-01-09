@@ -10,7 +10,7 @@ if(isset($_SESSION["username"])){
 }
 
 $dbOperation = new dbOperationen();
-$nutzerId = 1;
+$nutzerId = 3;
 //$nutzerId = "SELECT ID FROM nutzer WHERE Username = '$nutzername'";
 $result = mysqli_query($con, $nutzerId);
 
@@ -713,6 +713,9 @@ if (strpos($route, '/kategorie') !== false) {
                         <!-- /container -->
                     </div>
                     <!-- /SECTION -->
-                    <?php include "FooterHEKAY.php"; ?>
+                    <?php
+
+                    echo "was?";
+                    include "FooterHEKAY.php"; ?>
                     </body>
                     </html>

@@ -7,7 +7,7 @@
         <?php echo $produkt['Preis'] .'€' ?>
     </div>
     <div class="card-footer">
-        <a href="index2.php/produkt/<?= $produkt['Slug']?>" class="btn btn-primary btn-sm">Details</a>
-        <a href="index2.php/warenkorb/add/<?= $produkt['ID']?>" class="btn btn-success btn-sm">Zum Warenkorb</a>
+        <a href="index.php/produkt/<?= $produkt['Slug']?>" class="btn btn-primary btn-sm">Details</a>
+        <a href="index.php/warenkorb/add/<?= $produkt['ID']?>" class="btn btn-success btn-sm">Zum Warenkorb</a>
     </div>
 </div>

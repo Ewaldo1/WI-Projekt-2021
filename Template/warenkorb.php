@@ -2,7 +2,7 @@
       include "connectDB.php";
       include "Datenbank/dbOperationen.php";
 
-    $userId = 1; //$dbOperation->getUserID($username, $con);
+    $userId = 3; //$dbOperation->getUserID($username, $con);
     $dbOperation = new dbOperationen();
     $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($userId, $con);
     $warenkorbInhalte = $dbOperation->getCartItemsForUserId($userId, $con);

@@ -1,6 +1,22 @@
+<?php
+
+
+
+?>
+
 <body>
 <header>
     <?php include "HeaderHEKAY.php";
+
+    include BackEnd/online.php;
+
+    //False nicht man online ist man wir nach login geschickt!
+    if(onlineR === false) {
+
+        echo "false!";
+        header("Location: login.php");
+    }
+
 
     ?>
 <title> Änderungen </title>
