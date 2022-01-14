@@ -31,7 +31,6 @@ include "chat/DBchat.php";
         //die macht immer eine Refesch jede sekunde!
         setInterval(function (){ajax();}, 1000)
 
-
     </script>
 
 </head>

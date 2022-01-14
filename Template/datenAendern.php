@@ -8,10 +8,9 @@
 <header>
     <?php include "HeaderHEKAY.php";
 
-    include BackEnd/online.php;
-
-    //False nicht man online ist man wir nach login geschickt!
-    if(onlineR === false) {
+    session_start();
+    //wenn man nicht angemeldet ist wird hier zum login schickt!
+    if(empty($_SESSION["username"])){
 
         echo "false!";
         header("Location: login.php");

@@ -1,9 +1,18 @@
 <?php
-include "HeaderStartseite.php";
+session_start();
+
+if (empty($_SESSION["username"])) {
+    include "headerStartSeite.php";
+
+} else{
+    include "HeaderHEKAY.php";
+}
+
+
 include "Datenbank/dbOperationen.php";
 include "connectDB.php";
 
-session_start();
+
 
 if(isset($_SESSION["username"])){
     $nutzername = $_SESSION["username"];
@@ -715,7 +724,12 @@ if (strpos($route, '/kategorie') !== false) {
                     <!-- /SECTION -->
                     <?php
 
-                    echo "was?";
-                    include "FooterHEKAY.php"; ?>
+
+                    include "FooterHEKAY.php";
+
+
+                    ?>
+
+
                     </body>
                     </html>

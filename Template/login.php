@@ -77,7 +77,7 @@ if(isset($_POST["submit"])){
         }
         //Hier werde überprüfen ob wir Online sind!
         include BackEnd/online.php;
-        $onlineR = true;
+
 
         header("Location: index.php");
     } else {
