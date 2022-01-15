@@ -2,6 +2,7 @@
       include "connectDB.php";
       include "Datenbank/dbOperationen.php";
 
+<<<<<<< HEAD
 session_start();
 if(isset($_SESSION["username"])){
     $nutzername = $_SESSION["username"];
@@ -9,6 +10,9 @@ if(isset($_SESSION["username"])){
     $nutzername = 0;
 }
 
+=======
+    $userId = 3; //$dbOperation->getUserID($username, $con);
+>>>>>>> ac38d0ff8d4cd5533563348b45c0138e80754f93
     $dbOperation = new dbOperationen();
     $nutzerId = $dbOperation->getUserID($con, $nutzername);
     $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);

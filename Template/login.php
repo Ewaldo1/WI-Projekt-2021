@@ -55,6 +55,8 @@
 </form>
 
 <?php
+session_start();
+
 if(isset($_POST["submit"])){
     include "connectDB.php";
     $username = $_POST['username'];
@@ -64,6 +66,7 @@ if(isset($_POST["submit"])){
 
     if(false === (bool)$username){
         echo "Feld des Benutzers leer";
+
     } else if(false === (bool)$passwort){
         echo "Passwortfeld ist leer";
     } else if(mysqli_num_rows($result) > 0) { //prüfen ob Nutzer gefunden
@@ -72,13 +75,19 @@ if(isset($_POST["submit"])){
             $_SESSION["username"] = $username;
             $_SESSION["passwort"] = $passwort;
         }
+        //Hier werde überprüfen ob wir Online sind!
+        include BackEnd/online.php;
+
+
         header("Location: index.php");
     } else {
         echo "Benutzername oder Passwort falsch";
     }
 }
 ?>
-
+<html>
+<br> <br>
+</html>
 <?php include "FooterHEKAY.php"; ?>
 </body>
 </html>

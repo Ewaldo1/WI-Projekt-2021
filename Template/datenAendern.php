@@ -1,6 +1,21 @@
+<?php
+
+
+
+?>
+
 <body>
 <header>
     <?php include "HeaderHEKAY.php";
+
+    session_start();
+    //wenn man nicht angemeldet ist wird hier zum login schickt!
+    if(empty($_SESSION["username"])){
+
+        echo "false!";
+        header("Location: login.php");
+    }
+
 
     ?>
 <title> Änderungen </title>
