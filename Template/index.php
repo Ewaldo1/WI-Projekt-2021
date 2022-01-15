@@ -7,16 +7,13 @@ session_start();
 
 if(isset($_SESSION["username"])){
     $nutzername = $_SESSION["username"];
+} else {
+    $nutzername = 0;
 }
 
 $dbOperation = new dbOperationen();
-$nutzerId = 1;
-//$nutzerId = "SELECT ID FROM nutzer WHERE Username = '$nutzername'";
-$result = mysqli_query($con, $nutzerId);
-
-/*if(isset($_SESSION["nutzerId"])){
-    $nutzerId = $_SESSION["nutzerId"];
-}*/
+$nutzerId = $dbOperation->getUserID($con, $nutzername);
+var_dump($nutzerId);
 $produkte = $dbOperation->getProducts($con);
 $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
 
@@ -62,10 +59,10 @@ if(strpos($route,'/warenkorb/add/') !== false) {
 
 if(strpos($route, '/produkt') !== false){
     $routeParts = explode("/", $route);
-  /*  if(count($routeParts) !== 3){
+    if(count($routeParts) !== 3){
         echo "Ungültige URL";
         exit();
-    }*/
+    }
     $slug = $routeParts[2];
     if(strlen($slug) === 0){
         echo "Ungültiges Produkt";
@@ -73,18 +70,18 @@ if(strpos($route, '/produkt') !== false){
     }
     $produkt = $dbOperation->getProductBySlug($slug, $con);
     if($produkt === null){
-        echo "Ungültiges Produkt2";
+        echo "Ungültiges Produkt";
         exit();
     }
-    include 'produktDetails.php';
+     include 'produktDetails.php';
 }
 
 if (strpos($route, '/kategorie') !== false) {
-    $routeParts = explode("/", $route); //ProduktID befindet sich an der dritten Stelle, somit:
-    $kategorieId = $routeParts[2]; //Stelle aus der URL auslesen und der Variablen produktID übergeben
+    $routeParts = explode("/", $route); //kategorieID befindet sich an der zweiten Stelle, somit:
+    $kategorieId = $routeParts[2]; //Stelle aus der URL auslesen und der Variablen kategorieID übergeben
     $produkte = $dbOperation->getProductByCategory($con, $kategorieId);
 
-    include "kategorie.php";
+    include 'kategorie.php';
 }
 
 ?>
@@ -117,7 +114,7 @@ if (strpos($route, '/kategorie') !== false) {
                                             <h3>Notebook</h3>
                                             <a href="index.php/kategorie/Notebook" class="cta-btn">Jetzt einkaufen <i class="fa fa-arrow-circle-right"></i></a>
                                         </div>
-                                    </div>
+                                   </div>
                                 </div>
                                 <!-- /shop -->
 
@@ -184,11 +181,11 @@ if (strpos($route, '/kategorie') !== false) {
 		<!-- /SECTION -->
                                 <section class="container" id="products">
                                     <div class="row"> <?php //eine Zeile für die Cards?>
-                                        <?php foreach ($produkte as $produkt): //while wird hier mit ":" unterbrochen?>
+                                        <?php foreach ($produkte as $product): //foreach wird hier mit ":" unterbrochen?>
                                             <div class="col"> <?php //jeweils eine Spalte pro Card?>
                                                 <?php include 'card.php' //Ausgabe der einzelnen Cards solange es Eintrage in DB-Tabelle gibt?>
                                             </div>
-                                        <?php endforeach; //hier wird die while dann abgeschlossen?>
+                                        <?php endforeach; //hier wird die foreach dann abgeschlossen?>
                                     </div>
 
                                 </section>

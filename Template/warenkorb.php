@@ -2,11 +2,18 @@
       include "connectDB.php";
       include "Datenbank/dbOperationen.php";
 
-    $userId = 1; //$dbOperation->getUserID($username, $con);
+session_start();
+if(isset($_SESSION["username"])){
+    $nutzername = $_SESSION["username"];
+} else {
+    $nutzername = 0;
+}
+
     $dbOperation = new dbOperationen();
-    $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($userId, $con);
-    $warenkorbInhalte = $dbOperation->getCartItemsForUserId($userId, $con);
-    $summeWarenkorbinhalte = $dbOperation->getCartSumForUserId($userId, $con);
+    $nutzerId = $dbOperation->getUserID($con, $nutzername);
+    $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
+    $warenkorbInhalte = $dbOperation->getCartItemsForUserId($nutzerId, $con);
+    $summeWarenkorbinhalte = $dbOperation->getCartSumForUserId($nutzerId, $con);
 ?>
 
 
