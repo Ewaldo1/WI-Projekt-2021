@@ -101,6 +101,10 @@ class dbOperationen
         echo "Error: " .$insert . mysqli_error($con);
     }
 
+    function  deleteProductWarencorb($con) {
+        //$deleteMe = "DEL"
+    }
+
     function getProductByCategory($con, $kategorie) {
         $sql = "SELECT * FROM produkte WHERE Kategorie = '".$kategorie."';";
         $result = mysqli_query($con, $sql);
@@ -111,6 +115,8 @@ class dbOperationen
         return $products;
 
     }
+
+
 
 
 }

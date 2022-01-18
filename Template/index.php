@@ -21,10 +21,10 @@ if(isset($_SESSION["username"])){
 }
 
 $dbOperation = new dbOperationen();
-<<<<<<< HEAD
+
 $nutzerId = $dbOperation->getUserID($con, $nutzername);
 var_dump($nutzerId);
-=======
+
 $nutzerId = 3;
 //$nutzerId = "SELECT ID FROM nutzer WHERE Username = '$nutzername'";
 $result = mysqli_query($con, $nutzerId);
@@ -32,7 +32,7 @@ $result = mysqli_query($con, $nutzerId);
 /*if(isset($_SESSION["nutzerId"])){
     $nutzerId = $_SESSION["nutzerId"];
 }*/
->>>>>>> ac38d0ff8d4cd5533563348b45c0138e80754f93
+
 $produkte = $dbOperation->getProducts($con);
 $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
 
@@ -194,8 +194,14 @@ if (strpos($route, '/kategorie') !== false) {
                                 </div>
                                 <!-- /section title -->
 									</div>
-				<!-- /row -->
-			</div>
+
+			            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
