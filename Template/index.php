@@ -59,12 +59,9 @@ $indexPHPPosition = strpos($url, 'index.php');
 $route = substr($url, $indexPHPPosition);
 $route = str_replace('index.php', '', $route);
 
-<<<<<<< HEAD
-if(strpos($route,'/warenkorb/add/') !== false) { //strpos schaut in der route nach, ob es den String /warenkorb/add gibt
-=======
+
 //Sachen in Warekorb Addieren
-if(strpos($route,'/warenkorb/add/') !== false) {
->>>>>>> 335554bb136264a23aa149f3500556442add6e93
+if(strpos($route,'/warenkorb/add/') !== false) { //strpos schaut in der route nach, ob es den String /warenkorb/add gibt
     $routeParts = explode("/", $route); //ProduktID befindet sich an der dritten Stelle, somit:
     $produktId = (int) $routeParts[3]; //Stelle aus der URL auslesen und der Variablen produktID übergeben
     $zuWarenkorbHinzu = $dbOperation->productToCart($nutzerId, $produktId, $con);
