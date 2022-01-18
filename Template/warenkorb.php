@@ -87,6 +87,7 @@
         <!--row Bezahlbutton -->
         <div class="row">
             <a href="checkout.php" class="btn btn-primary col-12 text-center"> Zur Kasse gehen</a>
+            <a href="checkout.php" class="btn btn-danger col-12 text-center"> Produkt loschen</a>
         </div>
     </div>
     <!-- /container -->

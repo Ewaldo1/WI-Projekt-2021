@@ -60,6 +60,7 @@ $indexPHPPosition = strpos($url, 'index.php');
 $route = substr($url, $indexPHPPosition);
 $route = str_replace('index.php', '', $route);
 
+//Sachen in Warekorb Addieren
 if(strpos($route,'/warenkorb/add/') !== false) {
     $routeParts = explode("/", $route); //ProduktID befindet sich an der dritten Stelle, somit:
     $produktId = (int) $routeParts[3]; //Stelle aus der URL auslesen und der Variablen produktID übergeben
