@@ -2,15 +2,22 @@
 include "HeaderHEKAY.php";
 include "Datenbank/dbOperationen.php";
 include "connectDB.php";
+session_start();
+if(isset($_SESSION["username"])){
+    $nutzername = $_SESSION["username"];
+} else {
+    $nutzername = 0;
+}
 
 $dbOperation = new dbOperationen();
-$nutzerId = 1;
+$nutzerId = $dbOperation->getUserID($con, $nutzername);
 $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
 
 $produktName = "";
 $slug = "";
 $beschreibung = "";
 $preis = "";
+$bild ="";
 $errors = [];
 $countErrors = 0;
 ?>
@@ -24,9 +31,11 @@ $countErrors = 0;
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="#">Produkt hinzufügen</a></li>
-                <li><a href="index.php"> Startseite</a></li>
+
                 <li><a href="warenkorb.php"><i class="fa fa-shopping-cart"></i>
                         <span>Warenkorb(<?= $anzahlWarenkorbinhalte ?>)</span><li>
+                <li><a href="index.php">Startseite</a></li>
+
             </ul>
             <!-- /NAV -->
         </div>
@@ -54,7 +63,7 @@ $countErrors = 0;
 
 <!-- /BREADCRUMB -->
 <section class="container">
-    <form action = "login.php" method = "post">
+    <form action = "produktHinzu.php" method = "post">
         <div class="card">
             <div class="card-body">
 
@@ -67,25 +76,29 @@ $countErrors = 0;
                 <?php endif;?>
 
                 <div class="form-group">
-                    <label>Produktname</label>
+                    <label>Produktname:</label>
                     <input type="text" name= "titel" placeholder="Vergeben Sie einen Titel für ihr Produkt" class="form-control"><br>
 
-                    <label>Slug</label>
+                    <label>Slug:</label>
                     <input type="text" name= "slug" placeholder="Geben Sie an unter welcher URL ihr Produkt gefunden werden soll" class="form-control"><br>
 
-                    <label>Produktbeschreibung</label>
+                    <label>Produktbeschreibung:</label>
                     <textarea class="form-control" name="beschreibung" rows="3"></textarea>
 
-                    <label>Produktkategorie</label><br>
-                    <input type="radio" id="notebook" name="notebook">
-                    <a for="vehicle1"> Notebook</a><br>
-                    <input type="radio" id="smartphone" name="smartphone">
-                    <a for="vehicle2"> Smartphone</a><br>
-                    <input type="radio" id="fernseher" name="fernseher">
-                    <a for="vehicle3"> Fernseher</a><br>
-                    <label>Preis</label>
+                    <br><label>Produktkategorie:</label><br>
+                    <input type="radio" id="notebook" name="kategorie" value="Notebook">
+                    <label for="notebook"> Notebook</label><br>
+                    <input type="radio" id="smartphone" name="kategorie" value="Smartphone">
+                    <label for="smartphone"> Smartphone</label><br>
+                    <input type="radio" id="fernseher" name="kategorie" value="Fernseher">
+                    <label for="fernseher"> Fernseher</label><br>
 
+                    <br><label>Preis:</label>
                     <input type="text" name= "preis" placeholder="Geben Sie den Preis des Produktes an" class="form-control"><br>
+
+                    <label>Produktbild:</label>
+                    <input type="text" name= "produktbild" placeholder="Geben Sie den Pfad zu ihrem Bild an" class="form-control"><br>
+
                 </div>
             </div>
             <div class="card-footer">
@@ -106,9 +119,24 @@ if(isset($_POST['produktHinzufügen'])){
     $beschreibung = $_POST["beschreibung"];
     $kategorie = $_POST["kategorie"];
     $preis = $_POST["preis"];
+    $bild = $_POST["produktbild"]; //$_FILES["produktbild"];
+
+
+  /*  function formatFiles($files){ // Der Bildfile ist ein Array aus 5 Elementen (Name, type, tmp_name, error, size), die jeweils ebenfalls ein Element als Array haben --> zu Bild nur ein einziges Array mit 5 Elementen
+        $result = [];
+        foreach ($files as $key => $values){
+            foreach ($values as $index => $value){
+                $result[$index][$key] = $value;
+            }
+        }
+
+        return $result;
+    }
+    $bild = formatFiles($bild);
+    var_dump($bild);*/
 
     if((bool)$produktName === false){
-        $errors[]="Produktname muss angegeben werden!";
+        $errors[]="Produktname muss angegeben werden";
     }
     if((bool)$produktName === true && (bool)$slug === false){
         $slug = str_replace(' ', '-', $produktName);
@@ -116,22 +144,26 @@ if(isset($_POST['produktHinzufügen'])){
     if((bool)$slug === true){
         $produkt = $dbOperation->getProductBySlug($slug, $con);
         if($produkt !== null){
-            $errors[]= "Slug ist bereits vergeben!";
+            $errors[]= "Slug ist bereits vergeben";
         }
     }
     if((bool)$beschreibung === false){
-        $errors[]="Produktbeschreibung muss angegeben werden!";
+        $errors[]="Produktbeschreibung muss angegeben werden";
     }
     if((bool)$kategorie === false){
-        $errors[]="Produktkategorie muss angegeben werden!";
+        $errors[]="Produktkategorie muss angegeben werden";
     }
     if($preis <= 0) {
-        $errors[] = "Bitte einen korrekt Preis angeben!";
+        $errors[] = "Bitte einen korrekt Preis angeben";
+    }
+    if((bool)$bild === false){
+        $errors[]="Bitte ein Bild hinzufügen";
     }
     $countErrors = count($errors);
     if($countErrors == 0){
-        $dbOperation->addProduct($con,$produktName, $slug, $beschreibung, $preis);
+        $dbOperation->addProduct($con,$produktName, $slug, $beschreibung, $kategorie, $preis, $bild);
     }
+    exit();
 }
 ?>
 

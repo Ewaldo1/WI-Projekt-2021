@@ -1,28 +1,15 @@
 <?php
 class dbOperationen
 {
-    function getUserID($con){
-        $userId = 0;
-
-
-        /* check connection */
-        if (mysqli_connect_errno()) {
-            printf("Connect failed: %s\n", mysqli_connect_error());
-            exit();
-        }
-
-        if (!mysqli_query($con, "SET a=1")) {
-            printf("Error message: %s\n", mysqli_error($con));
-        }
-
-        /* close connection */
-        mysqli_close($con);
-
-        return $userId;
+    function getUserID($con, $username){
+        $sql = "SELECT ID FROM nutzer WHERE Username = '".$username."';"; // ausgabe der ID, wenn die Usernamen übereinstimmen
+        $result = mysqli_query($con, $sql);
+        $getID = mysqli_fetch_assoc($result);
+        return $getID;
     }
 
     function getProducts($con){
-        $sql = "SELECT * FROM produkte";
+        $sql = "SELECT ID, Titel, Beschreibung, Preis, Slug, Bild FROM produkte";
         $result = mysqli_query($con, $sql);
         if($result === false){
             return [];
@@ -36,26 +23,29 @@ class dbOperationen
 
 
     function productToCart($Nutzer_ID, $produkt_ID, $con){
-        $insertSql = "INSERT INTO warenkorb (Produkt_ID, Nutzer_ID, Menge, Angelegt) 
-                    VALUES ('$produkt_ID', '$Nutzer_ID', '1', '2021-12-16') ON DUPLICATE KEY UPDATE Menge = Menge + 1";
+        $intoInt = intval($Nutzer_ID); // Array in Integer umwandeln
+        $insertSql = "INSERT INTO warenkorb (Produkt_ID, Nutzer_ID, Menge) 
+                    VALUES ('$produkt_ID', '$intoInt', '1') ON DUPLICATE KEY UPDATE Menge = Menge + 1"; // füge Produkt dem Warenkorb hinzu, falls Produkt schon vorhanden -> erhöhe die Menge
         $result = mysqli_query($con, $insertSql);
         return $result;
     }
 
     function countProductsInCart($userId, $con) {
-        $Nutzer_ID = $userId; //"SELECT ID FROM warenkorb WHERE Nutzer_ID =".$userId;
-        $nutzerResult = mysqli_query($con, $Nutzer_ID);
-        $inhalte = 0;
-        $sqlWK ="SELECT * FROM warenkorb WHERE Nutzer_ID =".$Nutzer_ID;
+        $stringUserId = implode("", $userId); // Array in String umwandeln, da sonst Fehlermeldung das String erwartet wird
+        $sqlWK ="SELECT * FROM warenkorb WHERE Nutzer_ID = '".$stringUserId."';";
         //var_dump($sqlWK);
         $warenkorbResult = mysqli_query($con, $sqlWK);
         //var_dump($warenkorbResult);
-        $inhalte = $warenkorbResult->num_rows;
+        $inhalte = 0;
+        while ($warenkorbResult->fetch_assoc()) { // solange es passende Inhalte in der Warenkorbtabelle gibt, soll Inhalte um 1 erhöht werden
+            $inhalte = $inhalte + 1;
+        }
         return $inhalte;
     }
 
     function getCartItemsForUserId($userId, $con) {
-        $sql = "SELECT Produkt_ID, Titel, Beschreibung, Preis FROM warenkorb JOIN produkte ON(warenkorb.Produkt_ID = produkte.ID) WHERE Nutzer_ID = $userId";
+        $stringUserId = implode("", $userId);
+        $sql = "SELECT Produkt_ID, Titel, Beschreibung, Preis, Bild FROM warenkorb JOIN produkte ON(warenkorb.Produkt_ID = produkte.ID) WHERE Nutzer_ID = '".$stringUserId."';";
         $result = mysqli_query($con, $sql);
         if($result === false) {
             return [];
@@ -69,8 +59,9 @@ class dbOperationen
     }
 
     function getCartSumForUserId($userId, $con){
+        $stringUserId = implode("", $userId);
         $summe = 0;
-        $sql = "SELECT Produkt_ID, Titel, Beschreibung, Preis, Menge FROM warenkorb JOIN produkte ON(warenkorb.Produkt_ID = produkte.ID) WHERE Nutzer_ID = $userId";
+        $sql = "SELECT Produkt_ID, Titel, Beschreibung, Preis, Menge FROM warenkorb JOIN produkte ON(warenkorb.Produkt_ID = produkte.ID) WHERE Nutzer_ID = '".$stringUserId."';";
         $result = mysqli_query($con, $sql);
         if($result === false){
             return 0;
@@ -82,33 +73,43 @@ class dbOperationen
     }
 
     function getProductBySlug($slug, $con){
-        $sql = "SELECT ID, Titel, Beschreibung, Preis, Slug FROM produkte WHERE Slug = '$slug'";
+        $sql = "SELECT ID, Titel, Beschreibung, Preis, Slug, Bild FROM produkte WHERE Slug = '".$slug."';";
         $result = mysqli_query($con, $sql);
+        $row = mysqli_fetch_assoc($result);
+           return $row;
+
+
        /* $stmt = mysqli_prepare($con, $sql);
         mysqli_stmt_bind_param($stmt, "s", $slug); //spezifizierung des ? mit dem slug
         mysqli_stmt_execute($stmt);
         mysqli_stmt_bind_result($stmt, $id, $titel, $beschreibung, $preis, $slug);
         mysqli_stmt_fetch($stmt);
         mysqli_stmt_close($stmt);*/
-        var_dump($sql);
+        //var_dump($sql);
        //var_dump(mysqli_error($con));
 
     }
 
-    function addProduct($con, $produktname, $slug, $beschreibung, $kategorie, $preis){
-        $insert = "INSERT INTO produkte(Titel, Beschreibung, Kategorie, Preis, Slug) VALUES ('$produktname', '$beschreibung', '$kategorie', '$preis', $slug)";
+    function addProduct($con, $produktname, $slug, $beschreibung, $kategorie, $preis, $bild){
+        $insert = "INSERT INTO produkte(Titel, Beschreibung, Kategorie, Preis, Slug, Bild) VALUES ('".$produktname."', '".$beschreibung."', '".$kategorie."', '".$preis."', '".$slug."', '".$bild."')";
         $result = mysqli_query($con, $insert);
-        if(mysqli_query($con,$insert)){
+        if($result){
             $lastId = mysqli_insert_id($con);
             echo "Produkt erfolgreich hinzugefügt. Letzte hinzugefügte ID lautet: " .$lastId;
+            //header("Location: index.php");
         }
         echo "Error: " .$insert . mysqli_error($con);
     }
 
     function getProductByCategory($con, $kategorie) {
-        $sql = "SELECT * FROM produkte WHERE Kategorie = '$kategorie'";
+        $sql = "SELECT * FROM produkte WHERE Kategorie = '".$kategorie."';";
         $result = mysqli_query($con, $sql);
-        return $result;
+        $products= [];
+        while ($row = $result->fetch_assoc()){
+            $products[]=$row;
+        }
+        return $products;
+
     }
 
 

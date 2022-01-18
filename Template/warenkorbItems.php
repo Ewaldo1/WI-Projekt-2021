@@ -8,7 +8,7 @@ if(isset($preis)){
 ?>
 
 <div class="col-3"></div>
-<img class="produktbild" src="./img/product01.png">
+<img src="<?php echo $warenkorbInhalt['Bild']; ?>" class="img-thumbnail" height="300px" width="300px" alt="produkt">
 </div>
 <div class="col-7">
     <div><?= $warenkorbInhalt['Titel']?></div>

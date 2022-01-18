@@ -21,9 +21,7 @@
 <!-- /NAVIGATION -->
 
 <!-- SECTION -->
-<div class="section">
-    <!-- container -->
-    <div class="container" id="produktDetails">
+<section class="container" id="produktDetails">
         <div class="card">
             <div class="card-header">
                 <h2><?php echo $produkt['Titel'] //Titel der Zeile aus der Produktdatenbanktabelle ?></h2>
@@ -31,7 +29,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-4">
-                            <img src="./img/product01.png" class="card-img-top" height="300px" width="300px" alt="produkt">
+                            <img src="<?php echo $produkt['Bild']; ?>" class="card-img-top" height="300px" width="300px" alt="produkt">
                         </div>
                         <div class="col-8">
                             <div>Preis: <b><?php echo $produkt['Preis'] .'€'?></b></div>
@@ -44,10 +42,9 @@
                     <a href="index2.php/warenkorb/add/<?= $produkt['ID']?>" class="btn btn-success btn-sm">Zum Warenkorb</a>
                 </div>
         </div>
-    </div>
     <!-- /container -->
-</div>
-<!-- /SECTION -->
+</section>
+<!-- /SECTION -->>
 
 <?php include "FooterHEKAY.php"; ?>
 </body>
