@@ -10,12 +10,17 @@ if(isset($_SESSION["username"])){
     $nutzername = 0;
 }
 
+<<<<<<< HEAD
 if(isset($_SESSION["username"])){
     $nutzername = $_SESSION["username"];
 } else {
     $nutzername = 0;
 }
 
+=======
+
+    $userId = 3; //$dbOperation->getUserID($username, $con);
+>>>>>>> f495d356bb8a2e326fb1e7d1d5e6def18cb2b2b2
     $dbOperation = new dbOperationen();
     $nutzerId = $dbOperation->getUserID($con, $nutzername);
     $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
