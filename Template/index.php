@@ -24,17 +24,6 @@ $dbOperation = new dbOperationen();
 
 $nutzerId = $dbOperation->getUserID($con, $nutzername);
 var_dump($nutzerId);
-
-
-$nutzerId = 3;
-//$nutzerId = "SELECT ID FROM nutzer WHERE Username = '$nutzername'";
-$result = mysqli_query($con, $nutzerId);
-
-/*if(isset($_SESSION["nutzerId"])){
-    $nutzerId = $_SESSION["nutzerId"];
-}*/
-
-
 $produkte = $dbOperation->getProducts($con);
 $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
 
@@ -70,15 +59,8 @@ $route = substr($url, $indexPHPPosition);
 $route = str_replace('index.php', '', $route);
 
 
-<<<<<<< HEAD
 //Sachen in Warekorb Addieren
 if(strpos($route,'/warenkorb/add/') !== false) { //strpos schaut in der route nach, ob es den String /warenkorb/add gibt
-=======
-
-//Sachen in Warekorb Addieren
-if(strpos($route,'/warenkorb/add/') !== false) {
-
->>>>>>> f495d356bb8a2e326fb1e7d1d5e6def18cb2b2b2
     $routeParts = explode("/", $route); //ProduktID befindet sich an der dritten Stelle, somit:
     $produktId = (int) $routeParts[3]; //Stelle aus der URL auslesen und der Variablen produktID übergeben
     $zuWarenkorbHinzu = $dbOperation->productToCart($nutzerId, $produktId, $con);
@@ -748,8 +730,6 @@ if (strpos($route, '/kategorie') !== false) {
                         <!-- /container -->
                     </div>
                     <!-- /SECTION -->
-
-                    <?php
-
-
-                    include "FooterHEKAY.php";
+        <?php include 'FooterHEKAY.php'; ?>
+    </body>
+</html>

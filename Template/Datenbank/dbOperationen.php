@@ -5,7 +5,8 @@ class dbOperationen
         $sql = "SELECT ID FROM nutzer WHERE Username = '".$username."';"; // ausgabe der ID, wenn die Usernamen übereinstimmen
         $result = mysqli_query($con, $sql);
         $getID = mysqli_fetch_assoc($result);
-        return $getID;
+        var_dump($getID); //Wert wird korrekt gespeichert
+        return $getID[0]; //hier aber: Undefined offset
     }
 
     function getProducts($con){
@@ -23,16 +24,14 @@ class dbOperationen
 
 
     function productToCart($Nutzer_ID, $produkt_ID, $con){
-        $intoInt = intval($Nutzer_ID); // Array in Integer umwandeln
         $insertSql = "INSERT INTO warenkorb (Produkt_ID, Nutzer_ID, Menge) 
-                    VALUES ('$produkt_ID', '$intoInt', '1') ON DUPLICATE KEY UPDATE Menge = Menge + 1"; // füge Produkt dem Warenkorb hinzu, falls Produkt schon vorhanden -> erhöhe die Menge
+                    VALUES ('$produkt_ID', '$Nutzer_ID', '1') ON DUPLICATE KEY UPDATE Menge = Menge + 1"; // füge Produkt dem Warenkorb hinzu, falls Produkt schon vorhanden -> erhöhe die Menge
         $result = mysqli_query($con, $insertSql);
         return $result;
     }
 
     function countProductsInCart($userId, $con) {
-        $stringUserId = implode("", $userId); // Array in String umwandeln, da sonst Fehlermeldung das String erwartet wird
-        $sqlWK ="SELECT * FROM warenkorb WHERE Nutzer_ID = '".$stringUserId."';";
+        $sqlWK ="SELECT * FROM warenkorb WHERE Nutzer_ID = '".$userId."';";
         //var_dump($sqlWK);
         $warenkorbResult = mysqli_query($con, $sqlWK);
         //var_dump($warenkorbResult);
@@ -44,8 +43,7 @@ class dbOperationen
     }
 
     function getCartItemsForUserId($userId, $con) {
-        $stringUserId = implode("", $userId);
-        $sql = "SELECT Produkt_ID, Titel, Beschreibung, Preis, Bild FROM warenkorb JOIN produkte ON(warenkorb.Produkt_ID = produkte.ID) WHERE Nutzer_ID = '".$stringUserId."';";
+        $sql = "SELECT Produkt_ID, Titel, Beschreibung, Preis, Bild FROM warenkorb JOIN produkte ON(warenkorb.Produkt_ID = produkte.ID) WHERE Nutzer_ID = '".$userId."';";
         $result = mysqli_query($con, $sql);
         if($result === false) {
             return [];
@@ -59,9 +57,8 @@ class dbOperationen
     }
 
     function getCartSumForUserId($userId, $con){
-        $stringUserId = implode("", $userId);
         $summe = 0;
-        $sql = "SELECT Produkt_ID, Titel, Beschreibung, Preis, Menge FROM warenkorb JOIN produkte ON(warenkorb.Produkt_ID = produkte.ID) WHERE Nutzer_ID = '".$stringUserId."';";
+        $sql = "SELECT Produkt_ID, Titel, Beschreibung, Preis, Menge FROM warenkorb JOIN produkte ON(warenkorb.Produkt_ID = produkte.ID) WHERE Nutzer_ID = '".$userId."';";
         $result = mysqli_query($con, $sql);
         if($result === false){
             return 0;
