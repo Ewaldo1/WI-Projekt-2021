@@ -10,7 +10,20 @@ class dbOperationen
     }
 
     function getProducts($con){
-        $sql = "SELECT ID, Titel, Beschreibung, Preis, Slug, Bild FROM produkte";
+        $sql = "SELECT ID, Titel, Kategorie, Beschreibung, Preis, Slug, Bild FROM produkte";
+        $result = mysqli_query($con, $sql);
+        if($result === false){
+            return [];
+        }
+        $products= [];
+        while ($row = $result->fetch_assoc()){
+            $products[]=$row;
+        }
+        return $products;
+    }
+
+    function getSmartphones($con){
+        $sql = "SELECT ID, Titel, Kategorie, Beschreibung, Preis, Slug, Bild FROM produkte WHERE Kategorie = 'Smartphone'";
         $result = mysqli_query($con, $sql);
         if($result === false){
             return [];

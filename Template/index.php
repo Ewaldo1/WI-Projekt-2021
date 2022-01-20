@@ -1,4 +1,6 @@
 <?php
+include "Datenbank/dbOperationen.php";
+include "connectDB.php";
 session_start();
 
 if (empty($_SESSION["username"])) {
@@ -7,12 +9,6 @@ if (empty($_SESSION["username"])) {
 } else{
     include "HeaderHEKAY.php";
 }
-
-
-include "Datenbank/dbOperationen.php";
-include "connectDB.php";
-
-
 
 if(isset($_SESSION["username"])){
     $nutzername = $_SESSION["username"];
@@ -70,9 +66,7 @@ if(strpos($route,'/warenkorb/add/') !== false) { //strpos schaut in der route na
 
 
 if(strpos($route, '/produkt') !== false){
-    var_dump($route);
     $routeParts = explode("/", $route);
-    var_dump($routeParts);
     if(count($routeParts) !== 3){
         echo "Ungültige URL";
         exit();
@@ -87,7 +81,7 @@ if(strpos($route, '/produkt') !== false){
         echo "Ungültiges Produkt";
         exit();
     }
-     include 'produktDetails.php';
+    include "produktDetails.php";
 }
 
 if (strpos($route, '/kategorie') !== false) {
@@ -95,7 +89,7 @@ if (strpos($route, '/kategorie') !== false) {
     $kategorieId = $routeParts[2]; //Stelle aus der URL auslesen und der Variablen kategorieID übergeben
     $produkte = $dbOperation->getProductByCategory($con, $kategorieId);
 
-    include 'kategorie.php';
+    include "kategorie.php";
 }
 
 ?>
@@ -176,14 +170,7 @@ if (strpos($route, '/kategorie') !== false) {
                                 <!-- section title -->
                                 <div class="col-md-12">
                                     <div class="section-title">
-                                        <h3 class="title">Produkte</h3>
-                                        <div class="section-nav">
-                                            <ul class="section-tab-nav tab-nav">
-                                                <li class="active"><a data-toggle="tab" href="#tab1">Laptop</a></li>
-                                                <li><a data-toggle="tab" href="#tab1">Smartphone</a></li>
-                                                <li><a data-toggle="tab" href="#tab1">Fernseher</a></li>
-                                            </ul>
-                                        </div>
+                                        <h3 class="title">Produktauswahl</h3>
                                     </div>
                                 </div>
                                 <!-- /section title -->
@@ -199,7 +186,7 @@ if (strpos($route, '/kategorie') !== false) {
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
-                                <section class="container" id="products">
+                                <section class="container" id="product">
                                     <div class="row"> <?php //eine Zeile für die Cards?>
                                         <?php foreach ($produkte as $product): //foreach wird hier mit ":" unterbrochen?>
                                             <div class="col"> <?php //jeweils eine Spalte pro Card?>

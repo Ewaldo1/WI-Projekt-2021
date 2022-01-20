@@ -14,10 +14,15 @@ $nutzerId = $dbOperation->getUserID($con, $nutzername);
 $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
 
 $produktName = "";
+$validationProductName = true;
 $slug = "";
+$validationSlug = true;
 $beschreibung = "";
+$validationBeschreibung = true;
 $preis = "";
+$validationPreis= true;
 $bild ="";
+$validationBild = true;
 $errors = [];
 $countErrors = 0;
 ?>
@@ -66,15 +71,6 @@ $countErrors = 0;
     <form action = "produktHinzu.php" method = "post">
         <div class="card">
             <div class="card-body">
-
-                <?php if($countErrors > 0):?>
-                <div class="alert-danger" role="alert">
-                    <?php foreach ($errors as $errorMessage):?>
-                        <p><?= $errorMessage?></p>;
-                    <?php endforeach;?>
-                </div>
-                <?php endif;?>
-
                 <div class="form-group">
                     <label>Produktname:</label>
                     <input type="text" name= "titel" placeholder="Vergeben Sie einen Titel für ihr Produkt" class="form-control"><br>
@@ -86,7 +82,7 @@ $countErrors = 0;
                     <textarea class="form-control" name="beschreibung" rows="3"></textarea>
 
                     <br><label>Produktkategorie:</label><br>
-                    <input type="radio" id="notebook" name="kategorie" value="Notebook">
+                    <input type="radio" id="notebook" name="kategorie" value="Notebook" checked>
                     <label for="notebook"> Notebook</label><br>
                     <input type="radio" id="smartphone" name="kategorie" value="Smartphone">
                     <label for="smartphone"> Smartphone</label><br>
@@ -97,7 +93,7 @@ $countErrors = 0;
                     <input type="text" name= "preis" placeholder="Geben Sie den Preis des Produktes an" class="form-control"><br>
 
                     <label>Produktbild:</label>
-                    <input type="text" name= "produktbild" placeholder="Geben Sie den Pfad zu ihrem Bild an" class="form-control"><br>
+                    <input type="text" name= "produktbild" placeholder="Geben Sie den Pfad zu ihrem Bild in der Form ./img/picturename.png an" class="form-control"><br>
 
                 </div>
             </div>
@@ -136,7 +132,8 @@ if(isset($_POST['produktHinzufügen'])){
     var_dump($bild);*/
 
     if((bool)$produktName === false){
-        $errors[]="Produktname muss angegeben werden";
+        $errors[]="Produktname muss angegeben werden!";
+        $validationProductName = false;
     }
     if((bool)$produktName === true && (bool)$slug === false){
         $slug = str_replace(' ', '-', $produktName);
@@ -144,24 +141,32 @@ if(isset($_POST['produktHinzufügen'])){
     if((bool)$slug === true){
         $produkt = $dbOperation->getProductBySlug($slug, $con);
         if($produkt !== null){
-            $errors[]= "Slug ist bereits vergeben";
+            $errors[]= "Slug ist bereits vergeben!";
+            $validationSlug = false;
         }
     }
     if((bool)$beschreibung === false){
-        $errors[]="Produktbeschreibung muss angegeben werden";
-    }
-    if((bool)$kategorie === false){
-        $errors[]="Produktkategorie muss angegeben werden";
+        $errors[]="Produktbeschreibung muss angegeben werden!";
+        $validationBeschreibung = false;
     }
     if($preis <= 0) {
-        $errors[] = "Bitte einen korrekt Preis angeben";
+        $errors[] = "Bitte einen korrekten Preis angeben!";
+        $validationPreis = false;
     }
     if((bool)$bild === false){
-        $errors[]="Bitte ein Bild hinzufügen";
+        $errors[]="Bitte ein Bild hinzufügen!";
+        $validationBild = false;
     }
+
     $countErrors = count($errors);
     if($countErrors == 0){
         $dbOperation->addProduct($con,$produktName, $slug, $beschreibung, $kategorie, $preis, $bild);
+    } else{ ?>
+        <ul class="alert alert-danger">
+        <?php foreach ($errors as $errorMessage):?>
+                <li><?php echo "- $errorMessage" ?></li>
+            <?php endforeach ?>
+         </ul><?php
     }
     exit();
 }
