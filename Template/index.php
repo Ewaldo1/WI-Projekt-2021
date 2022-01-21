@@ -1,4 +1,6 @@
 <?php
+include "Datenbank/dbOperationen.php";
+include "connectDB.php";
 session_start();
 
 if (empty($_SESSION["username"])) {
@@ -7,12 +9,6 @@ if (empty($_SESSION["username"])) {
 } else{
     include "HeaderHEKAY.php";
 }
-
-
-include "Datenbank/dbOperationen.php";
-include "connectDB.php";
-
-
 
 if(isset($_SESSION["username"])){
     $nutzername = $_SESSION["username"];
@@ -24,17 +20,6 @@ $dbOperation = new dbOperationen();
 
 $nutzerId = $dbOperation->getUserID($con, $nutzername);
 var_dump($nutzerId);
-
-
-$nutzerId = 3;
-//$nutzerId = "SELECT ID FROM nutzer WHERE Username = '$nutzername'";
-$result = mysqli_query($con, $nutzerId);
-
-/*if(isset($_SESSION["nutzerId"])){
-    $nutzerId = $_SESSION["nutzerId"];
-}*/
-
-
 $produkte = $dbOperation->getProducts($con);
 $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
 
@@ -70,10 +55,8 @@ $route = substr($url, $indexPHPPosition);
 $route = str_replace('index.php', '', $route);
 
 
-
 //Sachen in Warekorb Addieren
-if(strpos($route,'/warenkorb/add/') !== false) {
-
+if(strpos($route,'/warenkorb/add/') !== false) { //strpos schaut in der route nach, ob es den String /warenkorb/add gibt
     $routeParts = explode("/", $route); //ProduktID befindet sich an der dritten Stelle, somit:
     $produktId = (int) $routeParts[3]; //Stelle aus der URL auslesen und der Variablen produktID übergeben
     $zuWarenkorbHinzu = $dbOperation->productToCart($nutzerId, $produktId, $con);
@@ -83,9 +66,7 @@ if(strpos($route,'/warenkorb/add/') !== false) {
 
 
 if(strpos($route, '/produkt') !== false){
-    var_dump($route);
     $routeParts = explode("/", $route);
-    var_dump($routeParts);
     if(count($routeParts) !== 3){
         echo "Ungültige URL";
         exit();
@@ -100,7 +81,7 @@ if(strpos($route, '/produkt') !== false){
         echo "Ungültiges Produkt";
         exit();
     }
-     include 'produktDetails.php';
+    include "produktDetails.php";
 }
 
 if (strpos($route, '/kategorie') !== false) {
@@ -108,7 +89,7 @@ if (strpos($route, '/kategorie') !== false) {
     $kategorieId = $routeParts[2]; //Stelle aus der URL auslesen und der Variablen kategorieID übergeben
     $produkte = $dbOperation->getProductByCategory($con, $kategorieId);
 
-    include 'kategorie.php';
+    include "kategorie.php";
 }
 
 ?>
@@ -189,14 +170,7 @@ if (strpos($route, '/kategorie') !== false) {
                                 <!-- section title -->
                                 <div class="col-md-12">
                                     <div class="section-title">
-                                        <h3 class="title">Produkte</h3>
-                                        <div class="section-nav">
-                                            <ul class="section-tab-nav tab-nav">
-                                                <li class="active"><a data-toggle="tab" href="#tab1">Laptop</a></li>
-                                                <li><a data-toggle="tab" href="#tab1">Smartphone</a></li>
-                                                <li><a data-toggle="tab" href="#tab1">Fernseher</a></li>
-                                            </ul>
-                                        </div>
+                                        <h3 class="title">Produktauswahl</h3>
                                     </div>
                                 </div>
                                 <!-- /section title -->
@@ -212,7 +186,7 @@ if (strpos($route, '/kategorie') !== false) {
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
-                                <section class="container" id="products">
+                                <section class="container" id="product">
                                     <div class="row"> <?php //eine Zeile für die Cards?>
                                         <?php foreach ($produkte as $product): //foreach wird hier mit ":" unterbrochen?>
                                             <div class="col"> <?php //jeweils eine Spalte pro Card?>
@@ -743,8 +717,6 @@ if (strpos($route, '/kategorie') !== false) {
                         <!-- /container -->
                     </div>
                     <!-- /SECTION -->
-
-                    <?php
-
-
-                    include "FooterHEKAY.php";
+        <?php include 'FooterHEKAY.php'; ?>
+    </body>
+</html>

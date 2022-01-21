@@ -10,16 +10,12 @@ if(isset($_SESSION["username"])){
     $nutzername = 0;
 }
 
-
-    $userId = 3; //$dbOperation->getUserID($username, $con);
     $dbOperation = new dbOperationen();
     $nutzerId = $dbOperation->getUserID($con, $nutzername);
     $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
     $warenkorbInhalte = $dbOperation->getCartItemsForUserId($nutzerId, $con);
     $summeWarenkorbinhalte = $dbOperation->getCartSumForUserId($nutzerId, $con);
 ?>
-
-
 
 <!-- NAVIGATION -->
 <nav id="navigation">
@@ -39,20 +35,6 @@ if(isset($_SESSION["username"])){
     <!-- /container -->
 </nav>
 <!-- /NAVIGATION -->
-
-<?php
-/*    $sql = "SELECT Produkt_ID, Titel, Beschreibung, Preis FROM warenkorb JOIN produkte ON(warenkorb.Produkt_ID = produkte.ID) WHERE Nutzer_ID = 1";
-    $result = mysqli_query($con, $sql);
-    if($result === false) {
-        return [];
-    }
-    $items = [];
-    while($row = $result->fetch_assoc()){
-        $items[] = $row;
-    }
-    return $items;
-*/
-?>
 
 
 <!-- BREADCRUMB -->

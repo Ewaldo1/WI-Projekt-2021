@@ -1,12 +1,3 @@
-<?php
-$sumPreis = 0;
-if(isset($preis)){
-    foreach ($preis as $value){
-        $sumPreis += $value;
-    }
-}
-?>
-
 <div class="col-3"></div>
 <img src="<?php echo $warenkorbInhalt['Bild']; ?>" class="img-thumbnail" height="300px" width="300px" alt="produkt">
 </div>
