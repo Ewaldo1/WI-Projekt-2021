@@ -124,7 +124,12 @@ class dbOperationen
         echo "Error: " .$insert . mysqli_error($con);
     }
 
-    function  deleteProductWarencorb($con) {
+    function  deleteProductWarencorb($con, $seileID) {
+        $deleteComand = "DELETE FROM produkte WHERE ID = $seileID"; //Hier wird gesagt welche Seile muss gelösst werden
+        $result = mysqli_query($con);
+
+
+
         //$deleteMe = "DEL"
     }
 
