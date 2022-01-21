@@ -17,6 +17,7 @@ $produktName = "";
 $validationProductName = true;
 $slug = "";
 $validationSlug = true;
+$kurzbeschreibung = "";
 $beschreibung = "";
 $validationBeschreibung = true;
 $preis = "";
@@ -78,6 +79,9 @@ $countErrors = 0;
                     <label>Slug:</label>
                     <input type="text" name= "slug" placeholder="Geben Sie an unter welcher URL ihr Produkt gefunden werden soll" class="form-control"><br>
 
+                    <label>Kurzbeschreibung:</label>
+                    <textarea class="form-control" name="kurzbeschreibung" rows="3"></textarea>
+
                     <label>Produktbeschreibung:</label>
                     <textarea class="form-control" name="beschreibung" rows="3"></textarea>
 
@@ -112,6 +116,7 @@ if(isset($_POST['abbrechen'])){
 if(isset($_POST['produktHinzufügen'])){
     $produktName = $_POST["titel"];
     $slug = $_POST["slug"];
+    $kurzbeschreibung = $_POST["kurzbeschreibung"];
     $beschreibung = $_POST["beschreibung"];
     $kategorie = $_POST["kategorie"];
     $preis = $_POST["preis"];
@@ -160,7 +165,7 @@ if(isset($_POST['produktHinzufügen'])){
 
     $countErrors = count($errors);
     if($countErrors == 0){
-        $dbOperation->addProduct($con,$produktName, $slug, $beschreibung, $kategorie, $preis, $bild);
+        $dbOperation->addProduct($con,$produktName, $slug, $kurzbeschreibung, $beschreibung, $kategorie, $preis, $bild);
     } else{ ?>
         <ul class="alert alert-danger">
         <?php foreach ($errors as $errorMessage):?>
