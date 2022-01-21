@@ -26,7 +26,7 @@ if(isset($_SESSION["username"])){
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="#">Warenkorb</a></li>
-                <li><a href="index.php"><span>Startseite</span></li>
+                <li><a href="index.php"><span>Startseite</span></a></li>
             </ul>
             <!-- /NAV -->
         </div>
@@ -61,6 +61,9 @@ if(isset($_SESSION["username"])){
             <div class="col-12 text-right">
                 Preis
             </div>
+            <div class="col-12 text-right">
+                Menge
+            </div>
         </div>
         <?php
         foreach ($warenkorbInhalte as $warenkorbInhalt):?>
@@ -73,6 +76,7 @@ if(isset($_SESSION["username"])){
         <!--row Summe des Warenkorbs -->
         <div class="row">
             <div class="col-12 text-right">
+                <hr>
                 <span>Summe (<?= $anzahlWarenkorbinhalte ?> Artikel): <?= $summeWarenkorbinhalte ?>€</span><li>
             </div>
         </div>
