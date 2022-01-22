@@ -17,11 +17,16 @@ if(isset($_SESSION["username"])){
 }
 
 $dbOperation = new dbOperationen();
+if($nutzername === 0){
+    $anzahlWarenkorbinhalte = 0;
+} else {
+    $nutzerId = $dbOperation->getUserID($con, $nutzername);
+    $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
+}
 
-$nutzerId = $dbOperation->getUserID($con, $nutzername);
 $randProdukte = $dbOperation->randProducts($con);
 $produkte = $dbOperation->getProducts($con);
-$anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
+
 
 ?>
 <!-- NAVIGATION -->
@@ -35,7 +40,7 @@ $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
                 <li class="active"><a href="#">Home</a></li>
 
                 <li><a href="warenkorb.php"><i class="fa fa-shopping-cart"></i>
-                        <span>Warenkorb(<?= $anzahlWarenkorbinhalte ?>)</span><li>
+                        <span>Warenkorb(<?= $anzahlWarenkorbinhalte  ?>)</span><li>
                     <li><a href="produktHinzu.php">Produkt hinzufügen</a></li>
 
             </ul>

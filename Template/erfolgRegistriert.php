@@ -1,8 +1,6 @@
 
-<?php
-echo "Sie haben sich erfolgreich registriert und können sich nun anmelden!";
+<?php include "headerStartSeite.php"; ?>
 
-//hier musst der Header und Footer noch kommen
-?>
-<br>
-<a href="vorlageIndex.php">Hier anmelden<br></a>
+<div class="alert alert-success"> <strong><?php echo "Sie sind erfolgreich registriert!" ?> <a href="login.php.">Hier anmelden<br></a></strong></div>
+
+
