@@ -56,7 +56,7 @@
     <h4 class="card-body">
         <?php echo $product['Kurzbeschreibung'] ?>
         <hr>
-        <h4 class="card-price"><?php echo $product['Preis'] - rand(20, 50) .'€'?> <del class="card-old-price"><?php echo $product['Preis'] .'€'?></del></h4>
+        <h4 class="card-price"><?php echo $product['Preis'] - rand(20, 150) .'€'?> <del class="card-old-price"><?php echo $product['Preis'] .'€'?></del></h4>
 
     <div class="card-footer">
         <a href="index.php/produkt/<?= $product['Slug']?>" class="btn btn-primary btn-sm">Details</a>

@@ -48,7 +48,7 @@ class dbOperationen
     }
 
 
-    //Hier wird das Produkt in der FakteTabelle Warenkorb eingetragen
+    //Hier wird das Produkt in der Tabelle Warenkorb eingetragen
     function productToCart($Nutzer_ID, $produkt_ID, $con){
         $insertSql = "INSERT INTO warenkorb (Produkt_ID, Nutzer_ID, Menge) 
                     VALUES ('$produkt_ID', '$Nutzer_ID', '1') ON DUPLICATE KEY UPDATE Menge = Menge + 1"; // füge Produkt dem Warenkorb hinzu, falls Produkt schon vorhanden -> erhöhe die Menge
@@ -60,9 +60,7 @@ class dbOperationen
 
     function countProductsInCart($userId, $con) {
         $sqlWK ="SELECT * FROM warenkorb WHERE Nutzer_ID = '".$userId."';";
-        //var_dump($sqlWK);
         $warenkorbResult = mysqli_query($con, $sqlWK);
-        //var_dump($warenkorbResult);
         $inhalte = 0;
         while ($warenkorbResult->fetch_assoc()) { // solange es passende Inhalte in der Warenkorbtabelle gibt, soll Inhalte um 1 erhöht werden
             $inhalte = $inhalte + 1;
@@ -101,29 +99,18 @@ class dbOperationen
         $sql = "SELECT ID, Titel, Beschreibung, Preis, Slug, Bild FROM produkte WHERE Slug = '".$slug."';";
         $result = mysqli_query($con, $sql);
         $row = mysqli_fetch_assoc($result);
-           return $row;
-
-
-       /* $stmt = mysqli_prepare($con, $sql);
-        mysqli_stmt_bind_param($stmt, "s", $slug); //spezifizierung des ? mit dem slug
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $id, $titel, $beschreibung, $preis, $slug);
-        mysqli_stmt_fetch($stmt);
-        mysqli_stmt_close($stmt);*/
-        //var_dump($sql);
-       //var_dump(mysqli_error($con));
-
+        return $row;
     }
 
-    function addProduct($con, $produktname, $slug, $beschreibung, $kategorie, $preis, $bild){
-        $insert = "INSERT INTO produkte(Titel, Beschreibung, Kategorie, Preis, Slug, Bild) VALUES ('".$produktname."', '".$beschreibung."', '".$kategorie."', '".$preis."', '".$slug."', '".$bild."')";
+    function addProduct($con, $produktname, $slug, $kurzbeschreibung, $beschreibung, $kategorie, $preis, $bild){
+        $insert = "INSERT INTO produkte(Titel, Kurzbeschreibung, Beschreibung, Kategorie, Preis, Slug, Bild) VALUES ('".$produktname."', '".$kurzbeschreibung."', '".$beschreibung."', '".$kategorie."', '".$preis."', '".$slug."', '".$bild."')";
         $result = mysqli_query($con, $insert);
         if($result){
-            $lastId = mysqli_insert_id($con);
-            echo "Produkt erfolgreich hinzugefügt. Letzte hinzugefügte ID lautet: " .$lastId;
-            //header("Location: index.php");
+            $lastId = mysqli_insert_id($con); ?>
+            <div class="alert alert-success"> <strong><?php echo "Produkt erfolgreich hinzugefügt. Letzte hinzugefügte ID lautet: " .$lastId; ?></strong></div> <?php
+        } else {
+            echo "Error: " . $insert . mysqli_error($con);
         }
-        echo "Error: " .$insert . mysqli_error($con);
     }
 
     function  deleteProductWarencorb($con, $seileID) {
