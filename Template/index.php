@@ -17,7 +17,7 @@ if(isset($_SESSION["username"])){
 }
 
 $dbOperation = new dbOperationen();
-
+//HIER KOMMENTIEREN WAS DIE EINZEILN METHODEN MACHEN
 $nutzerId = $dbOperation->getUserID($con, $nutzername);
 $randProdukte = $dbOperation->randProducts($con);
 $produkte = $dbOperation->getProducts($con);

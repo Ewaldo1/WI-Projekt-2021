@@ -9,11 +9,11 @@ if(isset($_SESSION["username"])){
 } else {
     $nutzername = 0;
 }
-
+//HIER KOMMENTIEREN WAS DIE METHODEN MACHEN
     $dbOperation = new dbOperationen();
     $nutzerId = $dbOperation->getUserID($con, $nutzername);
     $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
-    $warenkorbInhalte = $dbOperation->getCartItemsForUserId($nutzerId, $con);
+    $warenkorbInhalte = $dbOperation->getCartItemsForUserId($nutzerId, $con); //Karte wird gegeben
     $summeWarenkorbinhalte = $dbOperation->getCartSumForUserId($nutzerId, $con);
 ?>
 
