@@ -1,7 +1,7 @@
 <?php
 
 require 'connectDB.php';
-
+session_start();
 $_userEmail = $_POST["email"];
 $_userPassword = $_POST["passwort"];
 $_userOld = $_POST["geburtsdatum"];

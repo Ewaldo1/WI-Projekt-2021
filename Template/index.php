@@ -17,11 +17,24 @@ if(isset($_SESSION["username"])){
 }
 
 $dbOperation = new dbOperationen();
+<<<<<<< HEAD
 //HIER KOMMENTIEREN WAS DIE EINZEILN METHODEN MACHEN
 $nutzerId = $dbOperation->getUserID($con, $nutzername);
 $randProdukte = $dbOperation->randProducts($con);
 $produkte = $dbOperation->getProducts($con);  //Hier Seile von eine Produkt
 $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con); //
+=======
+if($nutzername === 0){
+    $anzahlWarenkorbinhalte = 0;
+} else {
+    $nutzerId = $dbOperation->getUserID($con, $nutzername);
+    $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
+}
+
+$randProdukte = $dbOperation->randProducts($con);
+$produkte = $dbOperation->getProducts($con);
+
+>>>>>>> 4e5998cd7f30784dc2da9a88b495dc96c7b0edad
 
 ?>
 <!-- NAVIGATION -->
@@ -35,7 +48,7 @@ $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con); //
                 <li class="active"><a href="#">Home</a></li>
 
                 <li><a href="warenkorb.php"><i class="fa fa-shopping-cart"></i>
-                        <span>Warenkorb(<?= $anzahlWarenkorbinhalte ?>)</span><li>
+                        <span>Warenkorb(<?= $anzahlWarenkorbinhalte  ?>)</span><li>
                     <li><a href="produktHinzu.php">Produkt hinzufügen</a></li>
 
             </ul>

@@ -138,7 +138,6 @@ if(isset($_POST['produktHinzufügen'])){
 
     if((bool)$produktName === false){
         $errors[]="Produktname muss angegeben werden!";
-        $validationProductName = false;
     }
     if((bool)$produktName === true && (bool)$slug === false){
         $slug = str_replace(' ', '-', $produktName);
@@ -147,20 +146,16 @@ if(isset($_POST['produktHinzufügen'])){
         $produkt = $dbOperation->getProductBySlug($slug, $con);
         if($produkt !== null){
             $errors[]= "Slug ist bereits vergeben!";
-            $validationSlug = false;
         }
     }
     if((bool)$beschreibung === false){
         $errors[]="Produktbeschreibung muss angegeben werden!";
-        $validationBeschreibung = false;
     }
     if($preis <= 0) {
         $errors[] = "Bitte einen korrekten Preis angeben!";
-        $validationPreis = false;
     }
     if((bool)$bild === false){
         $errors[]="Bitte ein Bild hinzufügen!";
-        $validationBild = false;
     }
 
     $countErrors = count($errors);
