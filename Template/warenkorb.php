@@ -13,7 +13,7 @@ if(isset($_SESSION["username"])){
     $dbOperation = new dbOperationen();
     $nutzerId = $dbOperation->getUserID($con, $nutzername);
     $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
-    $warenkorbInhalte = $dbOperation->getCartItemsForUserId($nutzerId, $con); //Karte wird gegeben
+    $warenkorbInhalte = $dbOperation->getCartItemsForUserId($nutzerId, $con); //Alle inhalte die die warenkorb sind
     $summeWarenkorbinhalte = $dbOperation->getCartSumForUserId($nutzerId, $con);
 ?>
 

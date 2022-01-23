@@ -15,7 +15,7 @@ class dbOperationen
             return [];
         }
         $products= [];
-        while ($row = $result->fetch_assoc()){
+        while ($row = $result->fetch_assoc()){ //fecht_assoc --> funktion liefert eine Seile
             $products[]=$row;
         }
         return $products;
@@ -67,7 +67,7 @@ class dbOperationen
         }
         return $inhalte;
     }
-
+    //Gib nur produkt die auf die Warenkorb von der Person die angemeldet
     function getCartItemsForUserId($userId, $con) {
         $sql = "SELECT Produkt_ID, Titel, Kurzbeschreibung, Preis, Bild, Menge FROM warenkorb JOIN produkte ON(warenkorb.Produkt_ID = produkte.ID) WHERE Nutzer_ID = '".$userId."';";
         $result = mysqli_query($con, $sql);

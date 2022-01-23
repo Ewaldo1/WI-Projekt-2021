@@ -20,8 +20,8 @@ $dbOperation = new dbOperationen();
 //HIER KOMMENTIEREN WAS DIE EINZEILN METHODEN MACHEN
 $nutzerId = $dbOperation->getUserID($con, $nutzername);
 $randProdukte = $dbOperation->randProducts($con);
-$produkte = $dbOperation->getProducts($con);
-$anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
+$produkte = $dbOperation->getProducts($con);  //Hier Seile von eine Produkt
+$anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con); //
 
 ?>
 <!-- NAVIGATION -->
@@ -189,7 +189,10 @@ if (strpos($route, '/kategorie') !== false) {
 <!-- /SECTION -->
 <section class="container" id="product">
     <div class="row"> <?php //eine Zeile für die Cards?>
-        <?php foreach ($randProdukte as $product): //foreach wird hier mit ":" unterbrochen?>
+
+        <?php
+        //alles was in tabelle steht so lange lesen
+        foreach ($randProdukte as $product): //foreach wird hier mit ":" unterbrochen?>
             <div class="col"> <?php //jeweils eine Spalte pro Card?>
                 <?php include 'cardHighlight.php' //Ausgabe der einzelnen Cards solange es Eintrage in DB-Tabelle gibt?>
             </div>

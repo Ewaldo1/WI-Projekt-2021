@@ -5,4 +5,4 @@ echo "Sie haben sich erfolgreich registriert und können sich nun anmelden!";
 //hier musst der Header und Footer noch kommen
 ?>
 <br>
-<a href="vorlageIndex.php">Hier anmelden<br></a>
+<a href="login.php">Hier anmelden<br></a>
