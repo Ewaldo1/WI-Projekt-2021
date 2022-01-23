@@ -113,21 +113,18 @@ class dbOperationen
         }
     }
 
-    function  deleteProductWarencorb($con, $seileID) {
-        $deleteComand = "DELETE FROM produkte WHERE ID = $seileID"; //Hier wird gesagt welche Seile muss gelösst werden
-//        $result = mysqli_query($con, $deleteComand);
-
-
+    function  deleteProductWarencorb($con, $produktID, $accountID) {
+        $deleteComand = "DELETE FROM Warenkorb WHERE Nutzer_ID = ".$accountID." AND Produkt_ID = ".$produktID." "; //Hier wird gesagt welche Seile muss gelösst werden
+        $result = mysqli_query($con, $deleteComand);
         //$deleteMe = "DEL"
     }
 
+    //Diese Funktion löscht alle Produkt aus der Warenkorb von der USER der bereit angemeldet ist
     function deleteAllProducts ($con, $accountID) {
         $sql = "DELETE FROM Warenkorb where Nutzer_ID = ".$accountID." ";
         $result = mysqli_query($con, $sql);
 
-
     }
-
     function getProductByCategory($con, $kategorie) {
         $sql = "SELECT * FROM produkte WHERE Kategorie = '".$kategorie."';";
         $result = mysqli_query($con, $sql);
@@ -138,8 +135,5 @@ class dbOperationen
         return $products;
 
     }
-
-
-
 
 }

@@ -78,7 +78,13 @@ if($nutzername === 0){
         </div>
         <?php
         if($warenkorbInhalte > 0):?>
-        <?php foreach ($warenkorbInhalte as $warenkorbInhalt):?>
+        <?php foreach ($warenkorbInhalte as $warenkorbInhalt):
+
+                //So speicher mich in Seson der Produkt ID
+               $_SESSION["aktuelleProduktID"] = $warenkorbInhalt['Produkt_ID'];
+
+                ?>
+
         <!-- row -->
         <div class="row warenkorbItem">
             <?php include 'warenkorbItems.php'; ?>
