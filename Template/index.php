@@ -17,13 +17,12 @@ if(isset($_SESSION["username"])){
 }
 
 $dbOperation = new dbOperationen();
-<<<<<<< HEAD
-//HIER KOMMENTIEREN WAS DIE EINZEILN METHODEN MACHEN
+
 $nutzerId = $dbOperation->getUserID($con, $nutzername);
-$randProdukte = $dbOperation->randProducts($con);
+$randProdukte = $dbOperation->randProducts($con); //hier gibt Zufällig die Produkten in der Index
 $produkte = $dbOperation->getProducts($con);  //Hier Seile von eine Produkt
 $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con); //
-=======
+
 if($nutzername === 0){
     $anzahlWarenkorbinhalte = 0;
 } else {
@@ -33,8 +32,6 @@ if($nutzername === 0){
 
 $randProdukte = $dbOperation->randProducts($con);
 $produkte = $dbOperation->getProducts($con);
-
->>>>>>> 4e5998cd7f30784dc2da9a88b495dc96c7b0edad
 
 ?>
 <!-- NAVIGATION -->

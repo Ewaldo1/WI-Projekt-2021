@@ -44,7 +44,7 @@ include 'HeaderHEKAY.php';
 <!-- /SECTION -->
 <section class="container" id="notebooks">
     <div class="row"> <?php //eine Zeile für die Cards?>
-        <?php foreach ($produkte as $product): //while wird hier mit ":" unterbrochen?>
+        <?php  foreach ($produkte as $product): //while wird hier mit ":" unterbrochen?>
             <div class="col"> <?php //jeweils eine Spalte pro Card?>
                 <?php include 'card.php'; //Ausgabe der einzelnen Cards solange es Eintrage in DB-Tabelle gibt ?>
             </div>

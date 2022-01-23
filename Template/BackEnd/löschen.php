@@ -4,8 +4,16 @@
 include "../connectDB.php"; //Daten bank anfragen anrufen.
 include "../Datenbank/dbOperationen.php";
 
+session_start();
 
 $dbOperation = new dbOperationen();
+$nutzername = $_SESSION["username"];
+$nutzerId = $dbOperation->getUserID($con, $nutzername);
 
 
+$dbOperation->deleteAllProducts($con, $nutzerId);
+
+
+
+header("Location: ../warenkorb.php");
 

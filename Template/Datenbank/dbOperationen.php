@@ -28,7 +28,7 @@ class dbOperationen
             return [];
         }
         $products= [];
-        while ($row = $result->fetch_assoc()){
+        while ($row = $result->fetch_assoc()){ //Hier wird Random eine Arry mit alle Produkteen gestellt
             $products[]=$row;
         }
         return $products;
@@ -115,11 +115,17 @@ class dbOperationen
 
     function  deleteProductWarencorb($con, $seileID) {
         $deleteComand = "DELETE FROM produkte WHERE ID = $seileID"; //Hier wird gesagt welche Seile muss gelösst werden
-        $result = mysqli_query($con);
-
+//        $result = mysqli_query($con, $deleteComand);
 
 
         //$deleteMe = "DEL"
+    }
+
+    function deleteAllProducts ($con, $accountID) {
+        $sql = "DELETE FROM Warenkorb where Nutzer_ID = ".$accountID." ";
+        $result = mysqli_query($con, $sql);
+
+
     }
 
     function getProductByCategory($con, $kategorie) {

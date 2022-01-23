@@ -9,10 +9,9 @@ if(isset($_SESSION["username"])){
 } else {
     $nutzername = 0;
 }
-<<<<<<< HEAD
+
 //HIER KOMMENTIEREN WAS DIE METHODEN MACHEN
     $dbOperation = new dbOperationen();
-=======
 
 $dbOperation = new dbOperationen();
 if($nutzername === 0){
@@ -20,7 +19,7 @@ if($nutzername === 0){
     $warenkorbInhalte = 0;
     $summeWarenkorbinhalte = 0;
 } else {
->>>>>>> 4e5998cd7f30784dc2da9a88b495dc96c7b0edad
+
     $nutzerId = $dbOperation->getUserID($con, $nutzername);
     $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
     $warenkorbInhalte = $dbOperation->getCartItemsForUserId($nutzerId, $con); //Alle inhalte die die warenkorb sind
@@ -97,7 +96,7 @@ if($nutzername === 0){
         <!--row Bezahlbutton -->
         <div class="row">
             <?php if ($warenkorbInhalte != 0):?><a href="checkout.php" class="btn btn-primary col-12 text-center"> Zur Kasse gehen</a><?php endif; ?>
-            <?php if ($warenkorbInhalte != 0):?><a href="checkout.php" class="btn btn-danger col-12 text-center"> Produkt loschen</a><?php endif; ?>
+            <?php if ($warenkorbInhalte != 0):?><a href="BackEnd/löschen.php" class="btn btn-danger col-12 text-center">all  Produkten loschen</a><?php endif; ?>
         </div>
     </div>
     <!-- /container -->
