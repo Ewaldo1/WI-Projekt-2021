@@ -1,4 +1,22 @@
-<?php include "HeaderHEKAY.php"; ?>
+<?php include "HeaderHEKAY.php";
+include "connectDB.php";
+include "Datenbank/dbOperationen.php";
+
+session_start();
+
+$dbOperation = new dbOperationen();
+$nutzername = $_SESSION["username"];
+$nutzerId = $dbOperation->getUserID($con, $nutzername);
+
+$warenkorbInhalte = $dbOperation->getCartItemsForUserId($nutzerId, $con);
+
+//if(empty(var_dump(count($warenkorbInhalte))))
+if (empty($warenkorbInhalte)){
+
+    header("Location: warenkorb.php");
+}
+
+?>
 <nav id="navigation">
     <!-- container -->
     <div class="container">

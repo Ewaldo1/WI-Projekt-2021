@@ -1,3 +1,21 @@
+<script type = "text/javascript">
+    function ConfirmAllDelete()
+    {
+        var antwort = confirm(Sind Sie sicher dass sie alle Produkte aus warenkorb löschen wollen?);
+
+        if(antwort == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false
+        }
+    }
+
+</script>
+
+
 <?php
 //Hier wird die backand verwenden um produkte aus der Warenkorb zu löschen!
 

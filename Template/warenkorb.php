@@ -1,3 +1,19 @@
+<script type = "text/javascript">
+    function confirmAllDelete()
+    {
+        var antwort = confirm("Sind Sie sicher dass sie alle Produkte aus warenkorb löschen wollen?");
+
+        if(antwort == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false
+        }
+    }
+
+</script>
 <?php include "HeaderHEKAY.php";
       include "connectDB.php";
       include "Datenbank/dbOperationen.php";
@@ -89,7 +105,8 @@ if($nutzername === 0){
         <div class="row warenkorbItem">
             <?php include 'warenkorbItems.php'; ?>
         </div>
-        <?php endforeach;?>
+
+            <?php endforeach;?>
         <?php endif;?>
         <!-- /row -->
         <!--row Summe des Warenkorbs -->
@@ -102,7 +119,7 @@ if($nutzername === 0){
         <!--row Bezahlbutton -->
         <div class="row">
             <?php if ($warenkorbInhalte != 0):?><a href="checkout.php" class="btn btn-primary col-12 text-center"> Zur Kasse gehen</a><?php endif; ?>
-            <?php if ($warenkorbInhalte != 0):?><a href="BackEnd/löschen.php" class="btn btn-danger col-12 text-center">all  Produkten loschen</a><?php endif; ?>
+            <?php if ($warenkorbInhalte != 0):?><a href="BackEnd/löschen.php" class="btn btn-danger col-12 text-center" onclick="return confirmAllDelete()">all  Produkten loschen</a><?php endif; ?>
         </div>
     </div>
     <!-- /container -->
