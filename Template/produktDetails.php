@@ -1,5 +1,12 @@
-<?php include "HeaderHEKAY.php"; ?>
+<?php
+      include "HeaderHEKAY.php";
+      include "connectDB.php";
+      include "Datenbank/dbOperationen.php";
 
+$dbOperation = new dbOperationen();
+$produkt = $dbOperation->getProductBySlug($_GET["slug"], $con);
+
+?>
 
 <!-- NAVIGATION -->
 <nav id="navigation">

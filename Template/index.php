@@ -131,7 +131,7 @@ if (strpos($route, '/kategorie') !== false) {
                                         </div>
                                         <div class="shop-body">
                                             <h3>Notebook</h3>
-                                            <a href="index.php/kategorie/Notebook" class="cta-btn">Jetzt einkaufen <i class="fa fa-arrow-circle-right"></i></a>
+                                            <a href="kategorie.php?kategorie=Notebook" class="cta-btn">Jetzt einkaufen <i class="fa fa-arrow-circle-right"></i></a>
                                         </div>
                                    </div>
                                 </div>
@@ -145,7 +145,7 @@ if (strpos($route, '/kategorie') !== false) {
                                         </div>
                                         <div class="shop-body">
                                             <h3>Smartphone</h3>
-                                            <a href="index.php/kategorie/Smartphone" class="cta-btn">Jetzt einkaufen <i class="fa fa-arrow-circle-right"></i></a>
+                                            <a href="kategorie.php?kategorie=Smartphone" class="cta-btn">Jetzt einkaufen <i class="fa fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -159,7 +159,7 @@ if (strpos($route, '/kategorie') !== false) {
                                         </div>
                                         <div class="shop-body">
                                             <h3>Fernseher</h3>
-                                            <a href="index.php/kategorie/Fernseher" class="cta-btn" name="fernseher">Jetzt einkaufen <i class="fa fa-arrow-circle-right"></i></a>
+                                            <a href="kategorie.php?kategorie=Fernseher" class="cta-btn" name="fernseher">Jetzt einkaufen <i class="fa fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>

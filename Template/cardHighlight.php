@@ -24,14 +24,12 @@
         font-size: 18px;
     }
     .card .card-body .card-price {
-        color: #D10024;
         font-size: 18px;
     }
 
      .card .card-body .card-price .card-old-price {
         font-size: 70%;
         font-weight: 400;
-        color: #8D99AE;
     }
     .card .card button {
         border: none;
@@ -56,10 +54,10 @@
     <h4 class="card-body">
         <?php echo $product['Kurzbeschreibung'] ?>
         <hr>
-        <h4 class="card-price"><?php echo $product['Preis'] - rand(20, 150) .'€'?> <del class="card-old-price"><?php echo $product['Preis'] .'€'?></del></h4>
+        <h4 class="card-price" style = "color: #D10024"><?php echo $product['Preis'] - rand(20, 150) .'€'?> <del class="card-old-price" style="color: #8D99AE"><?php echo $product['Preis'] .'€'?></del></h4>
 
     <div class="card-footer">
-        <a href="index.php/produkt/<?= $product['Slug']?>" class="btn btn-primary btn-sm">Details</a>
+        <a href="produktDetails.php?slug=<?= $product['Slug']?>" class="btn btn-primary btn-sm">Details</a>
         <a href="index.php/warenkorb/add/<?= $product['ID']?>" class="btn btn-success btn-sm">Zum Warenkorb</a>
 
     </div>

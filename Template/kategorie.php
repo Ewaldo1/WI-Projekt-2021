@@ -1,5 +1,10 @@
 <?php
-include 'HeaderHEKAY.php';
+include "HeaderHEKAY.php";
+include "connectDB.php";
+include "Datenbank/dbOperationen.php";
+
+$dbOperation = new dbOperationen();
+$produkte = $dbOperation->getProductByCategory($con, $_GET["kategorie"]);
 
 ?>
 
