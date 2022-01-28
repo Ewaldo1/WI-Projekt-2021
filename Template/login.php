@@ -64,11 +64,14 @@ if(isset($_POST["submit"])){
     $sql = "SELECT * FROM nutzer WHERE '" . $username . "' = Username AND '" .$passwort ."' = Passwort"; //Nutzer wird in Tabelle gesucht
     $result = mysqli_query($con, $sql);
 
-    if(false === (bool)$username){
-        echo "Feld des Benutzers leer";
+    if((bool) $username === false && (bool) $passwort === false){ ?>
+        <br><div class="alert alert-danger"> <strong><?php echo "Benutzername und Passwort sind leer"?></strong></div> <?php
+    }
+    else if((bool)$username === false){ ?>
+         <br><div class="alert alert-danger"> <strong><?php echo "Feld für Benutzername leer"?></strong></div> <?php
 
-    } else if(false === (bool)$passwort){
-        echo "Passwortfeld ist leer";
+    } else if((bool)$passwort === false){ ?>
+        <br><div class="alert alert-danger"> <strong><?php echo "Feld für Passwort leer"?></strong></div> <?php
     } else if(mysqli_num_rows($result) > 0) { //prüfen ob Nutzer gefunden
         session_start();
         while ($row = mysqli_fetch_array($result)) {
@@ -80,8 +83,8 @@ if(isset($_POST["submit"])){
 
 
         header("Location: index.php");
-    } else {
-        echo "Benutzername oder Passwort falsch";
+    } else { ?>
+        <br><div class="alert alert-danger"> <strong><?php echo "Benutzername oder Passwort falsch"?></strong></div> <?php
     }
 }
 ?>

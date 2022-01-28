@@ -1,7 +1,7 @@
 <?php
 
 
-//Hier wird die backand verwenden um produkte aus der Warenkorb zu löschen!
+//Hier wird das Backend verwenden, um Produkte aus dem Warenkorb zu entfernen!
 
 include "../connectDB.php"; //Daten bank anfragen anrufen.
 include "../Datenbank/dbOperationen.php";
@@ -14,13 +14,9 @@ $nutzerId = $dbOperation->getUserID($con, $nutzername);
 
 $dieseProduktID =$_SESSION["aktuelleProduktID"];
 
-$dbOperation->deleteProductWarencorb($con, $dieseProduktID, $nutzerId);
+$dbOperation->deleteProductWarenkorb($con, $dieseProduktID, $nutzerId);
 
 
 header("Location: ../warenkorb.php");
-
-//$warenkorbInhalt['Menge'];
-
-
 
 ?>

@@ -5,7 +5,11 @@ class dbOperationen
         $sql = "SELECT ID FROM nutzer WHERE Username = '".$username."';"; // ausgabe der ID, wenn die Usernamen übereinstimmen
         $result = mysqli_query($con, $sql);
         $getID = mysqli_fetch_assoc($result);
-        return $getID['ID'];
+        if(empty($getID)) {
+            return 0;
+        } else {
+            return $getID['ID'];
+        }
     }
 
     function getProducts($con){
@@ -15,7 +19,7 @@ class dbOperationen
             return [];
         }
         $products= [];
-        while ($row = $result->fetch_assoc()){ //fecht_assoc --> funktion liefert eine Seile
+        while ($row = $result->fetch_assoc()){ //fetch_assoc --> funktion liefert eine Zeile
             $products[]=$row;
         }
         return $products;
@@ -33,20 +37,6 @@ class dbOperationen
         }
         return $products;
     }
-
-    function randProductsBestseller($con){
-        $sql = "SELECT ID, Titel, Kurzbeschreibung, Kategorie, Beschreibung, Preis, Slug, Bild FROM produkte ORDER BY rand() LIMIT 4";
-        $result = mysqli_query($con, $sql);
-        if($result === false){
-            return [];
-        }
-        $products= [];
-        while ($row = $result->fetch_assoc()){
-            $products[]=$row;
-        }
-        return $products;
-    }
-
 
     //Hier wird das Produkt in der Tabelle Warenkorb eingetragen
     function productToCart($Nutzer_ID, $produkt_ID, $con){
@@ -102,6 +92,24 @@ class dbOperationen
         return $row;
     }
 
+    function getProductBySearch($con, $suche){
+        $sql = "SELECT ID, Titel, Beschreibung, Preis, Slug, Bild FROM produkte WHERE Titel LIKE '%$suche%';";
+        $result = mysqli_query($con, $sql);
+        if($result === false) {
+            return [];
+        }
+        $items = [];
+        while($row = $result->fetch_assoc()){
+            $items[] = $row;
+        }
+        if(empty($items)) { ?>
+            <div class="alert alert-info"> <strong><?php echo "Kein passender Eintrag zu Ihrer Suche gefunden."?></strong></div> <?php
+        } else {
+            return $items;
+        }
+    }
+
+
     function addProduct($con, $produktname, $slug, $kurzbeschreibung, $beschreibung, $kategorie, $preis, $bild){
         $insert = "INSERT INTO produkte(Titel, Kurzbeschreibung, Beschreibung, Kategorie, Preis, Slug, Bild) VALUES ('".$produktname."', '".$kurzbeschreibung."', '".$beschreibung."', '".$kategorie."', '".$preis."', '".$slug."', '".$bild."')";
         $result = mysqli_query($con, $insert);
@@ -113,13 +121,13 @@ class dbOperationen
         }
     }
 
-    function  deleteProductWarencorb($con, $produktID, $accountID) {
-        $deleteComand = "DELETE FROM Warenkorb WHERE Nutzer_ID = ".$accountID." AND Produkt_ID = ".$produktID." "; //Hier wird gesagt welche Seile muss gelösst werden
-        $result = mysqli_query($con, $deleteComand);
+    function  deleteProductWarenkorb($con, $produktID, $accountID) {
+        $deleteCommand = "DELETE FROM Warenkorb WHERE Nutzer_ID = ".$accountID." AND Produkt_ID = ".$produktID." "; //Hier wird gesagt welche Zeile gelöscht werden muss
+        $result = mysqli_query($con, $deleteCommand);
         //$deleteMe = "DEL"
     }
 
-    //Diese Funktion löscht alle Produkt aus der Warenkorb von der USER der bereit angemeldet ist
+    //Diese Funktion löscht alle Produkte aus dem Warenkorb von dem USER der bereit angemeldet ist
     function deleteAllProducts ($con, $accountID) {
         $sql = "DELETE FROM Warenkorb where Nutzer_ID = ".$accountID." ";
         $result = mysqli_query($con, $sql);

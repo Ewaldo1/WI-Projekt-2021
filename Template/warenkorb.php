@@ -119,7 +119,7 @@ if($nutzername === 0){
         <!--row Bezahlbutton -->
         <div class="row">
             <?php if ($warenkorbInhalte != 0):?><a href="checkout.php" class="btn btn-primary col-12 text-center"> Zur Kasse gehen</a><?php endif; ?>
-            <?php if ($warenkorbInhalte != 0):?><a href="BackEnd/löschen.php" class="btn btn-danger col-12 text-center" onclick="return confirmAllDelete()">all  Produkten loschen</a><?php endif; ?>
+            <?php if ($warenkorbInhalte != 0):?><a href="BackEnd/löschen.php" class="btn btn-danger col-12 text-center" onclick="return confirmAllDelete()">alle Produkte entfernen</a><?php endif; ?>
         </div>
     </div>
     <!-- /container -->

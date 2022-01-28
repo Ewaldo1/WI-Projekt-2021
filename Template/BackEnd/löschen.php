@@ -1,25 +1,17 @@
 <script type = "text/javascript">
     function ConfirmAllDelete()
     {
-        var antwort = confirm(Sind Sie sicher dass sie alle Produkte aus warenkorb löschen wollen?);
+        var antwort = confirm(Sind Sie sicher dass sie alle Produkte aus dem Warenkorb entfernen wollen?);
 
-        if(antwort == true)
-        {
-            return true;
-        }
-        else
-        {
-            return false
-        }
-    }
+       return antwort;
 
 </script>
 
 
 <?php
-//Hier wird die backand verwenden um produkte aus der Warenkorb zu löschen!
+//Hier wird das Backend verwendet, um Produkte aus dem Warenkorb zu entfernen!
 
-include "../connectDB.php"; //Daten bank anfragen anrufen.
+include "../connectDB.php"; //Datenbank anfragen anrufen.
 include "../Datenbank/dbOperationen.php";
 
 session_start();

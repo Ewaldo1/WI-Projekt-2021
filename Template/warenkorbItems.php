@@ -9,7 +9,7 @@
     <?= $warenkorbInhalt['Preis']?> €<br>
     <?= $warenkorbInhalt['Menge']?> Stk.
     <br>
-    <a href="BackEnd/löschenEinzelbProdukt.php" class="btn btn-danger col-12 text-center">dieses  Produkt löschen</a>
+    <a href="BackEnd/löschenEinzelbProdukt.php" class="btn btn-danger col-12 text-center">Produkt entfernen</a>
     <br>
     <br>
 

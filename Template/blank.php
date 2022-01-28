@@ -52,6 +52,7 @@ include "Datenbank/dbOperationen.php";
 			<div class="container">
 				<!-- row -->
 				<div class="row">
+
 				</div>
 				<!-- /row -->
 			</div>

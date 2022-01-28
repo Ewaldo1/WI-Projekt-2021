@@ -3,7 +3,8 @@
 
     .card {
         float: left;
-        max-width: 300px;
+        width: 300px;
+        height: 700px;
         margin: 15px;
         text-align: center;
         font-family: arial;
@@ -22,14 +23,6 @@
     }
     .card .card-title {
         font-size: 18px;
-    }
-    .card .card-body .card-price {
-        font-size: 18px;
-    }
-
-     .card .card-body .card-price .card-old-price {
-        font-size: 70%;
-        font-weight: 400;
     }
     .card .card button {
         border: none;
@@ -51,7 +44,7 @@
 <div class="card">
     <div class="card-title"><?php echo $product['Titel'] //Titel der Zeile aus der Produktdatenbanktabelle ?></div>
     <img src="<?php echo $product['Bild']; ?>" class="card-img-top" height="300px" width="300px" alt="produkt">
-    <h4 class="card-body">
+    <h4 class="card-body" style="font-size: 15px"></h4>
         <?php echo $product['Kurzbeschreibung'] ?>
         <hr>
         <h4 class="card-price" style = "color: #D10024"><?php echo $product['Preis'] - rand(20, 150) .'€'?> <del class="card-old-price" style="color: #8D99AE"><?php echo $product['Preis'] .'€'?></del></h4>

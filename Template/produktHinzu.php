@@ -7,26 +7,20 @@ if(isset($_SESSION["username"])){
     $nutzername = $_SESSION["username"];
 } else {
     $nutzername = 0;
+    header("Location: login.php");
 }
 
 $dbOperation = new dbOperationen();
 $nutzerId = $dbOperation->getUserID($con, $nutzername);
 $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
-
-$produktName = "";
-$validationProductName = true;
-$slug = "";
-$validationSlug = true;
-$kurzbeschreibung = "";
-$beschreibung = "";
-$validationBeschreibung = true;
-$preis = "";
-$validationPreis= true;
-$bild ="";
-$validationBild = true;
 $errors = [];
 $countErrors = 0;
 ?>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- NAVIGATION -->
 <nav id="navigation">
@@ -69,36 +63,55 @@ $countErrors = 0;
 
 <!-- /BREADCRUMB -->
 <section class="container">
-    <form action = "produktHinzu.php" method = "post">
+    <form action = "produktHinzu.php" method = "post" class="needs-validation" novalidate>
         <div class="card">
             <div class="card-body">
                 <div class="form-group">
                     <label>Produktname:</label>
-                    <input type="text" name= "titel" placeholder="Vergeben Sie einen Titel für ihr Produkt" class="form-control"><br>
-
+                    <input type="text" class="form-control" id="titel"  placeholder="Vergeben Sie einen Titel für ihr Produkt" name= "titel" required>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">Dieses Feld muss ausgefüllt werden</div>
+                </div>
+                <div class="form-group">
                     <label>Slug:</label>
-                    <input type="text" name= "slug" placeholder="Geben Sie an unter welcher URL ihr Produkt gefunden werden soll" class="form-control"><br>
-
+                    <input type="text" class="form-control" id="slug"  placeholder="Geben Sie an unter welcher URL ihr Produkt gefunden werden soll" name= "slug" required>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">Dieses Feld muss ausgefüllt werden</div>
+                </div>
+                <div class="form-group">
                     <label>Kurzbeschreibung:</label>
-                    <textarea class="form-control" name="kurzbeschreibung" rows="3"></textarea>
-
+                    <textarea class="form-control" id="kurzbeschreibung" placeholder="Vergeben Sie eine kurze Beschreibung" rows="2" name="kurzbeschreibung" required></textarea>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">Dieses Feld muss ausgefüllt werden</div>
+                </div>
+                <div class="form-group">
                     <label>Produktbeschreibung:</label>
-                    <textarea class="form-control" name="beschreibung" rows="3"></textarea>
-
-                    <br><label>Produktkategorie:</label><br>
-                    <input type="radio" id="notebook" name="kategorie" value="Notebook" checked>
+                    <textarea class="form-control" id="beschreibung" placeholder="Vergeben Sie eine ausführliche Beschreibung" rows="3" name="beschreibung" required></textarea>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">Dieses Feld muss ausgefüllt werden</div>
+                </div>
+                <div class="form-group">
+                    <label>Produktkategorie:</label><br>
+                    <input type="radio" id="notebook" name="kategorie" value="Notebook" required>
                     <label for="notebook"> Notebook</label><br>
                     <input type="radio" id="smartphone" name="kategorie" value="Smartphone">
                     <label for="smartphone"> Smartphone</label><br>
                     <input type="radio" id="fernseher" name="kategorie" value="Fernseher">
-                    <label for="fernseher"> Fernseher</label><br>
-
+                    <label for="fernseher"> Fernseher</label>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">Dieses Feld muss ausgefüllt werden</div>
+                </div>
+                <div class="form-group">
                     <br><label>Preis:</label>
-                    <input type="text" name= "preis" placeholder="Geben Sie den Preis des Produktes an" class="form-control"><br>
-
+                    <input type="text" class="form-control" id="preis"  placeholder="Geben Sie den Preis des Produktes an" name= "preis" required>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">Dieses Feld muss ausgefüllt werden</div>
+                </div>
+                <div class="form-group">
                     <label>Produktbild:</label>
-                    <input type="text" name= "produktbild" placeholder="Geben Sie den Pfad zu ihrem Bild in der Form ./img/picturename.png an" class="form-control"><br>
-
+                    <input type="text" class="form-control" id="produktbild"  placeholder="Geben Sie den Pfad zu ihrem Bild in der Form ./img/picturename.png an" name= "produktbild" required>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">Dieses Feld muss ausgefüllt werden</div>
                 </div>
             </div>
             <div class="card-footer">
@@ -120,21 +133,7 @@ if(isset($_POST['produktHinzufügen'])){
     $beschreibung = $_POST["beschreibung"];
     $kategorie = $_POST["kategorie"];
     $preis = $_POST["preis"];
-    $bild = $_POST["produktbild"]; //$_FILES["produktbild"];
-
-
-  /*  function formatFiles($files){ // Der Bildfile ist ein Array aus 5 Elementen (Name, type, tmp_name, error, size), die jeweils ebenfalls ein Element als Array haben --> zu Bild nur ein einziges Array mit 5 Elementen
-        $result = [];
-        foreach ($files as $key => $values){
-            foreach ($values as $index => $value){
-                $result[$index][$key] = $value;
-            }
-        }
-
-        return $result;
-    }
-    $bild = formatFiles($bild);
-    var_dump($bild);*/
+    $bild = $_POST["produktbild"];
 
     if((bool)$produktName === false){
         $errors[]="Produktname muss angegeben werden!";
@@ -155,23 +154,42 @@ if(isset($_POST['produktHinzufügen'])){
         $errors[] = "Bitte einen korrekten Preis angeben!";
     }
     if((bool)$bild === false){
-        $errors[]="Bitte ein Bild hinzufügen!";
+        $errors[]="Produktbild muss angegeben werden!";
     }
-
     $countErrors = count($errors);
     if($countErrors == 0){
         $dbOperation->addProduct($con,$produktName, $slug, $kurzbeschreibung, $beschreibung, $kategorie, $preis, $bild);
     } else{ ?>
         <ul class="alert alert-danger">
         <?php foreach ($errors as $errorMessage):?>
-                <li><?php echo "- $errorMessage" ?></li>
-            <?php endforeach ?>
-         </ul><?php
+            <li><?php echo "- $errorMessage" ?></li>
+        <?php endforeach ?>
+        </ul><?php
     }
     exit();
 }
 ?>
-
+<!--Quelle: https://www.w3schools.com/bootstrap4/bootstrap_forms.asp-->
+<script>
+    // Disable form submissions if there are invalid fields
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Get the forms we want to add validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
 <?php "FooterHekay.php" ?>
 
 </body>

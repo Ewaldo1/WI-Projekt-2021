@@ -44,6 +44,7 @@
 
     </head>
 	<body>
+
 		<!-- HEADER -->
 		<header>
 			<!-- TOP HEADER -->
@@ -75,8 +76,13 @@
 									<img src="./img/logo120.png" alt="">
 								</a>
 							</div>
+                            <div class="search-container">
+                                <form action="action_page.php">
+                                    <input type="text" placeholder="Suche.." name="search">
+                                    <button class="fa fa-search"  name ="produktSuchen"></button>
+                                </form>
+                            </div>
 						</div>
-
 							</div>
 						</div>
 						<!-- /ACCOUNT -->

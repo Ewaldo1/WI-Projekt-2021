@@ -10,20 +10,20 @@ $_userName = $_POST["userName"];
 //Die Tabelle BENUTZER Enthählt info von unsere Users!
 if(isset($_POST['submit'])) {
     $prüfung1 = verificationData($_userEmail, $_userOld); //HIER WIRD ÜBERPRÜFT ob gab RICHTIGE ABGABE bei EMAIL UND ALTER
-    if($prüfung1 === false) {
-        echo "Fehler bei der Registrierung";
+    if($prüfung1 === false) { ?>
+        <br><div class="alert alert-danger"> <strong><?php echo "Fehler bei der Registrierung"?></strong></div> <?php
     } else {
         $sql = "SELECT Email FROM nutzer WHERE '" . $_userEmail . "' = Email";
         $searchResult = mysqli_query($con,$sql);
-        if(mysqli_num_rows($searchResult) > 0) {
-            echo "Der Benutzer existiert bereits. Bitte logge dich ein!";
+        if(mysqli_num_rows($searchResult) > 0) { ?>
+             <br><div class="alert alert-danger"> <strong><?php echo "Benutzer existiert bereits. Bitte logge dich ein."?></strong></div> <?php
         } else {
             $insert = "INSERT INTO nutzer(Email, Passwort, Geburtsdatum, Username)VALUES ('$_userEmail', '$_userPassword', '$_userOld', '$_userName')";
             $result = mysqli_query($con, $insert);
             if ($result) {
                 header("Location: erfolgRegistriert.php");
-            } else {
-                echo "Fehler bei der Registrierung";
+            } else { ?>
+                <br><div class="alert alert-danger"> <strong><?php echo "Fehler bei der Registrierung"?></strong></div> <?php
             }
         }
     }
@@ -35,12 +35,12 @@ if(isset($_POST['submit'])) {
 
 function verificationData($_mailP, $_oldP) {
 
-    if(!filter_var($_oldP, FILTER_VALIDATE_INT)) {
-        echo "Geben Sie bitte gültige Alter <br />\n";
+    if(!filter_var($_oldP, FILTER_VALIDATE_INT)) { ?>
+        <br><div class="alert alert-danger"> <strong><?php echo "Geben Sie bitte ein gültiges Alter ein!"?></strong></div> <?php
         return false;
     }
-    if(!filter_var($_mailP, FILTER_VALIDATE_EMAIL)) {
-        echo "Geben sie ein gültige Email bitteee! <br />\n";
+    if(!filter_var($_mailP, FILTER_VALIDATE_EMAIL)) { ?>
+        <br><div class="alert alert-danger"> <strong><?php echo "Geben Sie eine gültige Email-Adresse an!"?></strong></div> <?php
         return false;
     }
 

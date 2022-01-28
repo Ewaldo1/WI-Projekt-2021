@@ -4,8 +4,7 @@
    .card {
       float: left;
        width: 300px;
-       height: 600px;
-       max-width: 300px;
+       height: 625px;
        margin: 15px;
        text-align: center;
        font-family: arial;
