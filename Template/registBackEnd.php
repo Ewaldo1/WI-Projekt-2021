@@ -1,5 +1,5 @@
-<?php
 
+<?php
 require 'connectDB.php';
 session_start();
 $_userEmail = $_POST["email"];
@@ -18,6 +18,8 @@ if(isset($_POST['submit'])) {
         if(mysqli_num_rows($searchResult) > 0) { ?>
              <br><div class="alert alert-danger"> <strong><?php echo "Benutzer existiert bereits. Bitte logge dich ein."?></strong></div> <?php
         } else {
+            $_userEmail = md5($_POST["email"]);
+            $_userPassword = md5($_POST["passwort"]);
             $insert = "INSERT INTO nutzer(Email, Passwort, Geburtsdatum, Username)VALUES ('$_userEmail', '$_userPassword', '$_userOld', '$_userName')";
             $result = mysqli_query($con, $insert);
             if ($result) {
@@ -50,6 +52,6 @@ function verrificationDataDB ($prüfung1) {
     if ($prüfung1 == false) {
         return 0;
     }
+} ?>
 
-}
 

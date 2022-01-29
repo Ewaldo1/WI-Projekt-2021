@@ -1,4 +1,10 @@
 <?php include "headerStartSeite.php"; ?>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+
 <!-- NAVIGATION -->
 <nav id="navigation">
     <!-- container -->
@@ -37,14 +43,14 @@
 </div>
 <!-- /BREADCRUMB -->
 <section class="container">
-    <form action = "login.php" method = "post">
+    <form action = "login.php" method = "post" class="needs-validation" novalidate>
         <div class="card">
             <div class="card-body">
                 <div class="form-group">
                     <label>Username</label>
-                    <input type="text" name= "username" placeholder="Username" class="form-control"><br>
+                    <input type="text" class="form-control" id="username" placeholder="Username" name= "username" required><br>
                     <label>Passwort</label>
-                    <input type="password" name = "passwort" placeholder="Passwort" class="form-control">
+                    <input type="password" class="form-control" placeholder="Passwort" name = "passwort" required>
                 </div>
             </div>
             <div class="card-footer">
@@ -60,19 +66,11 @@ session_start();
 if(isset($_POST["submit"])){
     include "connectDB.php";
     $username = $_POST['username'];
-    $passwort = $_POST['passwort'];
+    $passwort = md5($_POST['passwort']); // Eingebaute Hashfunktion mit 128 bit Hashcode
     $sql = "SELECT * FROM nutzer WHERE '" . $username . "' = Username AND '" .$passwort ."' = Passwort"; //Nutzer wird in Tabelle gesucht
     $result = mysqli_query($con, $sql);
 
-    if((bool) $username === false && (bool) $passwort === false){ ?>
-        <br><div class="alert alert-danger"> <strong><?php echo "Benutzername und Passwort sind leer"?></strong></div> <?php
-    }
-    else if((bool)$username === false){ ?>
-         <br><div class="alert alert-danger"> <strong><?php echo "Feld für Benutzername leer"?></strong></div> <?php
-
-    } else if((bool)$passwort === false){ ?>
-        <br><div class="alert alert-danger"> <strong><?php echo "Feld für Passwort leer"?></strong></div> <?php
-    } else if(mysqli_num_rows($result) > 0) { //prüfen ob Nutzer gefunden
+    if(mysqli_num_rows($result) > 0) { //prüfen ob Nutzer gefunden
         session_start();
         while ($row = mysqli_fetch_array($result)) {
             $_SESSION["username"] = $username;
@@ -80,14 +78,33 @@ if(isset($_POST["submit"])){
         }
         //Hier werde überprüfen ob wir Online sind!
         include BackEnd/online.php;
-
-
         header("Location: index.php");
     } else { ?>
         <br><div class="alert alert-danger"> <strong><?php echo "Benutzername oder Passwort falsch"?></strong></div> <?php
     }
 }
 ?>
+<!--Quelle: https://www.w3schools.com/bootstrap4/bootstrap_forms.asp-->
+<script>
+    //es wird geprüft, ob es unausgefüllte Felder gibt, wenn ja wird die Meldung für invalid-feedback ausgegeben
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Get the forms we want to add validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
 <html>
 <br> <br>
 </html>

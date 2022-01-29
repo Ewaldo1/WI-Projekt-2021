@@ -13,8 +13,6 @@ if(isset($_SESSION["username"])){
 $dbOperation = new dbOperationen();
 $nutzerId = $dbOperation->getUserID($con, $nutzername);
 $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
-$errors = [];
-$countErrors = 0;
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -135,43 +133,13 @@ if(isset($_POST['produktHinzufügen'])){
     $preis = $_POST["preis"];
     $bild = $_POST["produktbild"];
 
-    if((bool)$produktName === false){
-        $errors[]="Produktname muss angegeben werden!";
-    }
-    if((bool)$produktName === true && (bool)$slug === false){
-        $slug = str_replace(' ', '-', $produktName);
-    }
-    if((bool)$slug === true){
-        $produkt = $dbOperation->getProductBySlug($slug, $con);
-        if($produkt !== null){
-            $errors[]= "Slug ist bereits vergeben!";
-        }
-    }
-    if((bool)$beschreibung === false){
-        $errors[]="Produktbeschreibung muss angegeben werden!";
-    }
-    if($preis <= 0) {
-        $errors[] = "Bitte einen korrekten Preis angeben!";
-    }
-    if((bool)$bild === false){
-        $errors[]="Produktbild muss angegeben werden!";
-    }
-    $countErrors = count($errors);
-    if($countErrors == 0){
-        $dbOperation->addProduct($con,$produktName, $slug, $kurzbeschreibung, $beschreibung, $kategorie, $preis, $bild);
-    } else{ ?>
-        <ul class="alert alert-danger">
-        <?php foreach ($errors as $errorMessage):?>
-            <li><?php echo "- $errorMessage" ?></li>
-        <?php endforeach ?>
-        </ul><?php
-    }
-    exit();
+    $dbOperation->addProduct($con,$produktName, $slug, $kurzbeschreibung, $beschreibung, $kategorie, $preis, $bild);
+
 }
 ?>
 <!--Quelle: https://www.w3schools.com/bootstrap4/bootstrap_forms.asp-->
 <script>
-    // Disable form submissions if there are invalid fields
+    //es wird geprüft, ob es unausgefüllte Felder gibt, wenn ja wird die Meldung für invalid-feedback ausgegeben
     (function() {
         'use strict';
         window.addEventListener('load', function() {
@@ -190,6 +158,7 @@ if(isset($_POST['produktHinzufügen'])){
         }, false);
     })();
 </script>
+
 <?php "FooterHekay.php" ?>
 
 </body>

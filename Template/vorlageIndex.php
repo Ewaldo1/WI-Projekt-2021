@@ -41,10 +41,9 @@
     session_start();
 
     if (empty($_SESSION["username"])) {
-        include "headerStartSeite.php";
-
+    include "headerStartSeite.php";
     } else{
-        include "HeaderHEKAY.php";
+    include "HeaderHEKAY.php";
     }
 
     if(isset($_SESSION["username"])){

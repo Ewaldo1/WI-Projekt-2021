@@ -43,7 +43,6 @@ class dbOperationen
         $insertSql = "INSERT INTO warenkorb (Produkt_ID, Nutzer_ID, Menge) 
                     VALUES ('$produkt_ID', '$Nutzer_ID', '1') ON DUPLICATE KEY UPDATE Menge = Menge + 1"; // füge Produkt dem Warenkorb hinzu, falls Produkt schon vorhanden -> erhöhe die Menge
 
-
         $result = mysqli_query($con, $insertSql);
         return $result;
     }
@@ -108,7 +107,6 @@ class dbOperationen
             return $items;
         }
     }
-
 
     function addProduct($con, $produktname, $slug, $kurzbeschreibung, $beschreibung, $kategorie, $preis, $bild){
         $insert = "INSERT INTO produkte(Titel, Kurzbeschreibung, Beschreibung, Kategorie, Preis, Slug, Bild) VALUES ('".$produktname."', '".$kurzbeschreibung."', '".$beschreibung."', '".$kategorie."', '".$preis."', '".$slug."', '".$bild."')";

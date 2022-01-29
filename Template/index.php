@@ -13,7 +13,7 @@ if (empty($_SESSION["username"])) {
 if(isset($_SESSION["username"])){
     $nutzername = $_SESSION["username"];
 } else {
-    $nutzername = 0;
+    $nutzername = "";
 }
 
 $dbOperation = new dbOperationen();
@@ -69,10 +69,13 @@ $route = str_replace('index.php', '', $route);
 if(strpos($route,'/warenkorb/add/') !== false) { //strpos schaut in der route nach, ob es den String /warenkorb/add gibt
     $routeParts = explode("/", $route); //ProduktID befindet sich an der dritten Stelle, somit:
     $produktId = (int) $routeParts[3]; //Stelle aus der URL auslesen und der Variablen produktID übergeben
-    $zuWarenkorbHinzu = $dbOperation->productToCart($nutzerId, $produktId, $con);
-
-    header("Location: /template/index.php");
-    exit();
+    if($nutzerId === 0){
+        header("Location: /template/login.php");
+    } else {
+        $zuWarenkorbHinzu = $dbOperation->productToCart($nutzerId, $produktId, $con);
+        header("Location: /template/index.php");
+        exit();
+    }
 }
 
 
