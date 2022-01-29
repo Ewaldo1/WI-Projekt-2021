@@ -76,21 +76,24 @@
 									<img src="./img/logo120.png" alt="">
 								</a>
 							</div>
-                            <div class="search-container">
-                                <form action="action_page.php">
-                                    <input type="text" placeholder="Suche.." name="search">
-                                    <button class="fa fa-search"  name ="produktSuchen"></button>
-                                </form>
-                            </div>
 						</div>
+						<!-- /LOGO -->
+						
+						<!-- SEARCH BAR -->
+						<div class="col-md-6">
+							<div class="header-search">
+								<form>
+									<select class="input-select">
+										<option value="0">Kategorien</option>
+										<option value="1">Laptop</option>
+										<option value="1">Smartphone</option>
+										<option value="1">Fernseher</option>
+									</select>
+									<input class="input" placeholder="">
+									<button class="search-btn">Suchen</button>
+								</form>
 							</div>
 						</div>
-						<!-- /ACCOUNT -->
-					</div>
-					<!-- row -->
-				</div>
-				<!-- container -->
-			</div>
-			<!-- /MAIN HEADER -->
-		</header>
-		<!-- /HEADER -->
+						<!-- /SEARCH BAR -->
+		
+		
