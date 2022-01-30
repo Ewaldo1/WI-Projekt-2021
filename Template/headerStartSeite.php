@@ -67,13 +67,25 @@
                             <img src="./img/logo120.png" alt="">
                         </a>
                     </div>
-                    <div class="search-container">
+                </div>
+                <div class="col-md-6">
+                    <div class="header-search">
                         <form action="action_page.php">
-                            <input type="text" placeholder="Suche.." name="search">
-                            <button class="fa fa-search"  name ="produktSuchen"></button>
+                            <input class="input" type="text" placeholder="Suche.." name="search">
+                            <button class="search-btn"  name ="produktSuchen">Suchen</button>
                         </form>
                     </div>
                 </div>
+
+            </div>
+        </div>
+        <!-- /ACCOUNT -->
+    </div>
+    <!-- row -->
+    </div>
+    <!-- container -->
+    </div>
+    <!-- /MAIN HEADER -->
 
 </header>
 <!-- /HEADER -->

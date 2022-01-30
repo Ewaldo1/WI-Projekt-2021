@@ -43,7 +43,7 @@
 </div>
 <!-- /BREADCRUMB -->
 <section class="container">
-    <form action = "login.php" method = "post" class="needs-validation" novalidate>
+    <form action = "login.php" method = "post" class="needs-validation" novalidate> <!-- Eingaben werden auf Vollständigkeit geprüft, wenn Feld unausgefüllt, dann Fehler -->
         <div class="card">
             <div class="card-body">
                 <div class="form-group">

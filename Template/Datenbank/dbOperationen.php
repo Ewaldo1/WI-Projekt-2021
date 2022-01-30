@@ -85,14 +85,14 @@ class dbOperationen
     }
 
     function getProductBySlug($slug, $con){
-        $sql = "SELECT ID, Titel, Beschreibung, Preis, Slug, Bild FROM produkte WHERE Slug = '".$slug."';";
+        $sql = "SELECT ID, Titel, Kurzbeschreibung, Beschreibung, Preis, Slug, Bild FROM produkte WHERE Slug = '".$slug."';";
         $result = mysqli_query($con, $sql);
         $row = mysqli_fetch_assoc($result);
         return $row;
     }
 
-    function getProductBySearch($con, $suche){
-        $sql = "SELECT ID, Titel, Beschreibung, Preis, Slug, Bild FROM produkte WHERE Titel LIKE '%$suche%';";
+    function getProductBySearch($con, $suche){ // Es werden die Produkte selektiert, die zu der Eingabe in der Suchleiste passen oder einen Teil davon (%...%) im Titel beinhalten
+        $sql = "SELECT ID, Titel, Kurzbeschreibung, Beschreibung, Preis, Slug, Bild FROM produkte WHERE Titel LIKE '%$suche%';";
         $result = mysqli_query($con, $sql);
         if($result === false) {
             return [];
@@ -101,7 +101,7 @@ class dbOperationen
         while($row = $result->fetch_assoc()){
             $items[] = $row;
         }
-        if(empty($items)) { ?>
+        if(empty($items)) { ?> <!-- wenn kein passender Eintrag zur Suche gefunden wird -->
             <div class="alert alert-info"> <strong><?php echo "Kein passender Eintrag zu Ihrer Suche gefunden."?></strong></div> <?php
         } else {
             return $items;
