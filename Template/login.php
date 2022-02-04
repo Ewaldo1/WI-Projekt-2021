@@ -55,11 +55,18 @@
             </div>
             <div class="card-footer">
                 <button class="btn btn-success" type ="submit" name ="submit">Login</button>
+                <br> <br>
+
+
             </div>
+
+
         </div>
 </section>
 </form>
-
+<section class="container">
+    <a href="regist.php" class="btn btn-primary col-12 text-center">Account erstellen!</a>
+</section>
 <?php
 session_start();
 
