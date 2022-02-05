@@ -40,7 +40,7 @@
     <div class="container">
 
         <br><h4>Password Rücksetzen:</h4>
-        <form method="post" action="BackEnd/vergessenBackEnd.php" class="needs-validation" novalidate>
+        <form method="post" action="vergessenBackEnd.php" class="needs-validation" novalidate>
             <div class="card">
                 <div class="card-body">
                     <div class="form-group">
