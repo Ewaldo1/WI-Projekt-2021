@@ -66,6 +66,9 @@
 </form>
 <section class="container">
     <a href="regist.php" class="btn btn-primary col-12 text-center">Account erstellen!</a>
+    <br>
+    <br>
+    <a href="passwortVergessen.php">haben sie Ihre password vergessen?</a>
 </section>
 <?php
 session_start();
