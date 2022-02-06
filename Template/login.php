@@ -64,17 +64,6 @@
     <br>
     <a href="passwortVergessen.php">haben sie Ihre password vergessen?</a>
 </section>
-<<<<<<< HEAD
-
-=======
-</form>
-<section class="container">
-    <a href="regist.php" class="btn btn-primary col-12 text-center">Account erstellen!</a>
-    <br>
-    <br>
-    <a href="passwortVergessen.php">haben sie Ihre password vergessen?</a>
-</section>
->>>>>>> 7048cf5a30846518070b46f9002afe5f293c48ad
 <?php
 session_start();
 
