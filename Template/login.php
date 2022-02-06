@@ -1,10 +1,4 @@
 <?php include "headerStartSeite.php"; ?>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
-
 <!-- NAVIGATION -->
 <nav id="navigation">
     <!-- container -->
@@ -57,8 +51,14 @@
                 <button class="btn btn-success" type ="submit" name ="submit">Login</button>
             </div>
         </div>
+    </form>
 </section>
-</form>
+<section class="container">
+    <a href="regist.php" class="btn btn-primary col-12 text-center">Account erstellen!</a>
+    <br>
+    <br>
+    <a href="passwortVergessen.php">haben sie Ihre password vergessen?</a>
+</section>
 
 <?php
 session_start();
@@ -96,6 +96,7 @@ if(isset($_POST["submit"])){
             var validation = Array.prototype.filter.call(forms, function(form) {
                 form.addEventListener('submit', function(event) {
                     if (form.checkValidity() === false) {
+                        console.log(form.checkValidity());
                         event.preventDefault();
                         event.stopPropagation();
                     }

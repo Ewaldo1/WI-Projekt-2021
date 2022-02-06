@@ -4,7 +4,7 @@
     .card {
         float: left;
         width: 300px;
-        height: 700px;
+        height: 750px;
         margin: 15px;
         text-align: center;
         font-family: arial;
@@ -43,7 +43,7 @@
 
 <div class="card">
     <div class="card-title"><?php echo $product['Titel'] //Titel der Zeile aus der Produktdatenbanktabelle ?></div>
-    <img src="<?php echo $product['Bild']; ?>" class="card-img-top" height="300px" width="300px" alt="produkt">
+    <img src="<?php echo $product['Bild']; ?>" class="img-thumbnail" height="300px" width="300px" alt="produkt">
     <h4 class="card-body" style="font-size: 15px"></h4>
         <?php echo $product['Kurzbeschreibung'] ?>
         <hr>

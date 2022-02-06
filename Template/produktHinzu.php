@@ -14,12 +14,6 @@ $dbOperation = new dbOperationen();
 $nutzerId = $dbOperation->getUserID($con, $nutzername);
 $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
 ?>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
 <!-- NAVIGATION -->
 <nav id="navigation">
     <!-- container -->
@@ -68,25 +62,25 @@ $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
                     <label>Produktname:</label>
                     <input type="text" class="form-control" id="titel"  placeholder="Vergeben Sie einen Titel für ihr Produkt" name= "titel" required>
                     <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">Dieses Feld muss ausgefüllt werden</div>
+                    <div class="invalid-feedback">Bitte geben Sie einen Titel für Ihr Produkt an</div>
                 </div>
                 <div class="form-group">
                     <label>Slug:</label>
                     <input type="text" class="form-control" id="slug"  placeholder="Geben Sie an unter welcher URL ihr Produkt gefunden werden soll" name= "slug" required>
                     <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">Dieses Feld muss ausgefüllt werden</div>
+                    <div class="invalid-feedback">Bitte geben Sie an unter welchem Begriff Ihr Produkt gefunden werden soll</div>
                 </div>
                 <div class="form-group">
                     <label>Kurzbeschreibung:</label>
                     <textarea class="form-control" id="kurzbeschreibung" placeholder="Vergeben Sie eine kurze Beschreibung" rows="2" name="kurzbeschreibung" required></textarea>
                     <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">Dieses Feld muss ausgefüllt werden</div>
+                    <div class="invalid-feedback">Bitte geben Sie eine Kurzbeschreibung für Ihr Produkt an</div>
                 </div>
                 <div class="form-group">
                     <label>Produktbeschreibung:</label>
                     <textarea class="form-control" id="beschreibung" placeholder="Vergeben Sie eine ausführliche Beschreibung" rows="3" name="beschreibung" required></textarea>
                     <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">Dieses Feld muss ausgefüllt werden</div>
+                    <div class="invalid-feedback">Bitte geben Sie eine Beschreibung für Ihr Produkt an</div>
                 </div>
                 <div class="form-group">
                     <label>Produktkategorie:</label><br>
@@ -97,19 +91,19 @@ $anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
                     <input type="radio" id="fernseher" name="kategorie" value="Fernseher">
                     <label for="fernseher"> Fernseher</label>
                     <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">Dieses Feld muss ausgefüllt werden</div>
+                    <div class="invalid-feedback">Bitte wählen Sie eine Kategorie für Ihr Produkt aus</div>
                 </div>
                 <div class="form-group">
                     <br><label>Preis:</label>
                     <input type="text" class="form-control" id="preis"  placeholder="Geben Sie den Preis des Produktes an" name= "preis" required>
                     <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">Dieses Feld muss ausgefüllt werden</div>
+                    <div class="invalid-feedback">Bitte geben Sie ein Preis für Ihr Produkt an</div>
                 </div>
                 <div class="form-group">
                     <label>Produktbild:</label>
                     <input type="text" class="form-control" id="produktbild"  placeholder="Geben Sie den Pfad zu ihrem Bild in der Form ./img/picturename.png an" name= "produktbild" required>
                     <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">Dieses Feld muss ausgefüllt werden</div>
+                    <div class="invalid-feedback">Bitte geben Sie ein Produktbild für Ihr Produkt an</div>
                 </div>
             </div>
             <div class="card-footer">

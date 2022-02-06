@@ -77,35 +77,6 @@ if(strpos($route,'/warenkorb/add/') !== false) { //strpos schaut in der route na
         exit();
     }
 }
-
-
-if(strpos($route, '/produkt') !== false){
-    $routeParts = explode("/", $route);
-    if(count($routeParts) !== 3){
-        echo "Ungültige URL";
-        exit();
-    }
-    $slug = $routeParts[2];
-    if(strlen($slug) === 0){
-        echo "Ungültiges Produkt";
-        exit();
-    }
-    $produkt = $dbOperation->getProductBySlug($slug, $con);
-    if($produkt === null){
-        echo "Ungültiges Produkt";
-        exit();
-    }
-    ?><a href="produktDetails.php?id=1">Details</a><?php
-
-}
-
-if (strpos($route, '/kategorie') !== false) {
-    $routeParts = explode("/", $route); //kategorieID befindet sich an der zweiten Stelle, somit:
-    $kategorieId = $routeParts[2]; //Stelle aus der URL auslesen und der Variablen kategorieID übergeben
-    $produkte = $dbOperation->getProductByCategory($con, $kategorieId);
-    ?><a href="kategorie.php?id=1">Kategorien</a><?php
-}
-
 ?>
 
 <!-- SECTION -->
@@ -162,7 +133,7 @@ if (strpos($route, '/kategorie') !== false) {
                                         </div>
                                         <div class="shop-body">
                                             <h3>Fernseher</h3>
-                                            <a href="kategorie.php?kategorie=Fernseher" class="cta-btn" name="fernseher">Jetzt einkaufen <i class="fa fa-arrow-circle-right"></i></a>
+                                            <a href="kategorie.php?kategorie=Fernseher" class="cta-btn">Jetzt einkaufen <i class="fa fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>

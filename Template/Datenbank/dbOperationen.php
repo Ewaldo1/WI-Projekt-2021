@@ -91,7 +91,9 @@ class dbOperationen
         return $row;
     }
 
-    function getProductBySearch($con, $suche){ // Es werden die Produkte selektiert, die zu der Eingabe in der Suchleiste passen oder einen Teil davon (%...%) im Titel beinhalten
+    function getProductBySearch($con, $suche){
+        // Es werden die Produkte selektiert,
+        // die zu der Eingabe in der Suchleiste passen oder einen Teil davon (%...%) im Titel beinhalten
         $sql = "SELECT ID, Titel, Kurzbeschreibung, Beschreibung, Preis, Slug, Bild FROM produkte WHERE Titel LIKE '%$suche%';";
         $result = mysqli_query($con, $sql);
         if($result === false) {

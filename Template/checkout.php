@@ -16,11 +16,6 @@ if (empty($warenkorbInhalte)){
 }
 
 ?>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
 <nav id="navigation">
     <!-- container -->
     <div class="container">
@@ -46,10 +41,7 @@ if (empty($warenkorbInhalte)){
         <!-- row -->
         <div class="row">
             <div class="col-md-12">
-                <h3 class="breadcrumb-header">Überprüfen & Bestellen</h3>
-                <!--ul class="breadcrumb-tree">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">Checkout</li-->
+                <h3 class="breadcrumb-header">Anschrift & Bezahlmethode wählen</h3>
                 </ul>
             </div>
         </div>
@@ -58,11 +50,9 @@ if (empty($warenkorbInhalte)){
     <!-- /container -->
 </div>
 <!-- /BREADCRUMB -->
-<!-- SECTION -->
-<div class="section">
     <!-- container -->
-    <div class="container">
-        <form action ="checkout.php" method ="post" class="was-validated>
+    <section class="container">
+        <form action = "checkout.php" method = "post" class="needs-validation" novalidate>
             <div class="row">
                 <div class="col-md-7">
                     <!-- Billing Details -->
@@ -71,25 +61,32 @@ if (empty($warenkorbInhalte)){
                             <h3 class="title">Rechnungsanschrift</h3>
                         </div>
                         <div class="form-group">
-                            <input class="input" type="text" name="first-name" placeholder="Vorname" required>
+                            <input class="form-control" type="text" name="first-name" placeholder="Vorname" required>
+                            <div class="invalid-feedback">Bitte füllen Sie dieses Feld aus!</div>
                         </div>
                         <div class="form-group">
-                            <input class="input" type="text" name="last-name" placeholder="Nachname" required>
+                            <input class="form-control" type="text" name="last-name" placeholder="Nachname" required>
+                            <div class="invalid-feedback">Bitte füllen Sie dieses Feld aus!</div>
                         </div>
                         <div class="form-group">
-                            <input class="input" type="email" name="email" placeholder="Email" required>
+                            <input class="form-control" type="email" name="email" placeholder="Email" required>
+                            <div class="invalid-feedback">Bitte geben Sie eine korrekte E-Mail an!</div>
                         </div>
                         <div class="form-group">
-                            <input class="input" type="text" name="address" placeholder="Straße" required>
+                            <input class="form-control" type="text" name="address" placeholder="Straße" required>
+                            <div class="invalid-feedback">Bitte füllen Sie dieses Feld aus!</div>
                         </div>
                         <div class="form-group">
-                            <input class="input" type="text" name="city" placeholder="PLZ" required>
+                            <input class="form-control" type="text" name="city" placeholder="PLZ" required>
+                            <div class="invalid-feedback">Bitte füllen Sie dieses Feld aus!</div>
                         </div>
                         <div class="form-group">
-                            <input class="input" type="text" name="country" placeholder="Land" required>
+                            <input class="form-control" type="text" name="country" placeholder="Land" required>
+                            <div class="invalid-feedback">Bitte füllen Sie dieses Feld aus!</div>
                         </div>
                         <div class="form-group">
-                            <input class="input" type="tel" name="tel" placeholder="Telefonnummer" required>
+                            <input class="form-control" type="tel" name="tel" placeholder="Telefonnummer" required>
+                            <div class="invalid-feedback">Bitte füllen Sie dieses Feld aus!</div>
                         </div>
                     </div>
                     <!-- /Billing Details -->
@@ -179,26 +176,26 @@ if (empty($warenkorbInhalte)){
                                     <div class="caption">
                                         <p>Die Rechnung geht Ihnen nach Auslieferung der Ware per E-Mail als PDF-Datei zu. Darin finden Sie alle Informationen, die Sie benötigen, um die Rechnung zu begleichen.</p>
                                     </div>
+                                    <div class="invalid-feedback">Bitte wählen Sie eine Zahlungsmethode aus</div>
                                 </div>
                             </div>
                             <div class="input-checkbox">
-                                <input type="checkbox" id="terms" required>
+                                <input class="form-control" type="checkbox" id="terms" required>
                                 <label for="terms">
                                     <span></span>
                                     Hiermit erkläre ich mich mit den AGB und der Datenschutzerklärung sowie mit der Widerrufsbelehrung einverstanden.</a>
                                 </label>
+                                <div class="invalid-feedback">Bitte akzeptieren Sie unsere AGB</div><br>
                             </div>
-                            <!--<a href="bezahlt.php" class="primary-btn order-submit">Kaufen</a>-->
                             <button class="btn btn-danger btn-lg btn-block" type="submit" name ="bezahlen">Bezahlen</button>
                         </div>
                 </div>
                 <!-- /Order Details -->
             </div>
             <!-- /row -->
-    </div>
+        </form>
+    </section>
     <!-- /container -->
-</div>
-<!-- /SECTION -->
 
 <?php
 if(isset($_POST['bezahlen'])){
@@ -208,7 +205,7 @@ if(isset($_POST['bezahlen'])){
 
 <!--Quelle: https://www.w3schools.com/bootstrap4/bootstrap_forms.asp-->
 <script>
-    //es wird geprüft, ob es unausgefüllte Felder gibt, wenn ja wird die Meldung für invalid-feedback ausgegeben
+    //es wird geprüft, ob es unausgefüllte Felder gibt, wenn ja, wird die Meldung für invalid-feedback ausgegeben
     (function() {
         'use strict';
         window.addEventListener('load', function() {
