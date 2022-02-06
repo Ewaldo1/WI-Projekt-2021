@@ -82,11 +82,17 @@ if(isset($_POST['submit'])) {
     $sql = "SELECT Email FROM nutzer WHERE '" . $email2 . "' = Email";
     $searchResult = mysqli_query($con,$sql);
 
+    if($searchResult) {
+        echo "Verdad";
+    }
+
+    $eingeben = mysqli_num_rows($searchResult);
+
     if(mysqli_num_rows($searchResult) <= 0) {
-        echo "Falsche Email eingeben";
+
 
     } else {
-        echo "Rictige Email <br/n>";
+
         setNewPassword($passwordNew, $passwordOld, $con);
     }
 
@@ -119,6 +125,9 @@ function setNewPassword($givemeNew, $givemeOld, $givemeCon) {
 
 
 }
+echo "nada";
+echo "<br>\n";
+echo $eingeben;
 
 //Hier muss ich noch schauen wie ich Seile in Datenbanken suchen kann und dann was ändern..
 //Password wird nur auf sichere Grunde gefragt!

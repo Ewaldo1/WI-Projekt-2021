@@ -9,5 +9,6 @@ try {
 } catch (mysqli_sql_exception $e){
     echo "Verbindung fehlgeschlagen ".$e->getMessage();
 }
+$con2 = new mysqli($host, $user, $passwort, $db);
 ?>
 

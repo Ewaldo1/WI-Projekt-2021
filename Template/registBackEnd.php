@@ -13,11 +13,14 @@ if(isset($_POST['submit'])) {
     if($prüfung1 === false) { ?>
         <br><div class="alert alert-danger"> <strong><?php echo "Fehler bei der Registrierung"?></strong></div> <?php
     } else {
+        // Hier wird gesucht ob der email schon existiert!
+
         $sql = "SELECT Email FROM nutzer WHERE '" . $_userEmail . "' = Email";
         $searchResult = mysqli_query($con,$sql);
         if(mysqli_num_rows($searchResult) > 0) { ?>
              <br><div class="alert alert-danger"> <strong><?php echo "Benutzer existiert bereits. Bitte logge dich ein."?></strong></div> <?php
         } else {
+            //Hier wird in Data eingefügt die gebenende Daten
             $_userEmail = md5($_POST["email"]);
             $_userPassword = md5($_POST["passwort"]);
             $insert = "INSERT INTO nutzer(Email, Passwort, Geburtsdatum, Username)VALUES ('$_userEmail', '$_userPassword', '$_userOld', '$_userName')";
