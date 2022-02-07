@@ -9,6 +9,7 @@ include "chat/DBchat.php";
     <?php include "HeaderHEKAY.php"; ?>
 
     <title> Chat </title>
+
     <link rel = "stylesheet" type="text/css" href="chat/myStyle.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

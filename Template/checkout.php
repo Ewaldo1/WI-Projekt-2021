@@ -138,7 +138,7 @@ if (empty($warenkorbInhalte)){
 
                             <div class="payment-method">
                                 <div class="row warenkorbItem">
-                                    <?php include 'warenkorbItems.php'; ?>
+                                    <?php include 'BackEnd/backEndList.php'; ?>
                                 </div>
 
                             </div>

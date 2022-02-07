@@ -35,8 +35,6 @@
 </nav>
 <!-- /NAVIGATION -->
 
-
-
     <div class="container">
 
         <br><h4>Password Rücksetzen:</h4>
@@ -60,7 +58,6 @@
                     <button class="btn btn-success" type ="submit" name ="submit"> Anfragen schicken</button>
                 </div>
             </div>
-
 
             <br>
 

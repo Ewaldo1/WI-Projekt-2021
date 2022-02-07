@@ -5,7 +5,7 @@
 }
 
 body {
-    background:  #8fff;
+    background:  #800900;
 }
 
 #conteiner{
@@ -40,7 +40,7 @@ input[type = 'text']{
     width: 100%;
     heigth: 400px;
     border: 1px solid gray;
-     border-radius: 5px ;
+    border-radius: 5px ;
     -moz-border-radius: 5px;
     -o-border-radius: 5px;
     -webkit-border-radius: 5px;
