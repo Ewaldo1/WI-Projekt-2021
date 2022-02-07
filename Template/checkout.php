@@ -134,51 +134,60 @@ if (empty($warenkorbInhalte)){
                 <!-- Order Details -->
                 <div class="col-md-5 order-details">
                         <div class="section-title text-center">
-                            <h3 class="title">Ihre gewünschte Bezahlmethode</h3>
+                            <h3 class="title">Ihre Bestellungen</h3>
 
                             <div class="payment-method">
-                                <div class="input-radio">
-                                    <input type="radio" id="payment-1" name="payment" required>
-                                    <label for="payment-1">
-                                        <span></span>
-                                        Vorkasse
-                                    </label>
-                                    <div class="caption">
-                                        <p>Sie erhalten zu Ihrer jeweiligen Bestellung rechtzeitig die Überweisungsdaten.</p>
-                                    </div>
+                                <div class="row warenkorbItem">
+                                    <?php include 'warenkorbItems.php'; ?>
                                 </div>
-                                <div class="input-radio">
-                                    <input type="radio" id="payment-2" name="payment" required>
-                                    <label for="payment-2">
-                                        <span></span>
-                                        PayPal
-                                    </label>
-                                    <div class="caption">
-                                        <p>Sie können Ihre PayPal-Daten im Anschluss an eine Bestellung eingeben oder ändern.</p>
-                                    </div>
-                                </div>
-                                <div class="input-radio">
-                                    <input type="radio" id="payment-3" name="payment" required>
-                                    <label for="payment-3">
-                                        <span></span>
-                                        VISA Kreditkarte
-                                    </label>
-                                    <div class="caption">
-                                        <p>Sie können Ihre Kreditkarten-Daten im Anschluss an eine Bestellung eingeben und ändern.</p>
-                                    </div>
-                                </div>
-                                <div class="input-radio">
-                                    <input type="radio" id="payment-4" name="payment" required>
-                                    <label for="payment-4">
-                                        <span></span>
-                                        Rechnung
-                                    </label>
-                                    <div class="caption">
-                                        <p>Die Rechnung geht Ihnen nach Auslieferung der Ware per E-Mail als PDF-Datei zu. Darin finden Sie alle Informationen, die Sie benötigen, um die Rechnung zu begleichen.</p>
-                                    </div>
-                                    <div class="invalid-feedback">Bitte wählen Sie eine Zahlungsmethode aus</div>
-                                </div>
+
                             </div>
+                            <div class="section-title text-center">
+                                <h3 class="title">Ihre gewünschte Bezahlmethode</h3>
+
+                                <div class="payment-method">
+                                    <div class="input-radio">
+                                        <input type="radio" id="payment-1" name="payment" required>
+                                        <label for="payment-1">
+                                            <span></span>
+                                            Vorkasse
+                                        </label>
+                                        <div class="caption">
+                                            <p>Sie erhalten zu Ihrer jeweiligen Bestellung rechtzeitig die Überweisungsdaten.</p>
+                                        </div>
+                                    </div>
+                                    <div class="input-radio">
+                                        <input type="radio" id="payment-2" name="payment" required>
+                                        <label for="payment-2">
+                                            <span></span>
+                                            PayPal
+                                        </label>
+                                        <div class="caption">
+                                            <p>Sie können Ihre PayPal-Daten im Anschluss an eine Bestellung eingeben oder ändern.</p>
+                                        </div>
+                                    </div>
+                                    <div class="input-radio">
+                                        <input type="radio" id="payment-3" name="payment" required>
+                                        <label for="payment-3">
+                                            <span></span>
+                                            VISA Kreditkarte
+                                        </label>
+                                        <div class="caption">
+                                            <p>Sie können Ihre Kreditkarten-Daten im Anschluss an eine Bestellung eingeben und ändern.</p>
+                                        </div>
+                                    </div>
+                                    <div class="input-radio">
+                                        <input type="radio" id="payment-4" name="payment" required>
+                                        <label for="payment-4">
+                                            <span></span>
+                                            Rechnung
+                                        </label>
+                                        <div class="caption">
+                                            <p>Die Rechnung geht Ihnen nach Auslieferung der Ware per E-Mail als PDF-Datei zu. Darin finden Sie alle Informationen, die Sie benötigen, um die Rechnung zu begleichen.</p>
+                                        </div>
+                                        <div class="invalid-feedback">Bitte wählen Sie eine Zahlungsmethode aus</div>
+                                    </div>
+                                </div>
                             <div class="input-checkbox">
                                 <input class="form-control" type="checkbox" id="terms" required>
                                 <label for="terms">

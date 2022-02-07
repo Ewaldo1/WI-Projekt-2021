@@ -1,0 +1,23 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+body {
+    background:  #800900;
+}
+
+#conteiner{
+    width: 40%;
+    background: #fff;
+    marrgin: 0 auto;
+    padding: 20px;
+    bodrder-radius: 12px;
+
+    -moz-border-radius: 12px;
+    -o-border-radius: 12px;
+    -webkit-border-radius: 12px;
+
+}
+

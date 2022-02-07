@@ -5,7 +5,7 @@
 }
 
 body {
-    background:  #800900;
+    background:  #8fff;
 }
 
 #conteiner{
@@ -38,7 +38,7 @@ body {
 
 input[type = 'text']{
     width: 100%;
-    heigth: 40px;
+    heigth: 400px;
     border: 1px solid gray;
      border-radius: 5px ;
     -moz-border-radius: 5px;

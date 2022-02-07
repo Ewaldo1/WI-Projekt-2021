@@ -11,23 +11,17 @@ if(isset($_POST['submit'])) {
     $sql = "SELECT Username FROM nutzer WHERE '" .$_userName. "' = Username  AND '" .$_userEmail."' = Email  
             AND '".$_userOld. "' = Geburtsdatum";
 
-
     $anfragen = mysqli_query($con,$sql);
-
-
-
 
     //Überprüfung ob die Kombination Existiert
     if(mysqli_num_rows($anfragen) > 0) {
-        echo "große 0";
+
         ?>
-        <br><div class="alert alert-danger"> <strong><?php echo "Ihre Daten sind richtig."?></strong></div> <?php
+        <br><div class="alert alert-danger"> <strong><?php echo "Email würde gesendet."?></strong></div> <?php
 
     } else {
-        echo "kleine 0  <br>\n";
 
-        echo "email = $_userEmail <br>\n";
-        echo "username = $_userName";
+        echo "Überprüfen Sie ihren Daten";
     }
 }
 
