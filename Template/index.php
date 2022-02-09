@@ -19,9 +19,9 @@ if(isset($_SESSION["username"])){
 $dbOperation = new dbOperationen();
 
 $nutzerId = $dbOperation->getUserID($con, $nutzername);
-$randProdukte = $dbOperation->randProducts($con); //hier gibt Zufällig die Produkten in der Index
-$produkte = $dbOperation->getProducts($con);  //Hier Seile von eine Produkt
-$anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con); //
+$randProdukte = $dbOperation->randProducts($con);
+$produkte = $dbOperation->getProducts($con);
+$anzahlWarenkorbinhalte = $dbOperation->countProductsInCart($nutzerId, $con);
 
 if($nutzername === 0){
     $anzahlWarenkorbinhalte = 0;
@@ -57,13 +57,12 @@ $produkte = $dbOperation->getProducts($con);
 </nav>
 <!-- /NAVIGATION -->
 
-<?php  //Definiere eindeutige Routen
+<?php  //Definiere eindeutige Route
 
 $url = $_SERVER['REQUEST_URI'];
 $indexPHPPosition = strpos($url, 'index.php');
 $route = substr($url, $indexPHPPosition);
-$route = str_replace('index.php', '', $route);
-
+$route = str_replace('index.php', '', $route); //Leerzeichen entfernen
 
 //Sachen in Warekorb Addieren
 if(strpos($route,'/warenkorb/add/') !== false) { //strpos schaut in der route nach, ob es den String /warenkorb/add gibt

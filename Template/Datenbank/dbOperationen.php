@@ -41,8 +41,7 @@ class dbOperationen
     //Hier wird das Produkt in der Tabelle Warenkorb eingetragen
     function productToCart($Nutzer_ID, $produkt_ID, $con){
         $insertSql = "INSERT INTO warenkorb (Produkt_ID, Nutzer_ID, Menge) 
-                    VALUES ('$produkt_ID', '$Nutzer_ID', '1') ON DUPLICATE KEY UPDATE Menge = Menge + 1"; // füge Produkt dem Warenkorb hinzu, falls Produkt schon vorhanden -> erhöhe die Menge
-
+     VALUES ('$produkt_ID', '$Nutzer_ID', '1') ON DUPLICATE KEY UPDATE Menge = Menge + 1"; // füge Produkt dem Warenkorb hinzu, falls Produkt schon vorhanden -> erhöhe die Menge
         $result = mysqli_query($con, $insertSql);
         return $result;
     }
@@ -58,7 +57,8 @@ class dbOperationen
     }
     //Gib nur produkt die auf die Warenkorb von der Person die angemeldet
     function getCartItemsForUserId($userId, $con) {
-        $sql = "SELECT Produkt_ID, Titel, Kurzbeschreibung, Preis, Bild, Menge FROM warenkorb JOIN produkte ON(warenkorb.Produkt_ID = produkte.ID) WHERE Nutzer_ID = '".$userId."';";
+        $sql = "SELECT Produkt_ID, Titel, Kurzbeschreibung, Preis, Bild, Menge FROM warenkorb 
+        JOIN produkte ON(warenkorb.Produkt_ID = produkte.ID) WHERE Nutzer_ID = '".$userId."';";
         $result = mysqli_query($con, $sql);
         if($result === false) {
             return [];
@@ -73,7 +73,8 @@ class dbOperationen
 
     function getCartSumForUserId($userId, $con){
         $summe = 0;
-        $sql = "SELECT Produkt_ID, Titel, Kurzbeschreibung, Preis, Menge FROM warenkorb JOIN produkte ON(warenkorb.Produkt_ID = produkte.ID) WHERE Nutzer_ID = '".$userId."';";
+        $sql = "SELECT Produkt_ID, Titel, Kurzbeschreibung, Preis, Menge FROM warenkorb 
+        JOIN produkte ON(warenkorb.Produkt_ID = produkte.ID) WHERE Nutzer_ID = '".$userId."';";
         $result = mysqli_query($con, $sql);
         if($result === false){
             return 0;
@@ -111,7 +112,8 @@ class dbOperationen
     }
 
     function addProduct($con, $produktname, $slug, $kurzbeschreibung, $beschreibung, $kategorie, $preis, $bild){
-        $insert = "INSERT INTO produkte(Titel, Kurzbeschreibung, Beschreibung, Kategorie, Preis, Slug, Bild) VALUES ('".$produktname."', '".$kurzbeschreibung."', '".$beschreibung."', '".$kategorie."', '".$preis."', '".$slug."', '".$bild."')";
+        $insert = "INSERT INTO produkte(Titel, Kurzbeschreibung, Beschreibung, Kategorie, Preis, Slug, Bild) VALUES 
+                  ('".$produktname."', '".$kurzbeschreibung."', '".$beschreibung."', '".$kategorie."', '".$preis."', '".$slug."', '".$bild."')";
         $result = mysqli_query($con, $insert);
         if($result){
             $lastId = mysqli_insert_id($con); ?>

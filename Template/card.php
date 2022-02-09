@@ -1,6 +1,6 @@
 <html>
+<!-- style von Template übernommen und an die Cards angepasst -->
 <style>
-
    .card {
       float: left;
        width: 300px;
@@ -9,6 +9,7 @@
        text-align: center;
        font-family: arial;
        position: relative;
+       font-size: small;
        -webkit-box-shadow: 0px 0px 0px 0px #E4E7ED, 0px 0px 0px 1px #E4E7ED;
        box-shadow: 0px 0px 0px 0px #E4E7ED, 0px 0px 0px 1px #E4E7ED;
        -webkit-transition: 0.2s all;
@@ -37,7 +38,7 @@
    }
 
 </style>
-
+<!-- Inspiriert von: https://www.w3schools.com/howto/howto_css_product_card.asp -->
 <div class="card">
     <div class="card-title"><?php echo $product['Titel'] //Titel der Zeile aus der Produktdatenbanktabelle ?></div>
     <img src="<?php echo $product['Bild']; ?>" class="img-thumbnail" height="300px" width="300px" alt="produkt">
@@ -49,7 +50,6 @@
     <div class="card-footer">
         <a href="produktDetails.php?slug=<?= $product['Slug']?>" class="btn btn-primary btn-sm">Details</a>
         <a href="index.php/warenkorb/add/<?= $product['ID']?>" class="btn btn-success btn-sm">Zum Warenkorb</a>
-
     </div>
 
 </div>

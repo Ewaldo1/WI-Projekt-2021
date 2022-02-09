@@ -47,7 +47,8 @@
     <h4 class="card-body" style="font-size: 15px"></h4>
         <?php echo $product['Kurzbeschreibung'] ?>
         <hr>
-        <h4 class="card-price" style = "color: #D10024"><?php echo $product['Preis'] - rand(20, 150) .'€'?> <del class="card-old-price" style="color: #8D99AE"><?php echo $product['Preis'] .'€'?></del></h4>
+        <h4 class="card-price" style = "color: #D10024"><?php echo $product['Preis'] - rand(20, 150) .'€'?>
+            <del class="card-old-price" style="color: #8D99AE"><?php echo $product['Preis'] .'€'?></del></h4>
 
     <div class="card-footer">
         <a href="produktDetails.php?slug=<?= $product['Slug']?>" class="btn btn-primary btn-sm">Details</a>

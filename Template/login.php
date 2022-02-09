@@ -37,7 +37,8 @@
 </div>
 <!-- /BREADCRUMB -->
 <section class="container">
-    <form action = "login.php" method = "post" class="needs-validation" novalidate> <!-- Eingaben werden auf Vollständigkeit geprüft, wenn Feld unausgefüllt, dann Fehler -->
+    <!-- Eingaben werden auf Vollständigkeit geprüft, wenn Feld unausgefüllt, dann Fehler -->
+    <form action = "login.php" method = "post" class="needs-validation" novalidate>
         <div class="card">
             <div class="card-body">
                 <div class="form-group">
@@ -62,7 +63,7 @@
     <a href="regist.php" class="btn btn-primary col-12 text-center">Account erstellen!</a>
     <br>
     <br>
-    <a href="passwortVergessen.php">haben sie Ihre password vergessen?</a>
+    <a href="passwortVergessen.php">Haben sie Ihr Passwort vergessen?</a>
 </section>
 <?php
 session_start();
@@ -100,7 +101,6 @@ if(isset($_POST["submit"])){
             var validation = Array.prototype.filter.call(forms, function(form) {
                 form.addEventListener('submit', function(event) {
                     if (form.checkValidity() === false) {
-                        console.log(form.checkValidity());
                         event.preventDefault();
                         event.stopPropagation();
                     }

@@ -26,9 +26,6 @@ if(isset($_SESSION["username"])){
     $nutzername = 0;
 }
 
-//HIER KOMMENTIEREN WAS DIE METHODEN MACHEN
-    $dbOperation = new dbOperationen();
-
 $dbOperation = new dbOperationen();
 if($nutzername === 0){
     $anzahlWarenkorbinhalte = 0;
@@ -96,10 +93,10 @@ if($nutzername === 0){
         if($warenkorbInhalte > 0):?>
         <?php foreach ($warenkorbInhalte as $warenkorbInhalt):
 
-                //So speicher mich in Seson der Produkt ID
+                //So speicher mich in Session der Produkt ID
                $_SESSION["aktuelleProduktID"] = $warenkorbInhalt['Produkt_ID'];
 
-                ?>
+        ?>
 
         <!-- row -->
         <div class="row warenkorbItem">

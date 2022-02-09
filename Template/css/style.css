@@ -667,7 +667,7 @@ ul, ol {
 
 @media only screen and (max-width: 991px) {
   .header-ctn .menu-toggle {
-    display: inline-block;
+    display: inline-block; !important;
   }
   #responsive-nav {
     position: fixed;

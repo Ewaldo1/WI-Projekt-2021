@@ -20,7 +20,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
         <!-- Bootstrap -->
-        <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">  <!-- Für Form Require -->
+        <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"> <!-- Für Form Require -->
 
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
 

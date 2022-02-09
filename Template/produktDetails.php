@@ -4,7 +4,7 @@
       include "Datenbank/dbOperationen.php";
       session_start();
       if(isset($_SESSION["username"])){
-    $nutzername = $_SESSION["username"];
+        $nutzername = $_SESSION["username"];
       } else {
         $nutzername = 0;
       }
